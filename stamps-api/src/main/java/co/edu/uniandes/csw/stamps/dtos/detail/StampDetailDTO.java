@@ -21,48 +21,77 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
 import co.edu.uniandes.csw.stamps.dtos.minimum.*;
-import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
+import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @generated
  */
 @XmlRootElement
-public class ArtistBasicDTO extends ArtistMinimumDTO{
+public class StampDetailDTO extends StampDTO{
 
 
+    @PodamExclude
+    private ArtistDTO artist;
 
     /**
      * @generated
      */
-    public ArtistBasicDTO() {
+    public StampDetailDTO() {
         super();
     }
 
     /**
-     * Crea un objeto ArtistBasicDTO a partir de un objeto ArtistEntity incluyendo los atributos de ArtistMinimumDTO.
+     * Crea un objeto StampBasicDTO a partir de un objeto StampEntity incluyendo los atributos de StampMinimumDTO.
      *
-     * @param entity Entidad ArtistEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad StampEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ArtistBasicDTO(ArtistEntity entity) {
+    public StampDetailDTO(StampEntity entity) {
         super(entity);
+        if (entity.getArtist()!=null){
+        this.artist = new ArtistDTO(entity.getArtist());
+        }
         
     }
 
     /**
-     * Convierte un objeto ArtistBasicDTO a ArtistEntity incluyendo los atributos de ArtistMinimumDTO.
+     * Convierte un objeto StampBasicDTO a StampEntity incluyendo los atributos de StampMinimumDTO.
      *
-     * @return Nueva objeto ArtistEntity.
+     * @return Nueva objeto StampEntity.
      * @generated
      */
     @Override
-    public ArtistEntity toEntity() {
-        ArtistEntity entity = super.toEntity();
+    public StampEntity toEntity() {
+        StampEntity entity = super.toEntity();
+        if (this.getArtist()!=null){
+        entity.setArtist(this.getArtist().toEntity());
+        }
         return entity;
+    }
+
+    /**
+     * Obtiene el atributo artist.
+     *
+     * @return atributo artist.
+     * @generated
+     */
+    public ArtistDTO getArtist() {
+        return artist;
+    }
+
+    /**
+     * Establece el valor del atributo artist.
+     *
+     * @param artist nuevo valor del atributo
+     * @generated
+     */
+    public void setArtist(ArtistDTO artist) {
+        this.artist = artist;
     }
 
 }

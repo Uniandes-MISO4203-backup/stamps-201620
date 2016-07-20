@@ -39,7 +39,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IItemLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.ItemBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.ItemDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.ItemEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -65,10 +65,10 @@ public class ItemResource {
      * @return Lista de ItemBasicDTO convertida
      * @generated
      */
-    private List<ItemBasicDTO> listEntity2DTO(List<ItemEntity> entityList){
-        List<ItemBasicDTO> list = new ArrayList<>();
+    private List<ItemDetailDTO> listEntity2DTO(List<ItemEntity> entityList){
+        List<ItemDetailDTO> list = new ArrayList<>();
         for (ItemEntity entity : entityList) {
-            list.add(new ItemBasicDTO(entity));
+            list.add(new ItemDetailDTO(entity));
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class ItemResource {
      * @generated
      */
     @GET
-    public List<ItemBasicDTO> getItems() {
+    public List<ItemDetailDTO> getItems() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
             return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientId));
@@ -98,12 +98,12 @@ public class ItemResource {
      */
     @GET
     @Path("{itemId: \\d+}")
-    public ItemBasicDTO getItem(@PathParam("itemId") Long itemId) {
+    public ItemDetailDTO getItem(@PathParam("itemId") Long itemId) {
         ItemEntity entity = itemLogic.getItem(itemId);
         if (entity.getClient() != null && !clientId.equals(entity.getClient().getId())) {
             throw new WebApplicationException(404);
         }
-        return new ItemBasicDTO(entity);
+        return new ItemDetailDTO(entity);
     }
 
     /**
@@ -115,8 +115,8 @@ public class ItemResource {
      */
     @POST
     @StatusCreated
-    public ItemBasicDTO createItem(ItemBasicDTO dto) {
-        return new ItemBasicDTO(itemLogic.createItem(clientId, dto.toEntity()));
+    public ItemDetailDTO createItem(ItemDetailDTO dto) {
+        return new ItemDetailDTO(itemLogic.createItem(clientId, dto.toEntity()));
     }
 
     /**
@@ -129,11 +129,11 @@ public class ItemResource {
      */
     @PUT
     @Path("{itemId: \\d+}")
-    public ItemBasicDTO updateItem(@PathParam("itemId") Long itemId, ItemBasicDTO dto) {
+    public ItemDetailDTO updateItem(@PathParam("itemId") Long itemId, ItemDetailDTO dto) {
         ItemEntity entity = dto.toEntity();
         entity.setId(itemId);
         ItemEntity oldEntity = itemLogic.getItem(itemId);
-        return new ItemBasicDTO(itemLogic.updateItem(clientId, entity));
+        return new ItemDetailDTO(itemLogic.updateItem(clientId, entity));
     }
 
     /**

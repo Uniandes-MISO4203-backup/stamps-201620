@@ -25,25 +25,29 @@ SOFTWARE.
 
     var mod = ng.module("clientModule");
 
-    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams',
-        function ($scope, $state, clients, $params) {
+    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','$rootScope',
+        function ($scope, $state, clients, $params,$rootScope) {
             $scope.records = clients;
+            var roles = $rootScope.roles;
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
-            this.totalItems = clients.totalRecords;
+            this.totalItems = clients.totalRecords;            
 
             this.pageChanged = function () {
                 $state.go('clientList', {page: this.currentPage});
             };
 
-            $scope.actions = {
+            $scope.actions = {                
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {
@@ -81,7 +85,7 @@ SOFTWARE.
                         $state.go('clientDelete', {clientId: rc.id});
                     },
                     show: function () {
-                        return true;
+                        return (roles.indexOf("admin") !== -1);
                     }
                 }
             };

@@ -23,7 +23,7 @@
                             $rootScope.category = false;
                             $rootScope.artist = true;
                             $rootScope.client = false;
-                            $rootScope.tShirt = true;
+                            $rootScope.tShirt = false;
                         }
                         if (roles.indexOf("admin") !== -1) {
                             $rootScope.category = true;

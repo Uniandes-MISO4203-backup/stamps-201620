@@ -21,77 +21,91 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.dtos.minimum.*;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import javax.xml.bind.annotation.XmlRootElement;
-import uk.co.jemos.podam.common.PodamExclude;
+import java.io.Serializable;
 
 /**
  * @generated
  */
 @XmlRootElement
-public class CategoryBasicDTO extends CategoryMinimumDTO{
+public class CategoryDTO implements Serializable{
 
-
-    @PodamExclude
-    private CategoryMinimumDTO parentCategory;
+    private Long id;
+    private String name;
 
     /**
      * @generated
      */
-    public CategoryBasicDTO() {
-        super();
+    public CategoryDTO() {
     }
 
     /**
-     * Crea un objeto CategoryBasicDTO a partir de un objeto CategoryEntity incluyendo los atributos de CategoryMinimumDTO.
+     * Crea un objeto CategoryMinimumDTO a partir de un objeto CategoryEntity.
      *
      * @param entity Entidad CategoryEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public CategoryBasicDTO(CategoryEntity entity) {
-        super(entity);
-        if (entity.getParentCategory()!=null){
-        this.parentCategory = new CategoryMinimumDTO(entity.getParentCategory());
-        }
-        
+    public CategoryDTO(CategoryEntity entity) {
+	   if (entity!=null){
+        this.id=entity.getId();
+        this.name=entity.getName();
+       }
     }
 
     /**
-     * Convierte un objeto CategoryBasicDTO a CategoryEntity incluyendo los atributos de CategoryMinimumDTO.
+     * Convierte un objeto CategoryMinimumDTO a CategoryEntity.
      *
      * @return Nueva objeto CategoryEntity.
      * @generated
      */
-    @Override
     public CategoryEntity toEntity() {
-        CategoryEntity entity = super.toEntity();
-        if (this.getParentCategory()!=null){
-        entity.setParentCategory(this.getParentCategory().toEntity());
-        }
-        return entity;
+        CategoryEntity entity = new CategoryEntity();
+        entity.setId(this.getId());
+        entity.setName(this.getName());
+    return entity;
     }
 
     /**
-     * Obtiene el atributo parentCategory.
+     * Obtiene el atributo id.
      *
-     * @return atributo parentCategory.
+     * @return atributo id.
      * @generated
      */
-    public CategoryMinimumDTO getParentCategory() {
-        return parentCategory;
+    public Long getId() {
+        return id;
     }
 
     /**
-     * Establece el valor del atributo parentCategory.
+     * Establece el valor del atributo id.
      *
-     * @param parentCategory nuevo valor del atributo
+     * @param id nuevo valor del atributo
      * @generated
      */
-    public void setParentCategory(CategoryMinimumDTO parentcategory) {
-        this.parentCategory = parentcategory;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * Obtiene el atributo name.
+     *
+     * @return atributo name.
+     * @generated
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Establece el valor del atributo name.
+     *
+     * @param name nuevo valor del atributo
+     * @generated
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

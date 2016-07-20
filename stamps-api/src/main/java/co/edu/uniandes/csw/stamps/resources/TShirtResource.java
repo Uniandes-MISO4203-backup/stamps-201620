@@ -39,7 +39,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.ITShirtLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.TShirtBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.TShirtDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -65,10 +65,10 @@ public class TShirtResource {
      * @return Lista de TShirtBasicDTO convertida.
      * @generated
      */
-    private List<TShirtBasicDTO> listEntity2DTO(List<TShirtEntity> entityList){
-        List<TShirtBasicDTO> list = new ArrayList<>();
+    private List<TShirtDetailDTO> listEntity2DTO(List<TShirtEntity> entityList){
+        List<TShirtDetailDTO> list = new ArrayList<>();
         for (TShirtEntity entity : entityList) {
-            list.add(new TShirtBasicDTO(entity));
+            list.add(new TShirtDetailDTO(entity));
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class TShirtResource {
      * @generated
      */
     @GET
-    public List<TShirtBasicDTO> getTShirts() {
+    public List<TShirtDetailDTO> getTShirts() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", tShirtLogic.countTShirts());
             return listEntity2DTO(tShirtLogic.getTShirts(page, maxRecords));
@@ -98,8 +98,8 @@ public class TShirtResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public TShirtBasicDTO getTShirt(@PathParam("id") Long id) {
-        return new TShirtBasicDTO(tShirtLogic.getTShirt(id));
+    public TShirtDetailDTO getTShirt(@PathParam("id") Long id) {
+        return new TShirtDetailDTO(tShirtLogic.getTShirt(id));
     }
 
     /**
@@ -111,8 +111,8 @@ public class TShirtResource {
      */
     @POST
     @StatusCreated
-    public TShirtBasicDTO createTShirt(TShirtBasicDTO dto) {
-        return new TShirtBasicDTO(tShirtLogic.createTShirt(dto.toEntity()));
+    public TShirtDetailDTO createTShirt(TShirtDetailDTO dto) {
+        return new TShirtDetailDTO(tShirtLogic.createTShirt(dto.toEntity()));
     }
 
     /**
@@ -125,11 +125,11 @@ public class TShirtResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public TShirtBasicDTO updateTShirt(@PathParam("id") Long id, TShirtBasicDTO dto) {
+    public TShirtDetailDTO updateTShirt(@PathParam("id") Long id, TShirtDetailDTO dto) {
         TShirtEntity entity = dto.toEntity();
         entity.setId(id);
         TShirtEntity oldEntity = tShirtLogic.getTShirt(id);
-        return new TShirtBasicDTO(tShirtLogic.updateTShirt(entity));
+        return new TShirtDetailDTO(tShirtLogic.updateTShirt(entity));
     }
 
     /**

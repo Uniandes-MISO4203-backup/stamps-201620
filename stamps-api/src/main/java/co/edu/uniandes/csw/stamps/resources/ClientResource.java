@@ -41,7 +41,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IClientLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.ClientBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.ClientDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.ClientEntity;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.group.Group;
@@ -73,10 +73,10 @@ public class ClientResource {
      * @return Lista de ClientBasicDTO convertida.
      * @generated
      */
-    private List<ClientBasicDTO> listEntity2DTO(List<ClientEntity> entityList){
-        List<ClientBasicDTO> list = new ArrayList<>();
+    private List<ClientDetailDTO> listEntity2DTO(List<ClientEntity> entityList){
+        List<ClientDetailDTO> list = new ArrayList<>();
         for (ClientEntity entity : entityList) {
-            list.add(new ClientBasicDTO(entity));
+            list.add(new ClientDetailDTO(entity));
         }
         return list;
     }
@@ -89,7 +89,7 @@ public class ClientResource {
      * @generated
      */
     @GET
-    public List<ClientBasicDTO> getClients() {
+    public List<ClientDetailDTO> getClients() {
         String accountHref = req.getRemoteUser();
         if (accountHref != null) {
             Account account = Utils.getClient().getResource(accountHref, Account.class);
@@ -103,8 +103,8 @@ public class ClientResource {
                         return listEntity2DTO(clientLogic.getClients());
                     case CLIENT_HREF:
                         Integer id = (int) account.getCustomData().get("client_id");
-                        List<ClientBasicDTO> list = new ArrayList();
-                        list.add(new ClientBasicDTO(clientLogic.getClient(id.longValue())));
+                        List<ClientDetailDTO> list = new ArrayList();
+                        list.add(new ClientDetailDTO(clientLogic.getClient(id.longValue())));
                         return list;
                 }
             }
@@ -122,8 +122,8 @@ public class ClientResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ClientBasicDTO getClient(@PathParam("id") Long id) {
-        return new ClientBasicDTO(clientLogic.getClient(id));
+    public ClientDetailDTO getClient(@PathParam("id") Long id) {
+        return new ClientDetailDTO(clientLogic.getClient(id));
     }
 
     /**
@@ -135,8 +135,8 @@ public class ClientResource {
      */
     @POST
     @StatusCreated
-    public ClientBasicDTO createClient(ClientBasicDTO dto) {
-        return new ClientBasicDTO(clientLogic.createClient(dto.toEntity()));
+    public ClientDetailDTO createClient(ClientDetailDTO dto) {
+        return new ClientDetailDTO(clientLogic.createClient(dto.toEntity()));
     }
 
     /**
@@ -149,11 +149,11 @@ public class ClientResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public ClientBasicDTO updateClient(@PathParam("id") Long id, ClientBasicDTO dto) {
+    public ClientDetailDTO updateClient(@PathParam("id") Long id, ClientDetailDTO dto) {
         ClientEntity entity = dto.toEntity();
         entity.setId(id);
         ClientEntity oldEntity = clientLogic.getClient(id);
-        return new ClientBasicDTO(clientLogic.updateClient(entity));
+        return new ClientDetailDTO(clientLogic.updateClient(entity));
     }
 
     /**
@@ -168,7 +168,7 @@ public class ClientResource {
         clientLogic.deleteClient(id);
     }
     public void existsClient(Long clientId){
-        ClientBasicDTO client = getClient(clientId);
+        ClientDetailDTO client = getClient(clientId);
         if (client== null) {
             throw new WebApplicationException(404);
         }

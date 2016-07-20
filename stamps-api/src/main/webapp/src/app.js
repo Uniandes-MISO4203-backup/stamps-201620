@@ -71,22 +71,12 @@ SOFTWARE.
                         label: 'Client',
                         icon: 'list-alt',
                         state: 'clientList'
-                    }, {
-                        id: 'wishList',
-                        label: 'Wish List',
-                        icon: 'list-alt',
-                        state: 'itemList'
                     }],
                 'artist': [{
                         id: 'artist',
                         label: 'Artist',
                         icon: 'list-alt',
                         state: 'artistList'
-                    }, {
-                        id: 'tShirt',
-                        label: 'T-Shiert',
-                        icon: 'list-alt',
-                        state: 'tShirtList'
                     }],
                 'admin': [{
                         id: 'client',
@@ -105,7 +95,7 @@ SOFTWARE.
                         state: 'artistList'
                     }, {
                         id: 'tShirt',
-                        label: 'T-Shiert',
+                        label: 'T-Shirt',
                         icon: 'list-alt',
                         state: 'tShirtList'                    
                     }]

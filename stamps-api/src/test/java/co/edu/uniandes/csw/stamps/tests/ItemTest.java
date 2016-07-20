@@ -27,7 +27,7 @@ import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.stamps.entities.ItemEntity;
 import co.edu.uniandes.csw.stamps.entities.ClientEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.ItemMinimumDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.ItemDTO;
 import co.edu.uniandes.csw.stamps.resources.ItemResource;
 import java.io.File;
 import java.io.IOException;
@@ -190,7 +190,7 @@ public class ItemTest {
     @Test
     public void createItemTest() throws IOException {
         PodamFactory factory = new PodamFactoryImpl();
-        ItemMinimumDTO item = factory.manufacturePojo(ItemMinimumDTO.class);
+        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
         Cookie cookieSessionId = login(username, password);
         Response response = target
             .path(clientPath).path(fatherClientEntity.getId().toString())
@@ -198,7 +198,7 @@ public class ItemTest {
             .request().cookie(cookieSessionId)
             .post(Entity.entity(item, MediaType.APPLICATION_JSON));
         
-        ItemMinimumDTO  itemTest = (ItemMinimumDTO) response.readEntity(ItemMinimumDTO.class);
+        ItemDTO  itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
         Assert.assertEquals(item.getName(), itemTest.getName());
         Assert.assertEquals(item.getQty(), itemTest.getQty());
         Assert.assertEquals(Created, response.getStatus());
@@ -214,11 +214,11 @@ public class ItemTest {
     @Test
     public void getItemByIdTest() {
         Cookie cookieSessionId = login(username, password);
-        ItemMinimumDTO itemTest = target
+        ItemDTO itemTest = target
             .path(clientPath).path(fatherClientEntity.getId().toString())
             .path(itemPath)
             .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(ItemMinimumDTO.class);
+            .request().cookie(cookieSessionId).get(ItemDTO.class);
         
         Assert.assertEquals(itemTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(itemTest.getName(), oraculo.get(0).getName());
@@ -239,7 +239,7 @@ public class ItemTest {
             .request().cookie(cookieSessionId).get();
         
         String listItem = response.readEntity(String.class);
-        List<ItemMinimumDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
+        List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listItemTest.size());
     }
@@ -252,9 +252,9 @@ public class ItemTest {
     @Test
     public void updateItemTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        ItemMinimumDTO item = new ItemMinimumDTO(oraculo.get(0));
+        ItemDTO item = new ItemDTO(oraculo.get(0));
         PodamFactory factory = new PodamFactoryImpl();
-        ItemMinimumDTO itemChanged = factory.manufacturePojo(ItemMinimumDTO.class);
+        ItemDTO itemChanged = factory.manufacturePojo(ItemDTO.class);
         item.setName(itemChanged.getName());
         item.setQty(itemChanged.getQty());
         Response response = target
@@ -263,7 +263,7 @@ public class ItemTest {
             .path(item.getId().toString())
             .request().cookie(cookieSessionId).put(Entity.entity(item, MediaType.APPLICATION_JSON));
         
-        ItemMinimumDTO itemTest = (ItemMinimumDTO) response.readEntity(ItemMinimumDTO.class);
+        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(item.getName(), itemTest.getName());
         Assert.assertEquals(item.getQty(), itemTest.getQty());
@@ -277,7 +277,7 @@ public class ItemTest {
     @Test
     public void deleteItemTest() {
         Cookie cookieSessionId = login(username, password);
-        ItemMinimumDTO item = new ItemMinimumDTO(oraculo.get(0));
+        ItemDTO item = new ItemDTO(oraculo.get(0));
         Response response = target
             .path(clientPath).path(fatherClientEntity.getId().toString())
             .path(itemPath)

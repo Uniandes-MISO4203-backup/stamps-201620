@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
 import co.edu.uniandes.csw.stamps.dtos.minimum.*;
 import co.edu.uniandes.csw.stamps.entities.ClientEntity;
@@ -31,14 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @XmlRootElement
-public class ClientBasicDTO extends ClientMinimumDTO{
+public class ClientDetailDTO extends ClientDTO{
 
 
 
     /**
      * @generated
      */
-    public ClientBasicDTO() {
+    public ClientDetailDTO() {
         super();
     }
 
@@ -48,7 +48,7 @@ public class ClientBasicDTO extends ClientMinimumDTO{
      * @param entity Entidad ClientEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ClientBasicDTO(ClientEntity entity) {
+    public ClientDetailDTO(ClientEntity entity) {
         super(entity);
         
     }

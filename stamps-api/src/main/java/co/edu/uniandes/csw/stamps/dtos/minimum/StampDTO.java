@@ -23,7 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.entities.ItemEntity;
+import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -31,43 +31,46 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class ItemMinimumDTO implements Serializable{
+public class StampDTO implements Serializable{
 
     private Long id;
     private String name;
-    private Long qty;
+    private String image;
+    private Long price;
 
     /**
      * @generated
      */
-    public ItemMinimumDTO() {
+    public StampDTO() {
     }
 
     /**
-     * Crea un objeto ItemMinimumDTO a partir de un objeto ItemEntity.
+     * Crea un objeto StampMinimumDTO a partir de un objeto StampEntity.
      *
-     * @param entity Entidad ItemEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad StampEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ItemMinimumDTO(ItemEntity entity) {
+    public StampDTO(StampEntity entity) {
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
-        this.qty=entity.getQty();
+        this.image=entity.getImage();
+        this.price=entity.getPrice();
        }
     }
 
     /**
-     * Convierte un objeto ItemMinimumDTO a ItemEntity.
+     * Convierte un objeto StampMinimumDTO a StampEntity.
      *
-     * @return Nueva objeto ItemEntity.
+     * @return Nueva objeto StampEntity.
      * @generated
      */
-    public ItemEntity toEntity() {
-        ItemEntity entity = new ItemEntity();
+    public StampEntity toEntity() {
+        StampEntity entity = new StampEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
-        entity.setQty(this.getQty());
+        entity.setImage(this.getImage());
+        entity.setPrice(this.getPrice());
     return entity;
     }
 
@@ -112,23 +115,43 @@ public class ItemMinimumDTO implements Serializable{
     }
 
     /**
-     * Obtiene el atributo qty.
+     * Obtiene el atributo image.
      *
-     * @return atributo qty.
+     * @return atributo image.
      * @generated
      */
-    public Long getQty() {
-        return qty;
+    public String getImage() {
+        return image;
     }
 
     /**
-     * Establece el valor del atributo qty.
+     * Establece el valor del atributo image.
      *
-     * @param qty nuevo valor del atributo
+     * @param image nuevo valor del atributo
      * @generated
      */
-    public void setQty(Long qty) {
-        this.qty = qty;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
+     * Obtiene el atributo price.
+     *
+     * @return atributo price.
+     * @generated
+     */
+    public Long getPrice() {
+        return price;
+    }
+
+    /**
+     * Establece el valor del atributo price.
+     *
+     * @param price nuevo valor del atributo
+     * @generated
+     */
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
 }

@@ -25,15 +25,19 @@ SOFTWARE.
 
     var mod = ng.module("artistModule");
 
-    mod.controller("artistDetailCtrl", ['$scope', "$state", "artist",
-        function ($scope, $state, artist) {
+    mod.controller("artistDetailCtrl", ['$scope', "$state", "artist",'$rootScope',
+        function ($scope, $state, artist,$rootScope) {
             $scope.currentRecord = artist;
+            var roles = $rootScope.roles;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
                         $state.go('artistNew');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 edit: {
@@ -48,6 +52,9 @@ SOFTWARE.
                     icon: 'minus',
                     fn: function () {
                         $state.go('artistDelete');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {

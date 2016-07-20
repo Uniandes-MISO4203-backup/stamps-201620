@@ -25,9 +25,10 @@ SOFTWARE.
 
     var mod = ng.module("artistModule");
 
-    mod.controller("artistListCtrl", ["$scope", '$state', 'artists', '$stateParams',
-        function ($scope, $state, artists, $params) {
+    mod.controller("artistListCtrl", ["$scope", '$state', 'artists', '$stateParams','$rootScope',
+        function ($scope, $state, artists, $params,$rootScope) {
             $scope.records = artists;
+            var roles = $rootScope.roles;
 
             //Paginación
             this.itemsPerPage = $params.limit;
@@ -44,6 +45,9 @@ SOFTWARE.
                     icon: 'plus',
                     fn: function () {
                         $state.go('artistNew');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {
@@ -81,7 +85,7 @@ SOFTWARE.
                         $state.go('artistDelete', {artistId: rc.id});
                     },
                     show: function () {
-                        return true;
+                        return (roles.indexOf("admin") !== -1);
                     }
                 }
             };

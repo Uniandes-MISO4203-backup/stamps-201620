@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,20 +20,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><b>Name: </b></label><span> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><b>Qty: </b></label><span> {{currentRecord.qty}}</span>
-        </p>
-        <p><label><b>TShirt: </b></label><span> {{currentRecord.tShirt.name}}</span></p>
-        <p><label><b>Stamp: </b></label><span> {{currentRecord.stamp.name}}</span></p>
-    </div>
-</div>
-<!-- TODO -->
+*/
+@XmlJavaTypeAdapter(value = DateAdapter.class, type = Date.class)
+@XmlAccessorType(XmlAccessType.FIELD)
+package co.edu.uniandes.csw.stamps.dtos.detail;
+
+import co.edu.uniandes.csw.auth.model.DateAdapter;
+import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

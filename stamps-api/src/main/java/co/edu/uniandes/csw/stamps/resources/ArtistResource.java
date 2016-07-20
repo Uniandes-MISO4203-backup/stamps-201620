@@ -40,7 +40,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IArtistLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.ArtistBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.ArtistDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.group.Group;
@@ -72,10 +72,10 @@ public class ArtistResource {
      * @return Lista de ArtistBasicDTO convertida.
      * @generated
      */
-    private List<ArtistBasicDTO> listEntity2DTO(List<ArtistEntity> entityList){
-        List<ArtistBasicDTO> list = new ArrayList<>();
+    private List<ArtistDetailDTO> listEntity2DTO(List<ArtistEntity> entityList){
+        List<ArtistDetailDTO> list = new ArrayList<>();
         for (ArtistEntity entity : entityList) {
-            list.add(new ArtistBasicDTO(entity));
+            list.add(new ArtistDetailDTO(entity));
         }
         return list;
     }
@@ -88,7 +88,7 @@ public class ArtistResource {
      * @generated
      */
     @GET
-    public List<ArtistBasicDTO> getArtists() {
+    public List<ArtistDetailDTO> getArtists() {
         String accountHref = req.getRemoteUser();
         if (accountHref != null) {
             Account account = Utils.getClient().getResource(accountHref, Account.class);
@@ -102,8 +102,8 @@ public class ArtistResource {
                     return listEntity2DTO(artistLogic.getArtists());
                     case ARTIST_HREF:
                         Integer id = (int) account.getCustomData().get("artist_id");
-                        List<ArtistBasicDTO> list = new ArrayList();
-                        list.add(new ArtistBasicDTO(artistLogic.getArtist(id.longValue())));
+                        List<ArtistDetailDTO> list = new ArrayList();
+                        list.add(new ArtistDetailDTO(artistLogic.getArtist(id.longValue())));
                         return list;
                 }
             }
@@ -121,8 +121,8 @@ public class ArtistResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public ArtistBasicDTO getArtist(@PathParam("id") Long id) {
-        return new ArtistBasicDTO(artistLogic.getArtist(id));
+    public ArtistDetailDTO getArtist(@PathParam("id") Long id) {
+        return new ArtistDetailDTO(artistLogic.getArtist(id));
     }
 
     /**
@@ -134,8 +134,8 @@ public class ArtistResource {
      */
     @POST
     @StatusCreated
-    public ArtistBasicDTO createArtist(ArtistBasicDTO dto) {
-        return new ArtistBasicDTO(artistLogic.createArtist(dto.toEntity()));
+    public ArtistDetailDTO createArtist(ArtistDetailDTO dto) {
+        return new ArtistDetailDTO(artistLogic.createArtist(dto.toEntity()));
     }
 
     /**
@@ -148,11 +148,11 @@ public class ArtistResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public ArtistBasicDTO updateArtist(@PathParam("id") Long id, ArtistBasicDTO dto) {
+    public ArtistDetailDTO updateArtist(@PathParam("id") Long id, ArtistDetailDTO dto) {
         ArtistEntity entity = dto.toEntity();
         entity.setId(id);
         ArtistEntity oldEntity = artistLogic.getArtist(id);
-        return new ArtistBasicDTO(artistLogic.updateArtist(entity));
+        return new ArtistDetailDTO(artistLogic.updateArtist(entity));
     }
 
     /**
@@ -167,7 +167,7 @@ public class ArtistResource {
         artistLogic.deleteArtist(id);
     }
     public void existsArtist(Long artistId){
-        ArtistBasicDTO artist = getArtist(artistId);
+        ArtistDetailDTO artist = getArtist(artistId);
         if (artist== null) {
             throw new WebApplicationException(404);
         }

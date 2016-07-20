@@ -21,12 +21,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-@XmlJavaTypeAdapter(value = DateAdapter.class, type = Date.class)
-@XmlAccessorType(XmlAccessType.FIELD)
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
-import co.edu.uniandes.csw.auth.model.DateAdapter;
-import java.util.Date;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import co.edu.uniandes.csw.stamps.dtos.minimum.*;
+import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * @generated
+ */
+@XmlRootElement
+public class TShirtDetailDTO extends TShirtDTO{
+
+
+
+    /**
+     * @generated
+     */
+    public TShirtDetailDTO() {
+        super();
+    }
+
+    /**
+     * Crea un objeto TShirtBasicDTO a partir de un objeto TShirtEntity incluyendo los atributos de TShirtMinimumDTO.
+     *
+     * @param entity Entidad TShirtEntity desde la cual se va a crear el nuevo objeto.
+     * @generated
+     */
+    public TShirtDetailDTO(TShirtEntity entity) {
+        super(entity);
+        
+    }
+
+    /**
+     * Convierte un objeto TShirtBasicDTO a TShirtEntity incluyendo los atributos de TShirtMinimumDTO.
+     *
+     * @return Nueva objeto TShirtEntity.
+     * @generated
+     */
+    @Override
+    public TShirtEntity toEntity() {
+        TShirtEntity entity = super.toEntity();
+        return entity;
+    }
+
+}

@@ -23,7 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
+import co.edu.uniandes.csw.stamps.entities.ClientEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class ArtistMinimumDTO implements Serializable{
+public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
@@ -39,16 +39,16 @@ public class ArtistMinimumDTO implements Serializable{
     /**
      * @generated
      */
-    public ArtistMinimumDTO() {
+    public ClientDTO() {
     }
 
     /**
-     * Crea un objeto ArtistMinimumDTO a partir de un objeto ArtistEntity.
+     * Crea un objeto ClientMinimumDTO a partir de un objeto ClientEntity.
      *
-     * @param entity Entidad ArtistEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ClientEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ArtistMinimumDTO(ArtistEntity entity) {
+    public ClientDTO(ClientEntity entity) {
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
@@ -56,13 +56,13 @@ public class ArtistMinimumDTO implements Serializable{
     }
 
     /**
-     * Convierte un objeto ArtistMinimumDTO a ArtistEntity.
+     * Convierte un objeto ClientMinimumDTO a ClientEntity.
      *
-     * @return Nueva objeto ArtistEntity.
+     * @return Nueva objeto ClientEntity.
      * @generated
      */
-    public ArtistEntity toEntity() {
-        ArtistEntity entity = new ArtistEntity();
+    public ClientEntity toEntity() {
+        ClientEntity entity = new ClientEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
     return entity;

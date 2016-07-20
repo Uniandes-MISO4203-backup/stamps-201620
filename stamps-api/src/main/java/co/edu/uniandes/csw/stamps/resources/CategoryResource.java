@@ -39,7 +39,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.ICategoryLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.CategoryBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.CategoryDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -65,10 +65,10 @@ public class CategoryResource {
      * @return Lista de CategoryBasicDTO convertida.
      * @generated
      */
-    private List<CategoryBasicDTO> listEntity2DTO(List<CategoryEntity> entityList){
-        List<CategoryBasicDTO> list = new ArrayList<>();
+    private List<CategoryDetailDTO> listEntity2DTO(List<CategoryEntity> entityList){
+        List<CategoryDetailDTO> list = new ArrayList<>();
         for (CategoryEntity entity : entityList) {
-            list.add(new CategoryBasicDTO(entity));
+            list.add(new CategoryDetailDTO(entity));
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class CategoryResource {
      * @generated
      */
     @GET
-    public List<CategoryBasicDTO> getCategorys() {
+    public List<CategoryDetailDTO> getCategorys() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", categoryLogic.countCategorys());
             return listEntity2DTO(categoryLogic.getCategorys(page, maxRecords));
@@ -98,8 +98,8 @@ public class CategoryResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public CategoryBasicDTO getCategory(@PathParam("id") Long id) {
-        return new CategoryBasicDTO(categoryLogic.getCategory(id));
+    public CategoryDetailDTO getCategory(@PathParam("id") Long id) {
+        return new CategoryDetailDTO(categoryLogic.getCategory(id));
     }
 
     /**
@@ -111,8 +111,8 @@ public class CategoryResource {
      */
     @POST
     @StatusCreated
-    public CategoryBasicDTO createCategory(CategoryBasicDTO dto) {
-        return new CategoryBasicDTO(categoryLogic.createCategory(dto.toEntity()));
+    public CategoryDetailDTO createCategory(CategoryDetailDTO dto) {
+        return new CategoryDetailDTO(categoryLogic.createCategory(dto.toEntity()));
     }
 
     /**
@@ -125,11 +125,11 @@ public class CategoryResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public CategoryBasicDTO updateCategory(@PathParam("id") Long id, CategoryBasicDTO dto) {
+    public CategoryDetailDTO updateCategory(@PathParam("id") Long id, CategoryDetailDTO dto) {
         CategoryEntity entity = dto.toEntity();
         entity.setId(id);
         CategoryEntity oldEntity = categoryLogic.getCategory(id);
-        return new CategoryBasicDTO(categoryLogic.updateCategory(entity));
+        return new CategoryDetailDTO(categoryLogic.updateCategory(entity));
     }
 
     /**

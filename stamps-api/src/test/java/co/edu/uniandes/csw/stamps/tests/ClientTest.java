@@ -26,7 +26,7 @@ package co.edu.uniandes.csw.stamps.tests;
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.stamps.entities.ClientEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.ClientMinimumDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.ClientDTO;
 import co.edu.uniandes.csw.stamps.resources.ClientResource;
 import java.io.File;
 import java.io.IOException;
@@ -181,13 +181,13 @@ public class ClientTest {
     @Test
     public void createClientTest() throws IOException {
         PodamFactory factory = new PodamFactoryImpl();
-        ClientMinimumDTO client = factory.manufacturePojo(ClientMinimumDTO.class);
+        ClientDTO client = factory.manufacturePojo(ClientDTO.class);
         Cookie cookieSessionId = login(username, password);
         Response response = target.path(clientPath)
             .request().cookie(cookieSessionId)
             .post(Entity.entity(client, MediaType.APPLICATION_JSON));
         
-        ClientMinimumDTO  clientTest = (ClientMinimumDTO) response.readEntity(ClientMinimumDTO.class);
+        ClientDTO  clientTest = (ClientDTO) response.readEntity(ClientDTO.class);
         Assert.assertEquals(client.getName(), clientTest.getName());
         Assert.assertEquals(Created, response.getStatus());
         ClientEntity entity = em.find(ClientEntity.class, clientTest.getId());
@@ -202,9 +202,9 @@ public class ClientTest {
     @Test
     public void getClientByIdTest() {
         Cookie cookieSessionId = login(username, password);
-        ClientMinimumDTO clientTest = target.path(clientPath)
+        ClientDTO clientTest = target.path(clientPath)
                 .path(oraculo.get(0).getId().toString())
-                .request().cookie(cookieSessionId).get(ClientMinimumDTO.class);
+                .request().cookie(cookieSessionId).get(ClientDTO.class);
         
         Assert.assertEquals(clientTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(clientTest.getName(), oraculo.get(0).getName());
@@ -222,7 +222,7 @@ public class ClientTest {
                 .request().cookie(cookieSessionId).get();
         
         String listClient = response.readEntity(String.class);
-        List<ClientMinimumDTO> listClientTest = new ObjectMapper().readValue(listClient, List.class);
+        List<ClientDTO> listClientTest = new ObjectMapper().readValue(listClient, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listClientTest.size());
     }
@@ -235,14 +235,14 @@ public class ClientTest {
     @Test
     public void updateClientTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        ClientMinimumDTO client = new ClientMinimumDTO(oraculo.get(0));
+        ClientDTO client = new ClientDTO(oraculo.get(0));
         PodamFactory factory = new PodamFactoryImpl();
-        ClientMinimumDTO clientChanged = factory.manufacturePojo(ClientMinimumDTO.class);
+        ClientDTO clientChanged = factory.manufacturePojo(ClientDTO.class);
         client.setName(clientChanged.getName());
         Response response = target.path(clientPath).path(client.getId().toString())
                 .request().cookie(cookieSessionId).put(Entity.entity(client, MediaType.APPLICATION_JSON));
         
-        ClientMinimumDTO clientTest = (ClientMinimumDTO) response.readEntity(ClientMinimumDTO.class);
+        ClientDTO clientTest = (ClientDTO) response.readEntity(ClientDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(client.getName(), clientTest.getName());
     }
@@ -255,7 +255,7 @@ public class ClientTest {
     @Test
     public void deleteClientTest() {
         Cookie cookieSessionId = login(username, password);
-        ClientMinimumDTO client = new ClientMinimumDTO(oraculo.get(0));
+        ClientDTO client = new ClientDTO(oraculo.get(0));
         Response response = target.path(clientPath).path(client.getId().toString())
                 .request().cookie(cookieSessionId).delete();
         

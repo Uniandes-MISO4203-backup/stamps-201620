@@ -21,47 +21,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
 import co.edu.uniandes.csw.stamps.dtos.minimum.*;
-import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
+import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @generated
  */
 @XmlRootElement
-public class TShirtBasicDTO extends TShirtMinimumDTO{
+public class ArtistDetailDTO extends ArtistDTO{
 
 
 
     /**
      * @generated
      */
-    public TShirtBasicDTO() {
+    public ArtistDetailDTO() {
         super();
     }
 
     /**
-     * Crea un objeto TShirtBasicDTO a partir de un objeto TShirtEntity incluyendo los atributos de TShirtMinimumDTO.
+     * Crea un objeto ArtistBasicDTO a partir de un objeto ArtistEntity incluyendo los atributos de ArtistMinimumDTO.
      *
-     * @param entity Entidad TShirtEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ArtistEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public TShirtBasicDTO(TShirtEntity entity) {
+    public ArtistDetailDTO(ArtistEntity entity) {
         super(entity);
         
     }
 
     /**
-     * Convierte un objeto TShirtBasicDTO a TShirtEntity incluyendo los atributos de TShirtMinimumDTO.
+     * Convierte un objeto ArtistBasicDTO a ArtistEntity incluyendo los atributos de ArtistMinimumDTO.
      *
-     * @return Nueva objeto TShirtEntity.
+     * @return Nueva objeto ArtistEntity.
      * @generated
      */
     @Override
-    public TShirtEntity toEntity() {
-        TShirtEntity entity = super.toEntity();
+    public ArtistEntity toEntity() {
+        ArtistEntity entity = super.toEntity();
         return entity;
     }
 

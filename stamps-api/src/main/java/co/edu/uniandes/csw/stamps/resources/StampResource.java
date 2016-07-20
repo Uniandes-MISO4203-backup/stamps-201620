@@ -39,7 +39,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IStampLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.StampBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.StampDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -65,10 +65,10 @@ public class StampResource {
      * @return Lista de StampBasicDTO convertida
      * @generated
      */
-    private List<StampBasicDTO> listEntity2DTO(List<StampEntity> entityList){
-        List<StampBasicDTO> list = new ArrayList<>();
+    private List<StampDetailDTO> listEntity2DTO(List<StampEntity> entityList){
+        List<StampDetailDTO> list = new ArrayList<>();
         for (StampEntity entity : entityList) {
-            list.add(new StampBasicDTO(entity));
+            list.add(new StampDetailDTO(entity));
         }
         return list;
     }
@@ -81,7 +81,7 @@ public class StampResource {
      * @generated
      */
     @GET
-    public List<StampBasicDTO> getStamps() {
+    public List<StampDetailDTO> getStamps() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", stampLogic.countStamps());
             return listEntity2DTO(stampLogic.getStamps(page, maxRecords, artistId));
@@ -98,12 +98,12 @@ public class StampResource {
      */
     @GET
     @Path("{stampId: \\d+}")
-    public StampBasicDTO getStamp(@PathParam("stampId") Long stampId) {
+    public StampDetailDTO getStamp(@PathParam("stampId") Long stampId) {
         StampEntity entity = stampLogic.getStamp(stampId);
         if (entity.getArtist() != null && !artistId.equals(entity.getArtist().getId())) {
             throw new WebApplicationException(404);
         }
-        return new StampBasicDTO(entity);
+        return new StampDetailDTO(entity);
     }
 
     /**
@@ -115,8 +115,8 @@ public class StampResource {
      */
     @POST
     @StatusCreated
-    public StampBasicDTO createStamp(StampBasicDTO dto) {
-        return new StampBasicDTO(stampLogic.createStamp(artistId, dto.toEntity()));
+    public StampDetailDTO createStamp(StampDetailDTO dto) {
+        return new StampDetailDTO(stampLogic.createStamp(artistId, dto.toEntity()));
     }
 
     /**
@@ -129,12 +129,12 @@ public class StampResource {
      */
     @PUT
     @Path("{stampId: \\d+}")
-    public StampBasicDTO updateStamp(@PathParam("stampId") Long stampId, StampBasicDTO dto) {
+    public StampDetailDTO updateStamp(@PathParam("stampId") Long stampId, StampDetailDTO dto) {
         StampEntity entity = dto.toEntity();
         entity.setId(stampId);
         StampEntity oldEntity = stampLogic.getStamp(stampId);
         entity.setCategory(oldEntity.getCategory());
-        return new StampBasicDTO(stampLogic.updateStamp(artistId, entity));
+        return new StampDetailDTO(stampLogic.updateStamp(artistId, entity));
     }
 
     /**
@@ -149,7 +149,7 @@ public class StampResource {
         stampLogic.deleteStamp(stampId);
     }
     public void existsStamp(Long stampId){
-        StampBasicDTO stamp = getStamp(stampId);
+        StampDetailDTO stamp = getStamp(stampId);
         if (stamp== null) {
             throw new WebApplicationException(404);
         }

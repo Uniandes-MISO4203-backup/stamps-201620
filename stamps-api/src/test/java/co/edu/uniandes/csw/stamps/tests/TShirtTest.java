@@ -26,7 +26,7 @@ package co.edu.uniandes.csw.stamps.tests;
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.TShirtMinimumDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.TShirtDTO;
 import co.edu.uniandes.csw.stamps.resources.TShirtResource;
 import java.io.File;
 import java.io.IOException;
@@ -181,13 +181,13 @@ public class TShirtTest {
     @Test
     public void createTShirtTest() throws IOException {
         PodamFactory factory = new PodamFactoryImpl();
-        TShirtMinimumDTO tShirt = factory.manufacturePojo(TShirtMinimumDTO.class);
+        TShirtDTO tShirt = factory.manufacturePojo(TShirtDTO.class);
         Cookie cookieSessionId = login(username, password);
         Response response = target.path(tShirtPath)
             .request().cookie(cookieSessionId)
             .post(Entity.entity(tShirt, MediaType.APPLICATION_JSON));
         
-        TShirtMinimumDTO  tshirtTest = (TShirtMinimumDTO) response.readEntity(TShirtMinimumDTO.class);
+        TShirtDTO  tshirtTest = (TShirtDTO) response.readEntity(TShirtDTO.class);
         Assert.assertEquals(tShirt.getName(), tshirtTest.getName());
         Assert.assertEquals(tShirt.getSize(), tshirtTest.getSize());
         Assert.assertEquals(tShirt.getColor(), tshirtTest.getColor());
@@ -205,9 +205,9 @@ public class TShirtTest {
     @Test
     public void getTShirtByIdTest() {
         Cookie cookieSessionId = login(username, password);
-        TShirtMinimumDTO tshirtTest = target.path(tShirtPath)
+        TShirtDTO tshirtTest = target.path(tShirtPath)
                 .path(oraculo.get(0).getId().toString())
-                .request().cookie(cookieSessionId).get(TShirtMinimumDTO.class);
+                .request().cookie(cookieSessionId).get(TShirtDTO.class);
         
         Assert.assertEquals(tshirtTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(tshirtTest.getName(), oraculo.get(0).getName());
@@ -228,7 +228,7 @@ public class TShirtTest {
                 .request().cookie(cookieSessionId).get();
         
         String listTShirt = response.readEntity(String.class);
-        List<TShirtMinimumDTO> listTShirtTest = new ObjectMapper().readValue(listTShirt, List.class);
+        List<TShirtDTO> listTShirtTest = new ObjectMapper().readValue(listTShirt, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listTShirtTest.size());
     }
@@ -241,9 +241,9 @@ public class TShirtTest {
     @Test
     public void updateTShirtTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        TShirtMinimumDTO tShirt = new TShirtMinimumDTO(oraculo.get(0));
+        TShirtDTO tShirt = new TShirtDTO(oraculo.get(0));
         PodamFactory factory = new PodamFactoryImpl();
-        TShirtMinimumDTO tShirtChanged = factory.manufacturePojo(TShirtMinimumDTO.class);
+        TShirtDTO tShirtChanged = factory.manufacturePojo(TShirtDTO.class);
         tShirt.setName(tShirtChanged.getName());
         tShirt.setSize(tShirtChanged.getSize());
         tShirt.setColor(tShirtChanged.getColor());
@@ -251,7 +251,7 @@ public class TShirtTest {
         Response response = target.path(tShirtPath).path(tShirt.getId().toString())
                 .request().cookie(cookieSessionId).put(Entity.entity(tShirt, MediaType.APPLICATION_JSON));
         
-        TShirtMinimumDTO tshirtTest = (TShirtMinimumDTO) response.readEntity(TShirtMinimumDTO.class);
+        TShirtDTO tshirtTest = (TShirtDTO) response.readEntity(TShirtDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(tShirt.getName(), tshirtTest.getName());
         Assert.assertEquals(tShirt.getSize(), tshirtTest.getSize());
@@ -267,7 +267,7 @@ public class TShirtTest {
     @Test
     public void deleteTShirtTest() {
         Cookie cookieSessionId = login(username, password);
-        TShirtMinimumDTO tShirt = new TShirtMinimumDTO(oraculo.get(0));
+        TShirtDTO tShirt = new TShirtDTO(oraculo.get(0));
         Response response = target.path(tShirtPath).path(tShirt.getId().toString())
                 .request().cookie(cookieSessionId).delete();
         

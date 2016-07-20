@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
 import co.edu.uniandes.csw.stamps.dtos.minimum.*;
 import co.edu.uniandes.csw.stamps.entities.ItemEntity;
@@ -32,20 +32,20 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @generated
  */
 @XmlRootElement
-public class ItemBasicDTO extends ItemMinimumDTO{
+public class ItemDetailDTO extends ItemDTO{
 
 
     @PodamExclude
-    private ClientMinimumDTO client;
+    private ClientDTO client;
     @PodamExclude
-    private TShirtMinimumDTO tShirt;
+    private TShirtDTO tShirt;
     @PodamExclude
-    private StampMinimumDTO stamp;
+    private StampDTO stamp;
 
     /**
      * @generated
      */
-    public ItemBasicDTO() {
+    public ItemDetailDTO() {
         super();
     }
 
@@ -55,16 +55,16 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @param entity Entidad ItemEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ItemBasicDTO(ItemEntity entity) {
+    public ItemDetailDTO(ItemEntity entity) {
         super(entity);
         if (entity.getClient()!=null){
-        this.client = new ClientMinimumDTO(entity.getClient());
+        this.client = new ClientDTO(entity.getClient());
         }
         if (entity.getTShirt()!=null){
-        this.tShirt = new TShirtMinimumDTO(entity.getTShirt());
+        this.tShirt = new TShirtDTO(entity.getTShirt());
         }
         if (entity.getStamp()!=null){
-        this.stamp = new StampMinimumDTO(entity.getStamp());
+        this.stamp = new StampDTO(entity.getStamp());
         }
         
     }
@@ -96,7 +96,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @return atributo client.
      * @generated
      */
-    public ClientMinimumDTO getClient() {
+    public ClientDTO getClient() {
         return client;
     }
 
@@ -106,7 +106,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @param client nuevo valor del atributo
      * @generated
      */
-    public void setClient(ClientMinimumDTO client) {
+    public void setClient(ClientDTO client) {
         this.client = client;
     }
 
@@ -116,7 +116,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @return atributo tShirt.
      * @generated
      */
-    public TShirtMinimumDTO getTShirt() {
+    public TShirtDTO getTShirt() {
         return tShirt;
     }
 
@@ -126,7 +126,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @param tShirt nuevo valor del atributo
      * @generated
      */
-    public void setTShirt(TShirtMinimumDTO tshirt) {
+    public void setTShirt(TShirtDTO tshirt) {
         this.tShirt = tshirt;
     }
 
@@ -136,7 +136,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @return atributo stamp.
      * @generated
      */
-    public StampMinimumDTO getStamp() {
+    public StampDTO getStamp() {
         return stamp;
     }
 
@@ -146,7 +146,7 @@ public class ItemBasicDTO extends ItemMinimumDTO{
      * @param stamp nuevo valor del atributo
      * @generated
      */
-    public void setStamp(StampMinimumDTO stamp) {
+    public void setStamp(StampDTO stamp) {
         this.stamp = stamp;
     }
 

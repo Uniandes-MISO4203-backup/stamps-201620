@@ -28,8 +28,8 @@ import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.StampMinimumDTO;
-import co.edu.uniandes.csw.stamps.dtos.minimum.CategoryMinimumDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.StampDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.CategoryDTO;
 import co.edu.uniandes.csw.stamps.resources.StampResource;
 import java.io.File;
 import java.io.IOException;
@@ -222,13 +222,13 @@ public class StampCategoryTest {
     public void addCategoryTest() {
         Cookie cookieSessionId = login(username, password);
 
-        CategoryMinimumDTO category = new CategoryMinimumDTO(oraculo.get(1));
+        CategoryDTO category = new CategoryDTO(oraculo.get(1));
 
         Response response = target.path(category.getId().toString())
                 .request().cookie(cookieSessionId)
                 .post(Entity.entity(category, MediaType.APPLICATION_JSON));
 
-        CategoryMinimumDTO categoryTest = (CategoryMinimumDTO) response.readEntity(CategoryMinimumDTO.class);
+        CategoryDTO categoryTest = (CategoryDTO) response.readEntity(CategoryDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(category.getId(), categoryTest.getId());
     }
@@ -246,7 +246,7 @@ public class StampCategoryTest {
                 .request().cookie(cookieSessionId).get();
 
         String categoryList = response.readEntity(String.class);
-        List<CategoryMinimumDTO> categoryListTest = new ObjectMapper().readValue(categoryList, List.class);
+        List<CategoryDTO> categoryListTest = new ObjectMapper().readValue(categoryList, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, categoryListTest.size());
     }
@@ -259,10 +259,10 @@ public class StampCategoryTest {
     @Test
     public void getCategoryTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        CategoryMinimumDTO category = new CategoryMinimumDTO(oraculo.get(0));
+        CategoryDTO category = new CategoryDTO(oraculo.get(0));
 
-        CategoryMinimumDTO categoryTest = target.path(category.getId().toString())
-                .request().cookie(cookieSessionId).get(CategoryMinimumDTO.class);
+        CategoryDTO categoryTest = target.path(category.getId().toString())
+                .request().cookie(cookieSessionId).get(CategoryDTO.class);
 
         Assert.assertEquals(category.getId(), categoryTest.getId());
         Assert.assertEquals(category.getName(), categoryTest.getName());
@@ -277,7 +277,7 @@ public class StampCategoryTest {
     public void removeCategoryTest() {
         Cookie cookieSessionId = login(username, password);
 
-        CategoryMinimumDTO category = new CategoryMinimumDTO(oraculo.get(0));
+        CategoryDTO category = new CategoryDTO(oraculo.get(0));
 
         Response response = target.path(category.getId().toString())
                 .request().cookie(cookieSessionId).delete();

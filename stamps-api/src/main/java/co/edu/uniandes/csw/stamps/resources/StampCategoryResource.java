@@ -37,7 +37,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IStampLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.CategoryBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.CategoryDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import java.util.ArrayList;
 /**
@@ -57,10 +57,10 @@ public class StampCategoryResource {
      * @return Lista de CategoryBasicDTO convertida.
      * @generated
      */
-    private List<CategoryBasicDTO> categoryListEntity2DTO(List<CategoryEntity> entityList){
-        List<CategoryBasicDTO> list = new ArrayList<>();
+    private List<CategoryDetailDTO> categoryListEntity2DTO(List<CategoryEntity> entityList){
+        List<CategoryDetailDTO> list = new ArrayList<>();
         for (CategoryEntity entity : entityList) {
-            list.add(new CategoryBasicDTO(entity));
+            list.add(new CategoryDetailDTO(entity));
         }
         return list;
     }
@@ -72,9 +72,9 @@ public class StampCategoryResource {
      * @return Lista de CategoryEntity convertida.
      * @generated
      */
-    private List<CategoryEntity> categoryListDTO2Entity(List<CategoryBasicDTO> dtos){
+    private List<CategoryEntity> categoryListDTO2Entity(List<CategoryDetailDTO> dtos){
         List<CategoryEntity> list = new ArrayList<>();
-        for (CategoryBasicDTO dto : dtos) {
+        for (CategoryDetailDTO dto : dtos) {
             list.add(dto.toEntity());
         }
         return list;
@@ -89,7 +89,7 @@ public class StampCategoryResource {
      * @generated
      */
     @GET
-    public List<CategoryBasicDTO> listCategory(@PathParam("stampId") Long stampId) {
+    public List<CategoryDetailDTO> listCategory(@PathParam("stampId") Long stampId) {
         return categoryListEntity2DTO(stampLogic.listCategory(stampId));
     }
 
@@ -102,8 +102,8 @@ public class StampCategoryResource {
      */
     @GET
     @Path("{categoryId: \\d+}")
-    public CategoryBasicDTO getCategory(@PathParam("stampId") Long stampId, @PathParam("categoryId") Long categoryId) {
-        return new CategoryBasicDTO(stampLogic.getCategory(stampId, categoryId));
+    public CategoryDetailDTO getCategory(@PathParam("stampId") Long stampId, @PathParam("categoryId") Long categoryId) {
+        return new CategoryDetailDTO(stampLogic.getCategory(stampId, categoryId));
     }
 
     /**
@@ -116,8 +116,8 @@ public class StampCategoryResource {
      */
     @POST
     @Path("{categoryId: \\d+}")
-    public CategoryBasicDTO addCategory(@PathParam("stampId") Long stampId, @PathParam("categoryId") Long categoryId) {
-        return new CategoryBasicDTO(stampLogic.addCategory(stampId, categoryId));
+    public CategoryDetailDTO addCategory(@PathParam("stampId") Long stampId, @PathParam("categoryId") Long categoryId) {
+        return new CategoryDetailDTO(stampLogic.addCategory(stampId, categoryId));
     }
 
     /**
@@ -129,7 +129,7 @@ public class StampCategoryResource {
      * @generated
      */
     @PUT
-    public List<CategoryBasicDTO> replaceCategory(@PathParam("stampId") Long stampId, List<CategoryBasicDTO> categorys) {
+    public List<CategoryDetailDTO> replaceCategory(@PathParam("stampId") Long stampId, List<CategoryDetailDTO> categorys) {
         return categoryListEntity2DTO(stampLogic.replaceCategory(stampId, categoryListDTO2Entity(categorys)));
     }
 

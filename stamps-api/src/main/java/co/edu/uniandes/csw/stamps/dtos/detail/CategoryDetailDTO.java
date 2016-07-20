@@ -21,10 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.dtos.basic;
+package co.edu.uniandes.csw.stamps.dtos.detail;
 
 import co.edu.uniandes.csw.stamps.dtos.minimum.*;
-import co.edu.uniandes.csw.stamps.entities.StampEntity;
+import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -32,66 +32,66 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @generated
  */
 @XmlRootElement
-public class StampBasicDTO extends StampMinimumDTO{
+public class CategoryDetailDTO extends CategoryDTO{
 
 
     @PodamExclude
-    private ArtistMinimumDTO artist;
+    private CategoryDTO parentCategory;
 
     /**
      * @generated
      */
-    public StampBasicDTO() {
+    public CategoryDetailDTO() {
         super();
     }
 
     /**
-     * Crea un objeto StampBasicDTO a partir de un objeto StampEntity incluyendo los atributos de StampMinimumDTO.
+     * Crea un objeto CategoryBasicDTO a partir de un objeto CategoryEntity incluyendo los atributos de CategoryMinimumDTO.
      *
-     * @param entity Entidad StampEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad CategoryEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public StampBasicDTO(StampEntity entity) {
+    public CategoryDetailDTO(CategoryEntity entity) {
         super(entity);
-        if (entity.getArtist()!=null){
-        this.artist = new ArtistMinimumDTO(entity.getArtist());
+        if (entity.getParentCategory()!=null){
+        this.parentCategory = new CategoryDTO(entity.getParentCategory());
         }
         
     }
 
     /**
-     * Convierte un objeto StampBasicDTO a StampEntity incluyendo los atributos de StampMinimumDTO.
+     * Convierte un objeto CategoryBasicDTO a CategoryEntity incluyendo los atributos de CategoryMinimumDTO.
      *
-     * @return Nueva objeto StampEntity.
+     * @return Nueva objeto CategoryEntity.
      * @generated
      */
     @Override
-    public StampEntity toEntity() {
-        StampEntity entity = super.toEntity();
-        if (this.getArtist()!=null){
-        entity.setArtist(this.getArtist().toEntity());
+    public CategoryEntity toEntity() {
+        CategoryEntity entity = super.toEntity();
+        if (this.getParentCategory()!=null){
+        entity.setParentCategory(this.getParentCategory().toEntity());
         }
         return entity;
     }
 
     /**
-     * Obtiene el atributo artist.
+     * Obtiene el atributo parentCategory.
      *
-     * @return atributo artist.
+     * @return atributo parentCategory.
      * @generated
      */
-    public ArtistMinimumDTO getArtist() {
-        return artist;
+    public CategoryDTO getParentCategory() {
+        return parentCategory;
     }
 
     /**
-     * Establece el valor del atributo artist.
+     * Establece el valor del atributo parentCategory.
      *
-     * @param artist nuevo valor del atributo
+     * @param parentCategory nuevo valor del atributo
      * @generated
      */
-    public void setArtist(ArtistMinimumDTO artist) {
-        this.artist = artist;
+    public void setParentCategory(CategoryDTO parentcategory) {
+        this.parentCategory = parentcategory;
     }
 
 }

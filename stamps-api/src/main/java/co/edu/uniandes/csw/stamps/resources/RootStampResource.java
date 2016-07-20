@@ -40,8 +40,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.stamps.api.IArtistLogic;
 import co.edu.uniandes.csw.stamps.api.IStampLogic;
-import co.edu.uniandes.csw.stamps.dtos.basic.ArtistBasicDTO;
-import co.edu.uniandes.csw.stamps.dtos.basic.StampBasicDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.ArtistDetailDTO;
+import co.edu.uniandes.csw.stamps.dtos.detail.StampDetailDTO;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import java.util.ArrayList;
@@ -68,10 +68,10 @@ public class RootStampResource {
      * @return Lista de StampBasicDTO convertida
      * @generated
      */
-    private List<StampBasicDTO> listEntity2DTO(List<StampEntity> entityList){
-        List<StampBasicDTO> list = new ArrayList<>();
+    private List<StampDetailDTO> listEntity2DTO(List<StampEntity> entityList){
+        List<StampDetailDTO> list = new ArrayList<>();
         for (StampEntity entity : entityList) {
-            list.add(new StampBasicDTO(entity));
+            list.add(new StampDetailDTO(entity));
         }
         return list;
     }
@@ -84,7 +84,7 @@ public class RootStampResource {
      * @generated
      */
     @GET
-    public List<StampBasicDTO> getStamps() {
+    public List<StampDetailDTO> getStamps() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", stampLogic.countStamps());
             return listEntity2DTO(stampLogic.getStamps(page, maxRecords,null));

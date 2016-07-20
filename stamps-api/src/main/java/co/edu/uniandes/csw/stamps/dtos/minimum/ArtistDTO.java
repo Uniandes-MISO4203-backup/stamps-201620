@@ -23,7 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.entities.StampEntity;
+import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -31,46 +31,40 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class StampMinimumDTO implements Serializable{
+public class ArtistDTO implements Serializable{
 
     private Long id;
     private String name;
-    private String image;
-    private Long price;
 
     /**
      * @generated
      */
-    public StampMinimumDTO() {
+    public ArtistDTO() {
     }
 
     /**
-     * Crea un objeto StampMinimumDTO a partir de un objeto StampEntity.
+     * Crea un objeto ArtistMinimumDTO a partir de un objeto ArtistEntity.
      *
-     * @param entity Entidad StampEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ArtistEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public StampMinimumDTO(StampEntity entity) {
+    public ArtistDTO(ArtistEntity entity) {
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
-        this.image=entity.getImage();
-        this.price=entity.getPrice();
        }
     }
 
     /**
-     * Convierte un objeto StampMinimumDTO a StampEntity.
+     * Convierte un objeto ArtistMinimumDTO a ArtistEntity.
      *
-     * @return Nueva objeto StampEntity.
+     * @return Nueva objeto ArtistEntity.
      * @generated
      */
-    public StampEntity toEntity() {
-        StampEntity entity = new StampEntity();
+    public ArtistEntity toEntity() {
+        ArtistEntity entity = new ArtistEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
-        entity.setImage(this.getImage());
-        entity.setPrice(this.getPrice());
     return entity;
     }
 
@@ -112,46 +106,6 @@ public class StampMinimumDTO implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * Obtiene el atributo image.
-     *
-     * @return atributo image.
-     * @generated
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * Establece el valor del atributo image.
-     *
-     * @param image nuevo valor del atributo
-     * @generated
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    /**
-     * Obtiene el atributo price.
-     *
-     * @return atributo price.
-     * @generated
-     */
-    public Long getPrice() {
-        return price;
-    }
-
-    /**
-     * Establece el valor del atributo price.
-     *
-     * @param price nuevo valor del atributo
-     * @generated
-     */
-    public void setPrice(Long price) {
-        this.price = price;
     }
 
 }

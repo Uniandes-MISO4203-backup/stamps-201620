@@ -25,15 +25,19 @@ SOFTWARE.
 
     var mod = ng.module("clientModule");
 
-    mod.controller("clientDetailCtrl", ['$scope', "$state", "client",
-        function ($scope, $state, client) {
+    mod.controller("clientDetailCtrl", ['$scope', "$state", "client",'$rootScope',
+        function ($scope, $state, client,$rootScope) {
             $scope.currentRecord = client;
+            var roles = $rootScope.roles;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 edit: {
@@ -48,6 +52,9 @@ SOFTWARE.
                     icon: 'minus',
                     fn: function () {
                         $state.go('clientDelete');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {

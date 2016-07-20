@@ -51,7 +51,7 @@ La respuesta del servidor al solicitar una colección presenta el siguiente form
 
 ## API de la aplicación Stamps
 ### Recurso Client
-El objeto Client tiene 2 representaciones JSON:	
+El objeto Client tiene 2 representaciones JSON:
 
 #### Representación Minimum
 ```javascript
@@ -65,7 +65,7 @@ El objeto Client tiene 2 representaciones JSON:
 #### Representación Full
 ```javascript
 {
-    // todo lo de la representación Basic más la collección de los objetos de relaciones composite.
+    // todo lo de la representación Detail más la collección de los objetos de relaciones composite.
     wishList: [{
     id: '' /*Tipo Long*/,
     name: '' /*Tipo String*/,
@@ -76,7 +76,7 @@ El objeto Client tiene 2 representaciones JSON:
 
 #### GET /clients
 
-Retorna una colección de objetos Client en representación Basic.
+Retorna una colección de objetos Client en representación Detail.
 
 #### Parámetros
 
@@ -86,7 +86,7 @@ Retorna una colección de objetos Client en representación Basic.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Basic](#recurso-client)
+200|OK|Colección de [representaciones Detail](#recurso-client)
 409|Un objeto relacionado no existe|Mensaje de error
 500|Error interno|Mensaje de error
 
@@ -187,7 +187,7 @@ Código|Descripción|Cuerpo
 
 #### GET /tShirts
 
-Retorna una colección de objetos TShirt en representación Basic.
+Retorna una colección de objetos TShirt en representación Detail.
 
 #### Parámetros
 
@@ -197,7 +197,7 @@ Retorna una colección de objetos TShirt en representación Basic.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Basic](#recurso-tshirt)
+200|OK|Colección de [representaciones Detail](#recurso-tshirt)
 409|Un objeto relacionado no existe|Mensaje de error
 500|Error interno|Mensaje de error
 
@@ -276,7 +276,7 @@ Código|Descripción|Cuerpo
 
 [Volver arriba](#tabla-de-contenidos)
 ### Recurso Artist
-El objeto Artist tiene 2 representaciones JSON:	
+El objeto Artist tiene 2 representaciones JSON:
 
 #### Representación Minimum
 ```javascript
@@ -290,7 +290,7 @@ El objeto Artist tiene 2 representaciones JSON:
 #### Representación Full
 ```javascript
 {
-    // todo lo de la representación Basic más la collección de los objetos de relaciones composite.
+    // todo lo de la representación Detail más la collección de los objetos de relaciones composite.
     stamps: [{
     id: '' /*Tipo Long*/,
     name: '' /*Tipo String*/,
@@ -302,7 +302,7 @@ El objeto Artist tiene 2 representaciones JSON:
 
 #### GET /artists
 
-Retorna una colección de objetos Artist en representación Basic.
+Retorna una colección de objetos Artist en representación Detail.
 
 #### Parámetros
 
@@ -312,7 +312,7 @@ Retorna una colección de objetos Artist en representación Basic.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Basic](#recurso-artist)
+200|OK|Colección de [representaciones Detail](#recurso-artist)
 409|Un objeto relacionado no existe|Mensaje de error
 500|Error interno|Mensaje de error
 
@@ -396,7 +396,7 @@ Código|Descripción|Cuerpo
 
 [Volver arriba](#tabla-de-contenidos)
 ### Recurso Category
-El objeto Category tiene 2 representaciones JSON:	
+El objeto Category tiene 2 representaciones JSON:
 
 #### Representación Minimum
 ```javascript
@@ -406,7 +406,7 @@ El objeto Category tiene 2 representaciones JSON:
 }
 ```
 
-#### Representación Basic
+#### Representación Detail
 ```javascript
 {
     // todo lo de la representación Minimum más los objetos Minimum con relación simple.
@@ -420,7 +420,7 @@ El objeto Category tiene 2 representaciones JSON:
 
 #### GET /categorys
 
-Retorna una colección de objetos Category en representación Basic.
+Retorna una colección de objetos Category en representación Detail.
 Cada Category en la colección tiene embebidos los siguientes objetos: Category.
 
 #### Parámetros
@@ -431,7 +431,7 @@ Cada Category en la colección tiene embebidos los siguientes objetos: Category.
 
 Código|Descripción|Cuerpo
 :--|:--|:--
-200|OK|Colección de [representaciones Basic](#recurso-category)
+200|OK|Colección de [representaciones Detail](#recurso-category)
 409|Un objeto relacionado no existe|Mensaje de error
 500|Error interno|Mensaje de error
 

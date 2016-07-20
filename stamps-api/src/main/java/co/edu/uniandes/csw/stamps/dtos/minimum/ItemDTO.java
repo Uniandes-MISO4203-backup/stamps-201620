@@ -23,7 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
+import co.edu.uniandes.csw.stamps.entities.ItemEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -31,40 +31,43 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class CategoryMinimumDTO implements Serializable{
+public class ItemDTO implements Serializable{
 
     private Long id;
     private String name;
+    private Long qty;
 
     /**
      * @generated
      */
-    public CategoryMinimumDTO() {
+    public ItemDTO() {
     }
 
     /**
-     * Crea un objeto CategoryMinimumDTO a partir de un objeto CategoryEntity.
+     * Crea un objeto ItemMinimumDTO a partir de un objeto ItemEntity.
      *
-     * @param entity Entidad CategoryEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ItemEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public CategoryMinimumDTO(CategoryEntity entity) {
+    public ItemDTO(ItemEntity entity) {
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.qty=entity.getQty();
        }
     }
 
     /**
-     * Convierte un objeto CategoryMinimumDTO a CategoryEntity.
+     * Convierte un objeto ItemMinimumDTO a ItemEntity.
      *
-     * @return Nueva objeto CategoryEntity.
+     * @return Nueva objeto ItemEntity.
      * @generated
      */
-    public CategoryEntity toEntity() {
-        CategoryEntity entity = new CategoryEntity();
+    public ItemEntity toEntity() {
+        ItemEntity entity = new ItemEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setQty(this.getQty());
     return entity;
     }
 
@@ -106,6 +109,26 @@ public class CategoryMinimumDTO implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Obtiene el atributo qty.
+     *
+     * @return atributo qty.
+     * @generated
+     */
+    public Long getQty() {
+        return qty;
+    }
+
+    /**
+     * Establece el valor del atributo qty.
+     *
+     * @param qty nuevo valor del atributo
+     * @generated
+     */
+    public void setQty(Long qty) {
+        this.qty = qty;
     }
 
 }

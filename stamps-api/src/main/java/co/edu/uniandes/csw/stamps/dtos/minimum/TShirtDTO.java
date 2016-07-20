@@ -23,7 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.stamps.dtos.minimum;
 
-import co.edu.uniandes.csw.stamps.entities.ClientEntity;
+import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -31,40 +31,49 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class ClientMinimumDTO implements Serializable{
+public class TShirtDTO implements Serializable{
 
     private Long id;
     private String name;
+    private String size;
+    private String color;
+    private Long price;
 
     /**
      * @generated
      */
-    public ClientMinimumDTO() {
+    public TShirtDTO() {
     }
 
     /**
-     * Crea un objeto ClientMinimumDTO a partir de un objeto ClientEntity.
+     * Crea un objeto TShirtMinimumDTO a partir de un objeto TShirtEntity.
      *
-     * @param entity Entidad ClientEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad TShirtEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public ClientMinimumDTO(ClientEntity entity) {
+    public TShirtDTO(TShirtEntity entity) {
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.size=entity.getSize();
+        this.color=entity.getColor();
+        this.price=entity.getPrice();
        }
     }
 
     /**
-     * Convierte un objeto ClientMinimumDTO a ClientEntity.
+     * Convierte un objeto TShirtMinimumDTO a TShirtEntity.
      *
-     * @return Nueva objeto ClientEntity.
+     * @return Nueva objeto TShirtEntity.
      * @generated
      */
-    public ClientEntity toEntity() {
-        ClientEntity entity = new ClientEntity();
+    public TShirtEntity toEntity() {
+        TShirtEntity entity = new TShirtEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setSize(this.getSize());
+        entity.setColor(this.getColor());
+        entity.setPrice(this.getPrice());
     return entity;
     }
 
@@ -106,6 +115,66 @@ public class ClientMinimumDTO implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Obtiene el atributo size.
+     *
+     * @return atributo size.
+     * @generated
+     */
+    public String getSize() {
+        return size;
+    }
+
+    /**
+     * Establece el valor del atributo size.
+     *
+     * @param size nuevo valor del atributo
+     * @generated
+     */
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    /**
+     * Obtiene el atributo color.
+     *
+     * @return atributo color.
+     * @generated
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * Establece el valor del atributo color.
+     *
+     * @param color nuevo valor del atributo
+     * @generated
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    /**
+     * Obtiene el atributo price.
+     *
+     * @return atributo price.
+     * @generated
+     */
+    public Long getPrice() {
+        return price;
+    }
+
+    /**
+     * Establece el valor del atributo price.
+     *
+     * @param price nuevo valor del atributo
+     * @generated
+     */
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
 }

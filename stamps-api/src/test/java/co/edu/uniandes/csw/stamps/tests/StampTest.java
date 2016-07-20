@@ -27,7 +27,7 @@ import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.StampMinimumDTO;
+import co.edu.uniandes.csw.stamps.dtos.minimum.StampDTO;
 import co.edu.uniandes.csw.stamps.resources.StampResource;
 import java.io.File;
 import java.io.IOException;
@@ -190,7 +190,7 @@ public class StampTest {
     @Test
     public void createStampTest() throws IOException {
         PodamFactory factory = new PodamFactoryImpl();
-        StampMinimumDTO stamp = factory.manufacturePojo(StampMinimumDTO.class);
+        StampDTO stamp = factory.manufacturePojo(StampDTO.class);
         Cookie cookieSessionId = login(username, password);
         Response response = target
             .path(artistPath).path(fatherArtistEntity.getId().toString())
@@ -198,7 +198,7 @@ public class StampTest {
             .request().cookie(cookieSessionId)
             .post(Entity.entity(stamp, MediaType.APPLICATION_JSON));
         
-        StampMinimumDTO  stampTest = (StampMinimumDTO) response.readEntity(StampMinimumDTO.class);
+        StampDTO  stampTest = (StampDTO) response.readEntity(StampDTO.class);
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
         Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
@@ -215,11 +215,11 @@ public class StampTest {
     @Test
     public void getStampByIdTest() {
         Cookie cookieSessionId = login(username, password);
-        StampMinimumDTO stampTest = target
+        StampDTO stampTest = target
             .path(artistPath).path(fatherArtistEntity.getId().toString())
             .path(stampPath)
             .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(StampMinimumDTO.class);
+            .request().cookie(cookieSessionId).get(StampDTO.class);
         
         Assert.assertEquals(stampTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(stampTest.getName(), oraculo.get(0).getName());
@@ -241,7 +241,7 @@ public class StampTest {
             .request().cookie(cookieSessionId).get();
         
         String listStamp = response.readEntity(String.class);
-        List<StampMinimumDTO> listStampTest = new ObjectMapper().readValue(listStamp, List.class);
+        List<StampDTO> listStampTest = new ObjectMapper().readValue(listStamp, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listStampTest.size());
     }
@@ -254,9 +254,9 @@ public class StampTest {
     @Test
     public void updateStampTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        StampMinimumDTO stamp = new StampMinimumDTO(oraculo.get(0));
+        StampDTO stamp = new StampDTO(oraculo.get(0));
         PodamFactory factory = new PodamFactoryImpl();
-        StampMinimumDTO stampChanged = factory.manufacturePojo(StampMinimumDTO.class);
+        StampDTO stampChanged = factory.manufacturePojo(StampDTO.class);
         stamp.setName(stampChanged.getName());
         stamp.setImage(stampChanged.getImage());
         stamp.setPrice(stampChanged.getPrice());
@@ -266,7 +266,7 @@ public class StampTest {
             .path(stamp.getId().toString())
             .request().cookie(cookieSessionId).put(Entity.entity(stamp, MediaType.APPLICATION_JSON));
         
-        StampMinimumDTO stampTest = (StampMinimumDTO) response.readEntity(StampMinimumDTO.class);
+        StampDTO stampTest = (StampDTO) response.readEntity(StampDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
@@ -281,7 +281,7 @@ public class StampTest {
     @Test
     public void deleteStampTest() {
         Cookie cookieSessionId = login(username, password);
-        StampMinimumDTO stamp = new StampMinimumDTO(oraculo.get(0));
+        StampDTO stamp = new StampDTO(oraculo.get(0));
         Response response = target
             .path(artistPath).path(fatherArtistEntity.getId().toString())
             .path(stampPath)
