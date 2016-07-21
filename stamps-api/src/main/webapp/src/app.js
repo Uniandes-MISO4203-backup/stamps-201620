@@ -63,7 +63,7 @@ SOFTWARE.
     mod.config(['authServiceProvider', function (auth) {
             auth.setValues({
                 apiUrl: 'http://localhost:8080/stamps-api/api/users/',
-                successState: 'clientList'
+                successState: 'stampGallery'
             });
             auth.setRoles({
                 'client': [{
