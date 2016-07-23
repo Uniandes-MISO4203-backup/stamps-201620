@@ -80,7 +80,7 @@ public class RootStampResource {
     /**
      * Obtiene la lista de los registros de Artist
      *
-     * @return Colección de objetos de ArtistBasicDTO
+     * @return Colección de objetos de StampDetailDTO
      * @generated
      */
     @GET
@@ -92,4 +92,20 @@ public class RootStampResource {
         return listEntity2DTO(stampLogic.getStamps(null,null,null));
     }
     
+    /**
+     * Obtiene la lista de los registros de Stamp por categoria.
+     *
+     * @param categoryid id de la categoria.
+     * @return Colección de objetos de StampDetailDTO.
+     * @generated
+     */
+    @GET
+    @Path("{categoryid: \\d+}")
+    public List<StampDetailDTO> getStampByCategory(@PathParam("categoryid") Long categoryid) {
+        if (page != null && maxRecords != null) {
+            this.response.setIntHeader("X-Total-Count", stampLogic.countStamps());
+            return listEntity2DTO(stampLogic.getStampByCategory(page, maxRecords,categoryid));
+        }
+        return listEntity2DTO(stampLogic.getStampByCategory(null,null,categoryid));
+    }
 }

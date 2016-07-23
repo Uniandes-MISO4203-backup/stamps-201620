@@ -86,6 +86,21 @@ public class StampLogic implements IStampLogic {
         }
         
     }
+    
+    /**
+     * Obtiene la lista de los registros de Stamp por categoria.
+     *
+     * @param page Número de página.
+     * @param maxRecords Número de registros que se mostraran en cada página.
+     * @param categoryid id de la categoria.
+     * @return Colección de objetos de StampEntity.
+     * @generated
+     */
+    @Override
+    public List<StampEntity> getStampByCategory(Integer page, Integer maxRecords, Long categoryid) {        
+        return persistence.getStampByCategory(page, maxRecords,categoryid);  
+        
+    }
 
     /**
      * Obtiene los datos de una instancia de Stamp a partir de su ID.

@@ -30,6 +30,8 @@ public interface ICategoryLogic {
     public int countCategorys();
     public List<CategoryEntity> getCategorys();
     public List<CategoryEntity> getCategorys(Integer page, Integer maxRecords);
+    public List<CategoryEntity> getParentsCategory();
+    public List<CategoryEntity> getCategoryByParent(Long parentCategoryid);
     public CategoryEntity getCategory(Long id);
     public CategoryEntity createCategory(CategoryEntity entity); 
     public CategoryEntity updateCategory(CategoryEntity entity);

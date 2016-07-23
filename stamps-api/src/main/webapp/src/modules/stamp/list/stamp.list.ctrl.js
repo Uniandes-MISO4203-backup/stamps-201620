@@ -25,14 +25,30 @@ SOFTWARE.
 
     var mod = ng.module("stampModule");
 
-    mod.controller("stampListCtrl", ["$scope", '$state', 'stamps', '$stateParams',
-        function ($scope, $state, stamps, $params) {
+    mod.controller("stampListCtrl", ["$scope", '$state', 'stamps', '$stateParams','Restangular',
+        function ($scope, $state, stamps, $params,Restangular) {
             $scope.records = stamps;
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
             this.totalItems = stamps.totalRecords;
+            $scope.categorys = [];
+            
+            $scope.getCategorys = function (parentCategory) {
+                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
+                    if (response.length>0) {
+                        $scope.categorys=response;
+                    } 
+                });
+            };
+            $scope.filtrar = function (parentCategory) {
+                $scope.getCategorys(parentCategory);
+                Restangular.all("stamps").customGET(parentCategory).then(function (response) {                    
+                        $scope.records=response;
+                });
+            };
+            $scope.getCategorys("");
 
             this.pageChanged = function () {
                 $state.go('stampList', {page: this.currentPage});

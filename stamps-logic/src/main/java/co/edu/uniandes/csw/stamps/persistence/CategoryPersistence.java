@@ -28,6 +28,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
+import co.edu.uniandes.csw.stamps.entities.StampEntity;
+import java.util.List;
+import javax.persistence.TypedQuery;
 
 /**
  * @generated
@@ -52,6 +55,16 @@ public class CategoryPersistence extends CrudPersistence<CategoryEntity> {
     @Override
     protected Class<CategoryEntity> getEntityClass() {
         return CategoryEntity.class;
+    }
+    
+    public List<CategoryEntity> getParentsCategory() {
+        TypedQuery<CategoryEntity> q = em.createQuery("select p from CategoryEntity p where p.parentCategory IS NULL", CategoryEntity.class);
+        return q.getResultList();
+    }
+    public List<CategoryEntity> getCategoryByParent(Long parentCategoryid) {
+        TypedQuery<CategoryEntity> q = em.createQuery("select p from CategoryEntity p where p.parentCategory.id = :parentCategoryid", CategoryEntity.class);
+        q.setParameter("parentCategoryid", parentCategoryid);
+        return q.getResultList();
     }
 
 }

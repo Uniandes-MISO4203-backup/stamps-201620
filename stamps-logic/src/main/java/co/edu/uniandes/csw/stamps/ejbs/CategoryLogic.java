@@ -73,6 +73,29 @@ public class CategoryLogic implements ICategoryLogic {
     public List<CategoryEntity> getCategorys(Integer page, Integer maxRecords) {
         return persistence.findAll(page, maxRecords);
     }
+    
+    /**
+     * Obtiene la lista de los registros de Categorys padres.
+     *
+     * @return Colección de objetos de CategoryEntity.
+     * @generated
+     */
+    @Override
+    public List<CategoryEntity> getParentsCategory() {
+        return persistence.getParentsCategory();
+    }
+    
+    /**
+     * Obtiene la lista de los registros de Category indicando su padre.
+     *
+     * * @param parentCategoryid Categoria padre.
+     * @return Colección de objetos de CategoryEntity.
+     * @generated
+     */
+    @Override
+    public List<CategoryEntity> getCategoryByParent(Long parentCategoryid) {
+        return persistence.getCategoryByParent(parentCategoryid);
+    }
 
     /**
      * Obtiene los datos de una instancia de Category a partir de su ID.

@@ -72,4 +72,14 @@ public class StampPersistence extends CrudPersistence<StampEntity> {
         }
         return q.getResultList();
     }
+    
+    public List<StampEntity> getStampByCategory(Integer page, Integer maxRecords, Long categoryid) {
+        TypedQuery<StampEntity> q = em.createQuery("select p from StampEntity p join  p.category i where (i.id = :categoryid)", StampEntity.class);
+        q.setParameter("categoryid", categoryid);
+        if (page != null && maxRecords != null) {
+            q.setFirstResult((page - 1) * maxRecords);
+            q.setMaxResults(maxRecords);
+        }
+        return q.getResultList();
+    }
 }

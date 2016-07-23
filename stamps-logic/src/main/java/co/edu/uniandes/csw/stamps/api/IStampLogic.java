@@ -31,6 +31,7 @@ public interface IStampLogic {
     public int countStamps();
     public List<StampEntity> getStamps(Long artistid);
     public List<StampEntity> getStamps(Integer page, Integer maxRecords, Long artistid);
+    public List<StampEntity> getStampByCategory(Integer page, Integer maxRecords, Long categoryid);
     public StampEntity getStamp(Long stampid);
     public StampEntity createStamp(Long artistid, StampEntity entity);
     public StampEntity updateStamp(Long artistid, StampEntity entity);

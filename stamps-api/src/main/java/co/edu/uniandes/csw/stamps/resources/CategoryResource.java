@@ -88,6 +88,31 @@ public class CategoryResource {
         }
         return listEntity2DTO(categoryLogic.getCategorys());
     }
+    
+    /**
+     * Obtiene la lista de los registros de Categorys padres.
+     *
+     * @return Colección de objetos de CategoryBasicDTO
+     * @generated
+     */
+    @GET
+    @Path("/parents")
+    public List<CategoryDetailDTO> getParentsCategory() {
+        return listEntity2DTO(categoryLogic.getParentsCategory());
+    }
+    
+    /**
+     * Obtiene la lista de los registros de Category indicando su padre.
+     *
+     * @param parentCategoryid Categoria padre.
+     * @return Colección de objetos de CategoryBasicDTO
+     * @generated
+     */
+    @GET
+    @Path("/parents/{parentCategoryid: \\d+}")
+    public List<CategoryDetailDTO> getCategoryByParent(@PathParam("parentCategoryid") Long parentCategoryid) {
+        return listEntity2DTO(categoryLogic.getCategoryByParent(parentCategoryid));
+    }
 
     /**
      * Obtiene los datos de una instancia de Category a partir de su ID
