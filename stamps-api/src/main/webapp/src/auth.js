@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module('roleModule', ['ngCrud']);
-    mod.controller('roleCtrl', ['$rootScope', 'Restangular', function ($rootScope, Restangular) {
+    mod.controller('roleCtrl', ['$rootScope', 'Restangular','$state', function ($rootScope, Restangular) {
 
         $rootScope.auth = function () {
                 Restangular.all("users").customGET('me').then(function (response) {
@@ -37,6 +37,12 @@
         $rootScope.auth();
         $rootScope.$on('logged-in', function () {
             $rootScope.auth();
+            if ($rootScope.roles.indexOf("admin") !== -1) {
+                $rootScope.category = true;
+                $rootScope.artist = true;
+                $rootScope.client = true;
+                $rootScope.tShirt = true;
+            }
         });
 
         $rootScope.$on('logged-out', function () {
