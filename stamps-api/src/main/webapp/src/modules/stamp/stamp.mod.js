@@ -35,7 +35,7 @@ SOFTWARE.
             },
             image: {
                 displayName: 'Image',
-                type: 'String',
+                type: 'Image',
                 required: true
             },
             price: {
