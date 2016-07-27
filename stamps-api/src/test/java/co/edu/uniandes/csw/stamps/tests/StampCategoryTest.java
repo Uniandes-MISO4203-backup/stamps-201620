@@ -61,7 +61,9 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
+/*
+ * Testing URI: artists/{stampsId: \\d+}/stamps/
+ */
 @RunWith(Arquillian.class)
 public class StampCategoryTest {
 
@@ -116,8 +118,11 @@ public class StampCategoryTest {
     private UserTransaction utx;
 
     private void clearData() {
+        List<StampEntity> records = em.createQuery("SELECT u FROM StampEntity u").getResultList();
+        for (StampEntity record : records) {
+            em.remove(record);
+        }
         em.createQuery("delete from CategoryEntity").executeUpdate();
-        em.createQuery("delete from StampEntity").executeUpdate();
         em.createQuery("delete from ArtistEntity").executeUpdate();
         oraculo.clear();
     }
@@ -127,41 +132,28 @@ public class StampCategoryTest {
      *
      * @generated
      */
-    public void insertData() {
-        try{
-
-            utx.begin();
+    private void insertData() {
             fatherArtistEntity = factory.manufacturePojo(ArtistEntity.class);
             em.persist(fatherArtistEntity);
-            utx.commit();
 
-            utx.begin();
             fatherStampEntity = factory.manufacturePojo(StampEntity.class);
             fatherStampEntity.setArtist(fatherArtistEntity);
             em.persist(fatherStampEntity);
-            utx.commit();
-
 
             for (int i = 0; i < 3; i++) {
-                utx.begin();
                 CategoryEntity category = factory.manufacturePojo(CategoryEntity.class);
+                
                 em.persist(category);
-                fatherStampEntity.getCategory().add(category);
-                utx.commit();
+                
+                if(i<2){                
+                    fatherStampEntity.getCategory().add(category);
+                }
                 oraculo.add(category);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
-                utx.rollback();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
     }
 
     /**
-     * Configuración inicial de la prueba.
+     * ConfiguraciÃ³n inicial de la prueba.
      *
      * @generated
      */
@@ -170,8 +162,9 @@ public class StampCategoryTest {
         try {
             utx.begin();
             clearData();
-            utx.commit();
             insertData();
+            utx.commit();
+            
         } catch (Exception e) {
             e.printStackTrace();
             try {
@@ -193,7 +186,7 @@ public class StampCategoryTest {
      *
      * @param username Nombre de usuario
      * @param password Clave del usuario
-     * @return Cookie con información de la sesión del usuario
+     * @return Cookie con informaciÃ³n de la sesiÃ³n del usuario
      * @generated
      */
     public Cookie login(String username, String password) {
@@ -222,7 +215,7 @@ public class StampCategoryTest {
     public void addCategoryTest() {
         Cookie cookieSessionId = login(username, password);
 
-        CategoryDTO category = new CategoryDTO(oraculo.get(1));
+        CategoryDTO category = new CategoryDTO(oraculo.get(2));
 
         Response response = target.path(category.getId().toString())
                 .request().cookie(cookieSessionId)
@@ -234,7 +227,7 @@ public class StampCategoryTest {
     }
 
     /**
-     * Prueba para obtener una colección de instancias de Category asociadas a una instancia Stamp
+     * Prueba para obtener una colecciÃ³n de instancias de Category asociadas a una instancia Stamp
      *
      * @generated
      */
@@ -248,7 +241,7 @@ public class StampCategoryTest {
         String categoryList = response.readEntity(String.class);
         List<CategoryDTO> categoryListTest = new ObjectMapper().readValue(categoryList, List.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(3, categoryListTest.size());
+        Assert.assertEquals(2, categoryListTest.size());
     }
 
     /**
