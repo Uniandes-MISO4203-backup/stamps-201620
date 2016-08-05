@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,9 +20,49 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<div class="center-block well text-center">
-    <h1>¿Está seguro que desea borrar el registro?</h1>
-    <button id="confirm-delete" ng-click="ctrl.confirmDelete()" class="btn btn-danger">Eliminar</button>
-    <a id="cancel-delete" ui-sref="stampList" class="btn btn-info">Cancelar</a>
-</div>
+*/
+package co.edu.uniandes.csw.stamps.tests.selenium.pages.stamp;
+
+import co.edu.uniandes.csw.stamps.dtos.minimum.StampDTO;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class StampDetailPage {
+
+    @FindBy(id = "delete-stamp")
+    private WebElement deleteBtn;
+
+    @FindBy(id = "edit-stamp")
+    private WebElement editBtn;
+
+    @FindBy(id = "list-stamp")
+    private WebElement listBtn;
+
+    
+    @FindBy(id = "name")
+    private WebElement name;
+    @FindBy(id = "image")
+    private WebElement image;
+    @FindBy(id = "price")
+    private WebElement price;
+
+    public void list() {
+        listBtn.click();
+    }
+
+    public void edit() {
+        editBtn.click();
+    }
+
+    public void delete() {
+        deleteBtn.click();
+    }
+
+    public StampDTO getData() {
+        StampDTO stamp = new StampDTO();        
+        stamp.setName(name.getText());
+        stamp.setImage(image.getText());
+        stamp.setPrice(Long.parseLong(price.getText()));
+        return stamp;
+    }
+}

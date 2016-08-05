@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,9 +20,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<div class="center-block well text-center">
-    <h1>¿Está seguro que desea borrar el registro?</h1>
-    <button id="confirm-delete" ng-click="ctrl.confirmDelete()" class="btn btn-danger">Eliminar</button>
-    <a id="cancel-delete" ui-sref="stampList" class="btn btn-info">Cancelar</a>
-</div>
+*/
+package co.edu.uniandes.csw.stamps.tests.selenium.pages.artist;
+
+import co.edu.uniandes.csw.stamps.dtos.minimum.ArtistDTO;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ArtistDetailPage {
+
+    @FindBy(id = "delete-artist")
+    private WebElement deleteBtn;
+
+    @FindBy(id = "edit-artist")
+    private WebElement editBtn;
+
+    @FindBy(id = "list-artist")
+    private WebElement listBtn;
+
+    
+    @FindBy(id = "name")
+    private WebElement name;
+
+    public void list() {
+        listBtn.click();
+    }
+
+    public void edit() {
+        editBtn.click();
+    }
+
+    public void delete() {
+        deleteBtn.click();
+    }
+
+    public ArtistDTO getData() {
+        ArtistDTO artist = new ArtistDTO();        
+        artist.setName(name.getText());
+        return artist;
+    }
+}

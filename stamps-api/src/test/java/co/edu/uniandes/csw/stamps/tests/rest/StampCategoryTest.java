@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.tests;
+package co.edu.uniandes.csw.stamps.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
@@ -31,6 +31,7 @@ import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
 import co.edu.uniandes.csw.stamps.dtos.minimum.StampDTO;
 import co.edu.uniandes.csw.stamps.dtos.minimum.CategoryDTO;
 import co.edu.uniandes.csw.stamps.resources.StampResource;
+import co.edu.uniandes.csw.stamps.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,9 +20,46 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<div class="center-block well text-center">
-    <h1>¿Está seguro que desea borrar el registro?</h1>
-    <button id="confirm-delete" ng-click="ctrl.confirmDelete()" class="btn btn-danger">Eliminar</button>
-    <a id="cancel-delete" ui-sref="stampList" class="btn btn-info">Cancelar</a>
-</div>
+*/
+package co.edu.uniandes.csw.stamps.tests.selenium.pages.item;
+
+import co.edu.uniandes.csw.stamps.dtos.minimum.ItemDTO;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ItemDetailPage {
+
+    @FindBy(id = "delete-item")
+    private WebElement deleteBtn;
+
+    @FindBy(id = "edit-item")
+    private WebElement editBtn;
+
+    @FindBy(id = "list-item")
+    private WebElement listBtn;
+
+    
+    @FindBy(id = "name")
+    private WebElement name;
+    @FindBy(id = "qty")
+    private WebElement qty;
+
+    public void list() {
+        listBtn.click();
+    }
+
+    public void edit() {
+        editBtn.click();
+    }
+
+    public void delete() {
+        deleteBtn.click();
+    }
+
+    public ItemDTO getData() {
+        ItemDTO item = new ItemDTO();        
+        item.setName(name.getText());
+        item.setQty(Long.parseLong(qty.getText()));
+        return item;
+    }
+}

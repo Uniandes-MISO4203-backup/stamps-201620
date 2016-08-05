@@ -35,13 +35,13 @@ SOFTWARE.
         'authModule',
         'roleModule'
     ]);
-
+    mod.constant('baseUrl', 'api');
     mod.config(['$logProvider', function ($logProvider) {
             $logProvider.debugEnabled(true);
         }]);
 
-    mod.config(['RestangularProvider', function (rp) {
-            rp.setBaseUrl('http://localhost:8080/stamps-api/api/');
+     mod.config(['RestangularProvider', 'baseUrl', function (rp, baseUrl) {
+            rp.setBaseUrl(baseUrl);
             rp.setRequestInterceptor(function (elem, operation) {
                 if (operation === "remove") {
                     return null;
@@ -60,9 +60,9 @@ SOFTWARE.
                 $urlRouterProvider.otherwise('/');
         }]);
 
-    mod.config(['authServiceProvider', function (auth) {
+    mod.config(['authServiceProvider', 'baseUrl', function (auth, baseUrl) {
             auth.setValues({
-                apiUrl: 'http://localhost:8080/stamps-api/api/users/',
+                apiUrl: baseUrl + '/users/',
                 successState: 'stampGallery'
             });
             auth.setRoles({

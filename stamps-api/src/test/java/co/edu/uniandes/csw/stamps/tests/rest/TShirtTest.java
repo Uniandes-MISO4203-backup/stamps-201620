@@ -21,14 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.tests;
+package co.edu.uniandes.csw.stamps.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
-import co.edu.uniandes.csw.stamps.entities.StampEntity;
-import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
-import co.edu.uniandes.csw.stamps.dtos.minimum.StampDTO;
-import co.edu.uniandes.csw.stamps.resources.StampResource;
+import co.edu.uniandes.csw.stamps.entities.TShirtEntity;
+import co.edu.uniandes.csw.stamps.dtos.minimum.TShirtDTO;
+import co.edu.uniandes.csw.stamps.resources.TShirtResource;
+import co.edu.uniandes.csw.stamps.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -63,19 +63,17 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 
 @RunWith(Arquillian.class)
-public class StampTest {
+public class TShirtTest {
 
     private final int Ok = Status.OK.getStatusCode();
     private final int Created = Status.CREATED.getStatusCode();
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
-    private final String stampPath = "stamps";
-    private final static List<StampEntity> oraculo = new ArrayList<>();
+    private final String tShirtPath = "tShirts";
+    private final static List<TShirtEntity> oraculo = new ArrayList<>();
     private WebTarget target;
     private final String apiPath = Utils.apiPath;
     private final String username = Utils.username;
     private final String password = Utils.password;    
-    private final String artistPath = "artists";
-    ArtistEntity fatherArtistEntity;
 
     @ArquillianResource
     private URL deploymentURL;
@@ -88,7 +86,7 @@ public class StampTest {
                         .importRuntimeDependencies().resolve()
                         .withTransitivity().asFile())
                 // Se agregan los compilados de los paquetes de servicios
-                .addPackage(StampResource.class.getPackage())
+                .addPackage(TShirtResource.class.getPackage())
                 // El archivo que contiene la configuracion a la base de datos.
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 // El archivo beans.xml es necesario para injeccion de dependencias.
@@ -111,8 +109,7 @@ public class StampTest {
 
     private void clearData() {
         
-        em.createQuery("delete from StampEntity").executeUpdate();
-        em.createQuery("delete from ArtistEntity").executeUpdate();
+        em.createQuery("delete from TShirtEntity").executeUpdate();    
         oraculo.clear();
     }
 
@@ -123,16 +120,11 @@ public class StampTest {
      */
     public void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        fatherArtistEntity = factory.manufacturePojo(ArtistEntity.class);
-        fatherArtistEntity.setId(1L);
-        em.persist(fatherArtistEntity);
-        
         for (int i = 0; i < 3; i++) {            
-            StampEntity stamp = factory.manufacturePojo(StampEntity.class);
-            stamp.setId(i + 1L);
-            stamp.setArtist(fatherArtistEntity);
-            em.persist(stamp);
-            oraculo.add(stamp);
+            TShirtEntity tShirt = factory.manufacturePojo(TShirtEntity.class);
+            tShirt.setId(i + 1L);
+            em.persist(tShirt);
+            oraculo.add(tShirt);
         }
     }
 
@@ -183,110 +175,102 @@ public class StampTest {
     }
 
     /**
-     * Prueba para crear un Stamp
+     * Prueba para crear un TShirt
      *
      * @generated
      */
     @Test
-    public void createStampTest() throws IOException {
+    public void createTShirtTest() throws IOException {
         PodamFactory factory = new PodamFactoryImpl();
-        StampDTO stamp = factory.manufacturePojo(StampDTO.class);
+        TShirtDTO tShirt = factory.manufacturePojo(TShirtDTO.class);
         Cookie cookieSessionId = login(username, password);
-        Response response = target
-            .path(artistPath).path(fatherArtistEntity.getId().toString())
-          .path(stampPath)
+        Response response = target.path(tShirtPath)
             .request().cookie(cookieSessionId)
-            .post(Entity.entity(stamp, MediaType.APPLICATION_JSON));
+            .post(Entity.entity(tShirt, MediaType.APPLICATION_JSON));
         
-        StampDTO  stampTest = (StampDTO) response.readEntity(StampDTO.class);
-        Assert.assertEquals(stamp.getName(), stampTest.getName());
-        Assert.assertEquals(stamp.getImage(), stampTest.getImage());
-        Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
+        TShirtDTO  tshirtTest = (TShirtDTO) response.readEntity(TShirtDTO.class);
+        Assert.assertEquals(tShirt.getName(), tshirtTest.getName());
+        Assert.assertEquals(tShirt.getSize(), tshirtTest.getSize());
+        Assert.assertEquals(tShirt.getColor(), tshirtTest.getColor());
+        Assert.assertEquals(tShirt.getPrice(), tshirtTest.getPrice());
         Assert.assertEquals(Created, response.getStatus());
-        StampEntity entity = em.find(StampEntity.class, stampTest.getId());
+        TShirtEntity entity = em.find(TShirtEntity.class, tshirtTest.getId());
         Assert.assertNotNull(entity);
     }
 
     /**
-     * Prueba para consultar un Stamp
+     * Prueba para consultar un TShirt
      *
      * @generated
      */
     @Test
-    public void getStampByIdTest() {
+    public void getTShirtByIdTest() {
         Cookie cookieSessionId = login(username, password);
-        StampDTO stampTest = target
-            .path(artistPath).path(fatherArtistEntity.getId().toString())
-            .path(stampPath)
-            .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(StampDTO.class);
+        TShirtDTO tshirtTest = target.path(tShirtPath)
+                .path(oraculo.get(0).getId().toString())
+                .request().cookie(cookieSessionId).get(TShirtDTO.class);
         
-        Assert.assertEquals(stampTest.getId(), oraculo.get(0).getId());
-        Assert.assertEquals(stampTest.getName(), oraculo.get(0).getName());
-        Assert.assertEquals(stampTest.getImage(), oraculo.get(0).getImage());
-        Assert.assertEquals(stampTest.getPrice(), oraculo.get(0).getPrice());
+        Assert.assertEquals(tshirtTest.getId(), oraculo.get(0).getId());
+        Assert.assertEquals(tshirtTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(tshirtTest.getSize(), oraculo.get(0).getSize());
+        Assert.assertEquals(tshirtTest.getColor(), oraculo.get(0).getColor());
+        Assert.assertEquals(tshirtTest.getPrice(), oraculo.get(0).getPrice());
     }
 
     /**
-     * Prueba para consultar la lista de Stamps
+     * Prueba para consultar la lista de TShirts
      *
      * @generated
      */
     @Test
-    public void listStampTest() throws IOException {
+    public void listTShirtTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        Response response = target
-            .path(artistPath).path(fatherArtistEntity.getId().toString())
-            .path(stampPath)
-            .request().cookie(cookieSessionId).get();
+        Response response = target.path(tShirtPath)
+                .request().cookie(cookieSessionId).get();
         
-        String listStamp = response.readEntity(String.class);
-        List<StampDTO> listStampTest = new ObjectMapper().readValue(listStamp, List.class);
+        String listTShirt = response.readEntity(String.class);
+        List<TShirtDTO> listTShirtTest = new ObjectMapper().readValue(listTShirt, List.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(3, listStampTest.size());
+        Assert.assertEquals(3, listTShirtTest.size());
     }
 
     /**
-     * Prueba para actualizar un Stamp
+     * Prueba para actualizar un TShirt
      *
      * @generated
      */
     @Test
-    public void updateStampTest() throws IOException {
+    public void updateTShirtTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        StampDTO stamp = new StampDTO(oraculo.get(0));
+        TShirtDTO tShirt = new TShirtDTO(oraculo.get(0));
         PodamFactory factory = new PodamFactoryImpl();
-        StampDTO stampChanged = factory.manufacturePojo(StampDTO.class);
-        stamp.setName(stampChanged.getName());
-        stamp.setImage(stampChanged.getImage());
-        stamp.setPrice(stampChanged.getPrice());
-        Response response = target
-            .path(artistPath).path(fatherArtistEntity.getId().toString())
-          .path(stampPath)
-            .path(stamp.getId().toString())
-            .request().cookie(cookieSessionId).put(Entity.entity(stamp, MediaType.APPLICATION_JSON));
+        TShirtDTO tShirtChanged = factory.manufacturePojo(TShirtDTO.class);
+        tShirt.setName(tShirtChanged.getName());
+        tShirt.setSize(tShirtChanged.getSize());
+        tShirt.setColor(tShirtChanged.getColor());
+        tShirt.setPrice(tShirtChanged.getPrice());
+        Response response = target.path(tShirtPath).path(tShirt.getId().toString())
+                .request().cookie(cookieSessionId).put(Entity.entity(tShirt, MediaType.APPLICATION_JSON));
         
-        StampDTO stampTest = (StampDTO) response.readEntity(StampDTO.class);
+        TShirtDTO tshirtTest = (TShirtDTO) response.readEntity(TShirtDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(stamp.getName(), stampTest.getName());
-        Assert.assertEquals(stamp.getImage(), stampTest.getImage());
-        Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
+        Assert.assertEquals(tShirt.getName(), tshirtTest.getName());
+        Assert.assertEquals(tShirt.getSize(), tshirtTest.getSize());
+        Assert.assertEquals(tShirt.getColor(), tshirtTest.getColor());
+        Assert.assertEquals(tShirt.getPrice(), tshirtTest.getPrice());
     }
     
     /**
-     * Prueba para eliminar un Stamp
+     * Prueba para eliminar un TShirt
      *
      * @generated
      */
     @Test
-    public void deleteStampTest() {
+    public void deleteTShirtTest() {
         Cookie cookieSessionId = login(username, password);
-        StampDTO stamp = new StampDTO(oraculo.get(0));
-        Response response = target
-            .path(artistPath).path(fatherArtistEntity.getId().toString())
-            .path(stampPath)
-            .path(stamp.getId().toString())
-            .request().cookie(cookieSessionId).delete();
+        TShirtDTO tShirt = new TShirtDTO(oraculo.get(0));
+        Response response = target.path(tShirtPath).path(tShirt.getId().toString())
+                .request().cookie(cookieSessionId).delete();
         
         Assert.assertEquals(OkWithoutContent, response.getStatus());
     }
