@@ -55,8 +55,8 @@ import javax.ws.rs.WebApplicationException;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ArtistResource {
-    private static final String ARTIST_HREF = "https://api.stormpath.com/v1/groups/4abelF5RCDDHDZ3RfaZSgY";
-    private static final String ADMIN_HREF = "https://api.stormpath.com/v1/groups/56HTP8KReqpOIGFUm0XaMg";    
+    private static final String ARTIST_HREF = "https://api.stormpath.com/v1/groups/1UvMtOQRTKolOdyOKZZ2Gn";
+    private static final String ADMIN_HREF = "https://api.stormpath.com/v1/groups/135l6x0yE4XawGjWV9ISq9";    
 
     @Inject private IArtistLogic artistLogic;
     @Context private HttpServletResponse response;

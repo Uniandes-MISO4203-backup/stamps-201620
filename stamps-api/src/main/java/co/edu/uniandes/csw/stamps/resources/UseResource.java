@@ -26,8 +26,8 @@ public class UseResource extends AuthService {
     
     @Inject private IClientLogic clientLogic;
     @Inject private IArtistLogic artistLogic;
-    private static final String CLIENT_HREF = "https://api.stormpath.com/v1/groups/4pVL0pp2KzdZeGfjwNOz7m";
-    private static final String ARTIST_HREF = "https://api.stormpath.com/v1/groups/4abelF5RCDDHDZ3RfaZSgY";    
+    private static final String CLIENT_HREF = "https://api.stormpath.com/v1/groups/1H0ucRBccG2E34SdGgRv9N";
+    private static final String ARTIST_HREF = "https://api.stormpath.com/v1/groups/1UvMtOQRTKolOdyOKZZ2Gn";    
     private static final String CLIENT_CD = "client_id";
     private static final String ARTIST_CD = "artist_id";
     
