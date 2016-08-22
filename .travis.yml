@@ -1,3 +1,9 @@
+env:
+  global:
+    - STORMPATH_API_KEY_ID=43XOWSNDCEFB2VMB8AT8X5MIN
+    - STORMPATH_API_KEY_SECRET=Fd5Cjg/sjYSTfaJlAlQ1exToOa4z+psciySEe7Q4X5o
+    - USERNAME_USER=user1
+    - PASSWORD_USER=Password1
 language: java
 jdk:
   - oraclejdk8
