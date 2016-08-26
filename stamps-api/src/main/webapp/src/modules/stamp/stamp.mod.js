@@ -42,7 +42,13 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            },
+        availableForSale:{
+            displayName:'available  for sale',
+            type:'Boolean',
+            required:true
+            
+        }}
     });
 
     mod.config(['$stateProvider',

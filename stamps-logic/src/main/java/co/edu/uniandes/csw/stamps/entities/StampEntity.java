@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class StampEntity extends BaseEntity implements Serializable {
 
     private String image;
-
+    private boolean availableForSale;
     private Long price;
 
     @PodamExclude
@@ -129,4 +129,22 @@ public class StampEntity extends BaseEntity implements Serializable {
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
     }
+    
+       /**
+     *Obtiene el valor de available 
+     * @return
+     */
+    public boolean isAvailableForSale() {
+        return availableForSale;
+    }
+    /**
+     * Establece el valor de available 
+     * 
+     * @param available ForSale
+    */
+    public void setAvailableForSale(boolean availableForSale) {
+        this.availableForSale = availableForSale;
+    }
+   
+    
 }
