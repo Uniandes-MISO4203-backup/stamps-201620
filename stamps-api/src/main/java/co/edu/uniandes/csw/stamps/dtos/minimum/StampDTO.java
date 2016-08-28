@@ -38,7 +38,7 @@ public class StampDTO implements Serializable{
     private String image;
     private Long price;
     private boolean availableForSale;
-
+    private short qualification;
    
 
     /**
@@ -54,12 +54,13 @@ public class StampDTO implements Serializable{
      * @generated
      */
     public StampDTO(StampEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.image=entity.getImage();
-        this.price=entity.getPrice();
-        this.availableForSale=entity.isAvailableForSale();
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.image=entity.getImage();
+            this.price=entity.getPrice();
+            this.availableForSale=entity.isAvailableForSale();
+            this.qualification=entity.getQualification();
        }
     }
 
@@ -76,7 +77,8 @@ public class StampDTO implements Serializable{
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
         entity.setAvailableForSale(this.isAvailableForSale());
-    return entity;
+        entity.setQualification(this.getQualification());
+        return entity;
     }
 
     /**
@@ -159,11 +161,25 @@ public class StampDTO implements Serializable{
         this.price = price;
     }
    
- public boolean isAvailableForSale() {
+    public boolean isAvailableForSale() {
         return availableForSale;
     }
 
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
+    }
+    
+    public short getQualification() {
+        return qualification;
+    }
+
+    /**
+     * Establece el valor del atributo qualification.
+     *
+     * @param qualification nuevo valor del atributo
+     * @generated
+     */
+    public void setQualification(short qualification) {
+        this.qualification = qualification;
     }
 }
