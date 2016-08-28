@@ -38,6 +38,7 @@ public class StampDTO implements Serializable{
     private String image;
     private Long price;
     private boolean availableForSale;
+    private String description;
 
    
 
@@ -60,6 +61,7 @@ public class StampDTO implements Serializable{
         this.image=entity.getImage();
         this.price=entity.getPrice();
         this.availableForSale=entity.isAvailableForSale();
+        this.description=entity.getDescription();
        }
     }
 
@@ -76,6 +78,7 @@ public class StampDTO implements Serializable{
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
         entity.setAvailableForSale(this.isAvailableForSale());
+        entity.setDescription(this.getDescription());
     return entity;
     }
 
@@ -159,11 +162,20 @@ public class StampDTO implements Serializable{
         this.price = price;
     }
    
- public boolean isAvailableForSale() {
+    public boolean isAvailableForSale() {
         return availableForSale;
     }
 
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
     }
+    
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
 }

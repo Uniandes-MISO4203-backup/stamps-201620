@@ -41,6 +41,7 @@ public class StampEntity extends BaseEntity implements Serializable {
     private String image;
     private boolean availableForSale;
     private Long price;
+    private String description;
 
     @PodamExclude
     @ManyToOne
@@ -140,11 +141,25 @@ public class StampEntity extends BaseEntity implements Serializable {
     /**
      * Establece el valor de available 
      * 
-     * @param available ForSale
+     * @param availableForSale ForSale
     */
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
     }
    
-    
+    /**
+     *Obtiene el valor de description 
+     * @return
+     */
+    public String getDescription() {
+        return this.description;
+    }
+    /**
+     * Establece el valor de description 
+     * 
+     * @param description ForSale
+    */
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

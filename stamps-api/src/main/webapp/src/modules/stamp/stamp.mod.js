@@ -43,12 +43,16 @@ SOFTWARE.
                 type: 'Long',
                 required: true
             },
-        availableForSale:{
-            displayName:'available  for sale',
-            type:'Boolean',
-            required:true
-            
-        }}
+            availableForSale:{
+                displayName:'available  for sale',
+                type:'Boolean',
+                required:true
+            },
+            description:{
+                    displayName: 'Description',
+                    type: 'String',
+                    required: true
+            }}
     });
 
     mod.config(['$stateProvider',
