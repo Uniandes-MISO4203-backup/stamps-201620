@@ -42,6 +42,7 @@ public class StampEntity extends BaseEntity implements Serializable {
     private boolean availableForSale;
     private Long price;
     private short qualification;
+    private String description;
 
     @PodamExclude
     @ManyToOne
@@ -164,12 +165,12 @@ public class StampEntity extends BaseEntity implements Serializable {
      */
     public void setQualification(short qualification){
         this.qualification = qualification;
-   
+    }
     /**
      *Obtiene el valor de description 
      * @return
      */
-    public String getDescription() {
+    public String getDescription(){
         return this.description;
     }
     /**
