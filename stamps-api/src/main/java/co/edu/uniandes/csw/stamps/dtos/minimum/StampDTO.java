@@ -169,6 +169,12 @@ public class StampDTO implements Serializable{
         this.availableForSale = availableForSale;
     }
     
+    /**
+     * Obtiene el atributo qualification.
+     *
+     * @return atributo qualification.
+     * @generated
+     */
     public short getQualification() {
         return qualification;
     }
