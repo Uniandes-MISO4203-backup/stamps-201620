@@ -52,9 +52,14 @@ SOFTWARE.
             qualification:{
                 displayName: 'Qualification',
                 type: 'short',
-                required: false
+                required: false   
+            },
+            description:{
+                displayName: 'Description',
+                type: 'String',
+                required: true
             }
-        }   
+        }
     });
 
     mod.config(['$stateProvider',
@@ -203,7 +208,8 @@ SOFTWARE.
                     model: 'stampModel',
                     stamps: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
-                        }]                }
+                        }]                
+                }
             });
 	}]);
 })(window.angular);
