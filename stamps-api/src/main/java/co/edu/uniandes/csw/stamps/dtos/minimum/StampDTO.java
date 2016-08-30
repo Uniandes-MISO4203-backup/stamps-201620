@@ -215,11 +215,11 @@ public class StampDTO implements Serializable{
     /**
      * Establece el valor del atributo price.
      *
-     * @param price nuevo valor del atributo
+     * @param popularity nuevo valor del atributo
      * @generated
      */
-    public void setPopularity(Long populariy) {
-        this.popularity = populariy;
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
     }
  
     
