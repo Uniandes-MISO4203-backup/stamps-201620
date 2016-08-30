@@ -43,6 +43,7 @@ public class StampEntity extends BaseEntity implements Serializable {
     private Long price;
     private short qualification;
     private String description;
+    private Long popularity;
 
     @PodamExclude
     @ManyToOne
@@ -180,5 +181,15 @@ public class StampEntity extends BaseEntity implements Serializable {
     */
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    
+    public Long getPopularity(){
+        return this.popularity;
+    }
+
+    
+    public void setPopularity(Long popularity){
+        this.popularity = popularity;
     }
 }
