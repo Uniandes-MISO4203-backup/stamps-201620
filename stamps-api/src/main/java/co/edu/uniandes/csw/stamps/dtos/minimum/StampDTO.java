@@ -40,6 +40,7 @@ public class StampDTO implements Serializable{
     private boolean availableForSale;
     private short qualification;
     private String description;
+    private Long popularity;
 
     /**
      * @generated
@@ -62,6 +63,7 @@ public class StampDTO implements Serializable{
             this.availableForSale=entity.isAvailableForSale();
             this.qualification=entity.getQualification();
             this.description=entity.getDescription();
+            this.popularity=entity.getPopularity();
         }
     }
 
@@ -80,6 +82,7 @@ public class StampDTO implements Serializable{
         entity.setAvailableForSale(this.isAvailableForSale());
         entity.setQualification(this.getQualification());
         entity.setDescription(this.getDescription());
+        entity.setPopularity(this.getPopularity());
         return entity;
     }
 
@@ -198,4 +201,26 @@ public class StampDTO implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+    
+        /**
+     * Obtiene el atributo Popularity.
+     *
+     * @return atributo popularity.
+     * @generated
+     */
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    /**
+     * Establece el valor del atributo price.
+     *
+     * @param price nuevo valor del atributo
+     * @generated
+     */
+    public void setPopularity(Long populariy) {
+        this.popularity = populariy;
+    }
+ 
+    
 }

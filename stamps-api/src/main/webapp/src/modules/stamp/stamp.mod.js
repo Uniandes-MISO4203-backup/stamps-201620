@@ -58,6 +58,11 @@ SOFTWARE.
                 displayName: 'Description',
                 type: 'String',
                 required: true
+            },
+            popularity:{
+                displayName: 'popularity',
+                type: 'Long',
+                required: true
             }
         }
     });
