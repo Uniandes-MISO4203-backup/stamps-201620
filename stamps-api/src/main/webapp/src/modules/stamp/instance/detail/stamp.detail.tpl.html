@@ -27,18 +27,27 @@ SOFTWARE.
 <div  class="container-fluid well">
     <div class="col-md-12">
         <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
+          <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
         </p>
         <p>
-        <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
+          <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
         </p>
         <p>
-        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price}}</span>
+          <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price}}</span>
         </p>
-         <p>
-        <label><strong>available: </strong></label><span id="availableForSale"> {{currentRecord.availableForSale}}</span>
+        <p>
+           <label><strong>Available For Sale: </strong></label><span id="availableForSale"> {{currentRecord.availableForSale}}</span>
         </p>
-           </div>
+        <p>
+           <label><strong>Qualification: </strong></label><span id="qualification"> {{currentRecord.qualification}}</span>
+        </p>
+        <p>
+            <label><strong>Description: </strong></label><span id="description"> {{currentRecord.description}}</span>
+        </p>        
+        <p>
+            <label><strong>Popularity: </strong></label><span id="popularity"> {{currentRecord.popularity}}</span>
+        </p>        
+    </div>
 </div>
 <div ui-view="stampChieldView"></div>
 <!-- TODO -->

@@ -38,8 +38,9 @@ public class StampDTO implements Serializable{
     private String image;
     private Long price;
     private boolean availableForSale;
-
-   
+    private short qualification;
+    private String description;
+    private Long popularity;
 
     /**
      * @generated
@@ -54,13 +55,16 @@ public class StampDTO implements Serializable{
      * @generated
      */
     public StampDTO(StampEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.image=entity.getImage();
-        this.price=entity.getPrice();
-        this.availableForSale=entity.isAvailableForSale();
-       }
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.image=entity.getImage();
+            this.price=entity.getPrice();
+            this.availableForSale=entity.isAvailableForSale();
+            this.qualification=entity.getQualification();
+            this.description=entity.getDescription();
+            this.popularity=entity.getPopularity();
+        }
     }
 
     /**
@@ -76,7 +80,10 @@ public class StampDTO implements Serializable{
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
         entity.setAvailableForSale(this.isAvailableForSale());
-    return entity;
+        entity.setQualification(this.getQualification());
+        entity.setDescription(this.getDescription());
+        entity.setPopularity(this.getPopularity());
+        return entity;
     }
 
     /**
@@ -159,11 +166,61 @@ public class StampDTO implements Serializable{
         this.price = price;
     }
    
- public boolean isAvailableForSale() {
+    public boolean isAvailableForSale() {
         return availableForSale;
     }
 
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
     }
+    
+    /**
+     * Obtiene el atributo qualification.
+     *
+     * @return atributo qualification.
+     * @generated
+     */
+    public short getQualification() {
+        return qualification;
+    }
+
+    /**
+     * Establece el valor del atributo qualification.
+     *
+     * @param qualification nuevo valor del atributo
+     * @generated
+     */
+    public void setQualification(short qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+        /**
+     * Obtiene el atributo Popularity.
+     *
+     * @return atributo popularity.
+     * @generated
+     */
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    /**
+     * Establece el valor del atributo price.
+     *
+     * @param popularity nuevo valor del atributo
+     * @generated
+     */
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
+ 
+    
 }

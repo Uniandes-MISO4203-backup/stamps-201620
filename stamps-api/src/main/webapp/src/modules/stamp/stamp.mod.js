@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'stamp',
         displayName: 'Stamp',
 		url: 'stamps',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -43,12 +44,27 @@ SOFTWARE.
                 type: 'Long',
                 required: true
             },
-        availableForSale:{
-            displayName:'available  for sale',
-            type:'Boolean',
-            required:true
-            
-        }}
+            availableForSale:{
+                displayName: 'Available  for sale',
+                type: 'Boolean',
+                required: true
+            },
+            qualification:{
+                displayName: 'Qualification',
+                type: 'short',
+                required: false   
+            },
+            description:{
+                displayName: 'Description',
+                type: 'String',
+                required: true
+            },
+            popularity:{
+                displayName: 'popularity',
+                type: 'Long',
+                required: true
+            }
+        }
     });
 
     mod.config(['$stateProvider',
@@ -197,7 +213,8 @@ SOFTWARE.
                     model: 'stampModel',
                     stamps: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
-                        }]                }
+                        }]                
+                }
             });
 	}]);
 })(window.angular);
