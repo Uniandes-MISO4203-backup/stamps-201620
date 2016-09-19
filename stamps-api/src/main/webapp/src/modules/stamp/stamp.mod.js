@@ -44,22 +44,22 @@ SOFTWARE.
                 type: 'Long',
                 required: true
             },
-            availableForSale:{
+            availableForSale: {
                 displayName: 'Available  for sale',
                 type: 'Boolean',
                 required: true
             },
-            qualification:{
+            qualification: {
                 displayName: 'Qualification',
                 type: 'short',
                 required: false   
             },
-            description:{
+            description: {
                 displayName: 'Description',
                 type: 'String',
                 required: true
             },
-            popularity:{
+            popularity: {
                 displayName: 'popularity',
                 type: 'Long',
                 required: true

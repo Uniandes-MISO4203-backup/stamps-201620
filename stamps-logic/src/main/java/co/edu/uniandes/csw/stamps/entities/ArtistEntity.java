@@ -38,6 +38,13 @@ import javax.persistence.CascadeType;
 @Entity
 public class ArtistEntity extends BaseEntity implements Serializable {
 
+    private Long id;
+    private String name;
+    private String address;
+    private Long telephone;
+    private short qualification;
+    private Long popularity;
+    
     @PodamExclude
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StampEntity> stamps = new ArrayList<>();
@@ -61,4 +68,52 @@ public class ArtistEntity extends BaseEntity implements Serializable {
     public void setStamps(List<StampEntity> stamps) {
         this.stamps = stamps;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }
+
+    public short getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(short qualification) {
+        this.qualification = qualification;
+    }
+
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }   
 }

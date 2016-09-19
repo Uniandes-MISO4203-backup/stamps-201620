@@ -26,3 +26,4 @@ nbactions.xml
 
 #Bower
 /stamps-api/src/main/webapp/bower_components/
+/stamps-api/node_modules/

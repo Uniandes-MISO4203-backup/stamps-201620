@@ -28,11 +28,33 @@ SOFTWARE.
         name: 'artist',
         displayName: 'Artist',
 		url: 'artists',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
-            }        }
+            },
+            address: {
+                displayName: 'Address',
+                type: 'String',
+                required: true
+            },
+            telephone: {
+                displayName: 'Telephone',
+                type: 'Long',
+                required: true
+            },
+            qualification: {
+                displayName: 'Qualification',
+                type: 'short',
+                required: true
+            },
+            popularity: {
+                displayName: 'Popularity',
+                type: 'Long',
+                required: true
+            }
+        }
     });
 
     mod.config(['$stateProvider',
