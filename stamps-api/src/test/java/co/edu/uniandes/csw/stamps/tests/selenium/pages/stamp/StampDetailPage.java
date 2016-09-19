@@ -66,6 +66,7 @@ public class StampDetailPage {
         stamp.setName(name.getText());
         stamp.setImage(image.getText());
         stamp.setPrice(Long.parseLong(price.getText()));
+        //Test
         stamp.setDescription(description.getText());
         return stamp;
     }

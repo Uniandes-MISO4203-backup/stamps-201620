@@ -160,6 +160,7 @@ public class StampPersistenceTest {
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
+        
     }
 
     /**
@@ -195,6 +196,7 @@ public class StampPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        //Test
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
     }
 

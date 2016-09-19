@@ -203,6 +203,7 @@ public class StampTest {
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
         Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
+        //Test
         Assert.assertEquals(stamp.getDescription(), stampTest.getDescription());
         Assert.assertEquals(Created, response.getStatus());
         StampEntity entity = em.find(StampEntity.class, stampTest.getId());

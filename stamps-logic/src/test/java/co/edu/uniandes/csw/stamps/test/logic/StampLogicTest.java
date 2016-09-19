@@ -184,6 +184,7 @@ public class StampLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        //Test
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
     }
 

@@ -57,6 +57,7 @@ public class StampCreatePage {
          priceInput.clear();
          priceInput.sendKeys(stamp.getPrice().toString());
          
+         //Test
          waitGui().until().element(descriptionInput).is().visible();
          descriptionInput.clear();
          descriptionInput.sendKeys(stamp.getDescription());         
