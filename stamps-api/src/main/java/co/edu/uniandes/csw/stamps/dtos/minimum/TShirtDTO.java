@@ -38,6 +38,7 @@ public class TShirtDTO implements Serializable{
     private String size;
     private String color;
     private Long price;
+    private String material;
 
     /**
      * @generated
@@ -58,6 +59,7 @@ public class TShirtDTO implements Serializable{
         this.size=entity.getSize();
         this.color=entity.getColor();
         this.price=entity.getPrice();
+        this.material=entity.getMaterial();
        }
     }
 
@@ -74,6 +76,7 @@ public class TShirtDTO implements Serializable{
         entity.setSize(this.getSize());
         entity.setColor(this.getColor());
         entity.setPrice(this.getPrice());
+        entity.setMaterial(this.getMaterial());
     return entity;
     }
 
@@ -175,6 +178,26 @@ public class TShirtDTO implements Serializable{
      */
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+            /**
+     * Obtiene el atributo material.
+     *
+     * @return atributo material.
+     * @generated
+     */
+    public String getMaterial(){
+        return material;
+    }
+
+    /**
+     * Establece el valor del atributo material.
+     *
+     * @param material nuevo valor del atributo
+     * @generated
+     */
+    public void setMaterial(String material){
+        this.material = material;
     }
 
 }

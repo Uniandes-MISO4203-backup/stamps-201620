@@ -41,7 +41,9 @@ public class StampEntity extends BaseEntity implements Serializable {
     private String image;
     private boolean availableForSale;
     private Long price;
+    private short qualification;
     private String description;
+    private Long popularity;
 
     @PodamExclude
     @ManyToOne
@@ -146,12 +148,30 @@ public class StampEntity extends BaseEntity implements Serializable {
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
     }
-   
+    /**
+     * Obtiene el atributo qualification.
+     *
+     * @return atributo qualification.
+     * @generated
+     */
+    public short getQualification(){
+        return qualification;
+    }
+
+    /**
+     * Establece el valor del atributo qualification.
+     *
+     * @param qualification nuevo valor del atributo
+     * @generated
+     */
+    public void setQualification(short qualification){
+        this.qualification = qualification;
+    }
     /**
      *Obtiene el valor de description 
      * @return
      */
-    public String getDescription() {
+    public String getDescription(){
         return this.description;
     }
     /**
@@ -161,5 +181,15 @@ public class StampEntity extends BaseEntity implements Serializable {
     */
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    
+    public Long getPopularity(){
+        return this.popularity;
+    }
+
+    
+    public void setPopularity(Long popularity){
+        this.popularity = popularity;
     }
 }
