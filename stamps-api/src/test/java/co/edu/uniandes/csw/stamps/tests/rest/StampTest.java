@@ -203,6 +203,7 @@ public class StampTest {
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
         Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
+        Assert.assertEquals(stamp.getDescription(), stampTest.getDescription());
         Assert.assertEquals(Created, response.getStatus());
         StampEntity entity = em.find(StampEntity.class, stampTest.getId());
         Assert.assertNotNull(entity);
@@ -226,6 +227,7 @@ public class StampTest {
         Assert.assertEquals(stampTest.getName(), oraculo.get(0).getName());
         Assert.assertEquals(stampTest.getImage(), oraculo.get(0).getImage());
         Assert.assertEquals(stampTest.getPrice(), oraculo.get(0).getPrice());
+        Assert.assertEquals(stampTest.getDescription(), oraculo.get(0).getDescription());
     }
 
     /**
@@ -261,6 +263,7 @@ public class StampTest {
         stamp.setName(stampChanged.getName());
         stamp.setImage(stampChanged.getImage());
         stamp.setPrice(stampChanged.getPrice());
+        stamp.setDescription(stampChanged.getDescription());
         Response response = target
             .path(artistPath).path(fatherArtistEntity.getId().toString())
           .path(stampPath)
@@ -272,6 +275,7 @@ public class StampTest {
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
         Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
+        Assert.assertEquals(stamp.getDescription(), stampTest.getDescription());
     }
     
     /**

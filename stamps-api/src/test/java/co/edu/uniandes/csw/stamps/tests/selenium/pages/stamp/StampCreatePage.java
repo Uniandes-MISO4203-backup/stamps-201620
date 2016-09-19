@@ -37,7 +37,9 @@ public class StampCreatePage {
     private WebElement imageInput;
     @FindBy(id = "price")
     private WebElement priceInput;
-
+    @FindBy(id = "description")
+    private WebElement descriptionInput;
+    
     @FindBy(id = "save-stamp")
     private WebElement saveBtn;
 
@@ -54,6 +56,11 @@ public class StampCreatePage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(stamp.getPrice().toString());
+         
+         waitGui().until().element(descriptionInput).is().visible();
+         descriptionInput.clear();
+         descriptionInput.sendKeys(stamp.getDescription());         
+         
         guardAjax(saveBtn).click();
     }
 }
