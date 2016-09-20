@@ -86,7 +86,8 @@ SOFTWARE.
                 parent: 'item',
                 views: {
                     itemView: {
-                        templateUrl: basePath + 'list/item.list.tpl.html',
+                        //templateUrl: basePath + 'list/item.list.tpl.html',
+                        templateUrl: basePath + 'list/item.gallery.tpl.html',
                         controller: 'itemListCtrl',
                         controllerAs: 'ctrl'
                     }
