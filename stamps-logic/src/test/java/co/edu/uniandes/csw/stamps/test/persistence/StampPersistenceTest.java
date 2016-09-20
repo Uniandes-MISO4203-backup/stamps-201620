@@ -159,6 +159,8 @@ public class StampPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
+        
     }
 
     /**
@@ -194,6 +196,8 @@ public class StampPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        //Test
+        Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
     }
 
     /**
@@ -229,5 +233,6 @@ public class StampPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(newEntity.getDescription(), resp.getDescription());
     }
 }

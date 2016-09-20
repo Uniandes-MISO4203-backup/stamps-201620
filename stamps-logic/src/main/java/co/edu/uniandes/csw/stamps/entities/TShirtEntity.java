@@ -39,6 +39,8 @@ public class TShirtEntity extends BaseEntity implements Serializable {
 
     private Long price;
 
+    private String material;
+
     /**
      * Obtiene el atributo size.
      *
@@ -97,5 +99,25 @@ public class TShirtEntity extends BaseEntity implements Serializable {
      */
     public void setPrice(Long price){
         this.price = price;
+    }
+
+        /**
+     * Obtiene el atributo material.
+     *
+     * @return atributo material.
+     * @generated
+     */
+    public String getMaterial(){
+        return material;
+    }
+
+    /**
+     * Establece el valor del atributo material.
+     *
+     * @param material nuevo valor del atributo
+     * @generated
+     */
+    public void setMaterial(String material){
+        this.material = material;
     }
 }

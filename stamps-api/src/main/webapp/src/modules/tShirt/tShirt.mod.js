@@ -47,6 +47,11 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
+            },
+            material: {
+                displayName: 'Material',
+                type: 'String',
+                required: true
             }        }
     });
 

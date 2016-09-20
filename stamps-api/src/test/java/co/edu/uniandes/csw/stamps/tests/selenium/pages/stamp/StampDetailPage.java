@@ -46,6 +46,9 @@ public class StampDetailPage {
     @FindBy(id = "price")
     private WebElement price;
 
+    @FindBy(id = "description")
+    private WebElement description;
+    
     public void list() {
         listBtn.click();
     }
@@ -63,6 +66,8 @@ public class StampDetailPage {
         stamp.setName(name.getText());
         stamp.setImage(image.getText());
         stamp.setPrice(Long.parseLong(price.getText()));
+        //Test
+        stamp.setDescription(description.getText());
         return stamp;
     }
 }
