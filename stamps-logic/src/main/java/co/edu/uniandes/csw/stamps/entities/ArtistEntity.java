@@ -38,8 +38,6 @@ import javax.persistence.CascadeType;
 @Entity
 public class ArtistEntity extends BaseEntity implements Serializable {
 
-    private Long id;
-    private String name;
     private String address;
     private Long telephone;
     private short qualification;
@@ -67,22 +65,7 @@ public class ArtistEntity extends BaseEntity implements Serializable {
      */
     public void setStamps(List<StampEntity> stamps) {
         this.stamps = stamps;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAddress() {
