@@ -77,6 +77,20 @@ SOFTWARE.
                     fn: function () {
                         $state.go('itemList');
                     }
+                },
+                shoppingCart: {
+                    displayName: 'Shopping Cart',
+                    icon: 'shopping-cart',
+                    fn: function () {
+                        $state.go('itemListCart');
+                    }
+                },
+                acquired: {
+                    displayName: 'Acquired',
+                    icon: 'tags',
+                    fn: function () {
+                        $state.go('itemListAcquired');
+                    }
                 }
             };
         }]);

@@ -180,4 +180,16 @@ public class ClientResource {
         return ItemResource.class;
     }
     
+        @Path("{clientId: \\d+}/cartList")
+    public Class<ItemResource> getCartItemResource(@PathParam("clientId") Long clientId){
+        existsClient(clientId);
+        return ItemResource.class;
+    }
+    
+        @Path("{clientId: \\d+}/AcquiredList")
+    public Class<ItemResource> getAcquiredItemResource(@PathParam("clientId") Long clientId){
+        existsClient(clientId);
+        return ItemResource.class;
+    }
+    
 }

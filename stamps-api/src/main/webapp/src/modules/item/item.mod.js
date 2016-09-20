@@ -93,6 +93,30 @@ SOFTWARE.
                     }
                 }
             });
+            $sp.state('itemListCart', {
+                url: '/listCart',
+                parent: 'item',
+                views: {
+                    itemView: {
+                        //templateUrl: basePath + 'list/item.list.tpl.html',
+                        templateUrl: basePath + 'list/item.gallery.tpl.html',
+                        controller: 'itemListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
+            $sp.state('itemListAcquired', {
+                url: '/listAcquired',
+                parent: 'item',
+                views: {
+                    itemView: {
+                        //templateUrl: basePath + 'list/item.list.tpl.html',
+                        templateUrl: basePath + 'list/item.gallery.tpl.html',
+                        controller: 'itemListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
             $sp.state('itemNew', {
                 url: '/new',
                 parent: 'item',

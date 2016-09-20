@@ -71,7 +71,8 @@ SOFTWARE.
                         label: 'Client',
                         icon: 'list-alt',
                         state: 'clientList'
-                    }],
+                    }
+                ],
                 'artist': [{
                         id: 'artist',
                         label: 'Artist',

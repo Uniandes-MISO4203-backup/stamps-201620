@@ -61,4 +61,56 @@ public class ClientEntity extends BaseEntity implements Serializable {
     public void setWishList(List<ItemEntity> wishlist) {
         this.wishList = wishlist;
     }
+    
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemEntity> cartList = new ArrayList<>();
+
+    /**
+     * Obtiene la colección de cartList.
+     *
+     * @return colección cartList.
+     * @generated
+     */
+    public List<ItemEntity> getCartList() {
+        return cartList;
+    }
+
+    /**
+     * Establece el valor de la colección de cartList.
+     *
+     * @param cartlist nuevo valor de la colección.
+     * @generated
+     */
+    public void setCartList(List<ItemEntity> cartlist) {
+        this.cartList = cartlist;
+    }
+    
+    
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemEntity> acquiredList = new ArrayList<>();
+
+    /**
+     * Obtiene la colección de acquiredList.
+     *
+     * @return colección acquiredList.
+     * @generated
+     */
+    public List<ItemEntity> getAcquiredList() {
+        return acquiredList;
+    }
+
+    /**
+     * Establece el valor de la colección de acquiredList.
+     *
+     * @param acquiredist nuevo valor de la colección.
+     * @generated
+     */
+    public void setAcquiredList(List<ItemEntity> acquiredlist) {
+        this.acquiredList = acquiredlist;
+    }
+    
 }

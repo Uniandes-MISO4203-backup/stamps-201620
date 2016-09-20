@@ -36,6 +36,8 @@ import javax.persistence.ManyToOne;
 public class ItemEntity extends BaseEntity implements Serializable {
 
     private Long qty;
+    
+    private int status;
 
     @PodamExclude
     @ManyToOne
@@ -49,6 +51,28 @@ public class ItemEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private StampEntity stamp;
 
+    
+    
+    /**
+     * Obtiene el atributo status.
+     *
+     * @return atributo status.
+     * @generated
+     */
+    public int getStatus(){
+        return status;
+    }
+
+    /**
+     * Establece el valor del atributo status.
+     *
+     * @param status nuevo valor del atributo
+     * @generated
+     */
+    public void setStatus(int status){
+        this.status = status;
+    }
+    
     /**
      * Obtiene el atributo qty.
      *
