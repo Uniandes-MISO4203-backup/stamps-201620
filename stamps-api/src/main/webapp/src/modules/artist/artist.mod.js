@@ -53,8 +53,7 @@ SOFTWARE.
                 displayName: 'Popularity',
                 type: 'Long',
                 required: true
-            }
-        }
+            }   }
     });
 
     mod.config(['$stateProvider',
