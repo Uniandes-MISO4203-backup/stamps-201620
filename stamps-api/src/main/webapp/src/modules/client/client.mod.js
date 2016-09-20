@@ -43,8 +43,7 @@ SOFTWARE.
                 displayName: 'Telephone',
                 type: 'Long',
                 required: true
-            }
-        }
+            }        }
     });
 
     mod.config(['$stateProvider',
