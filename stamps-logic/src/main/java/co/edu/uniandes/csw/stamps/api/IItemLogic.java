@@ -30,6 +30,8 @@ public interface IItemLogic {
     public int countItems();
     public List<ItemEntity> getItems(Long clientid);
     public List<ItemEntity> getItems(Integer page, Integer maxRecords, Long clientid);
+    //pedido para el wishlist
+    public List<ItemEntity> getWishItems(Long clientid);
     // pedidos para el carrito
     public List<ItemEntity> getCartItems(Long clientid);
     public List<ItemEntity> getCartItems(Integer page, Integer maxRecords, Long clientid);

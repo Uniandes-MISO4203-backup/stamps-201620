@@ -174,19 +174,19 @@ public class ClientResource {
         }
     }
     
+    @Path("{clientId: \\d+}/cartList")
+    public Class<ItemResource> getCartItemResource(@PathParam("clientId") Long clientId){
+        existsClient(clientId);
+        return ItemResource.class;
+    }
+    
     @Path("{clientId: \\d+}/wishList")
     public Class<ItemResource> getItemResource(@PathParam("clientId") Long clientId){
         existsClient(clientId);
         return ItemResource.class;
     }
     
-        @Path("{clientId: \\d+}/cartList")
-    public Class<ItemResource> getCartItemResource(@PathParam("clientId") Long clientId){
-        existsClient(clientId);
-        return ItemResource.class;
-    }
-    
-        @Path("{clientId: \\d+}/AcquiredList")
+    @Path("{clientId: \\d+}/acquiredList")
     public Class<ItemResource> getAcquiredItemResource(@PathParam("clientId") Long clientId){
         existsClient(clientId);
         return ItemResource.class;

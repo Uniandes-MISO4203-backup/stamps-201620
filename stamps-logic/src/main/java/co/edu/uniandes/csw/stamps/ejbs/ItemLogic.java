@@ -82,6 +82,20 @@ public class ItemLogic implements IItemLogic {
     }
     
         /**
+     * Obtiene la lista de los registros de Item del wishlist que pertenecen a un Client indicando los datos para la paginación.
+     *
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getWishItems(Long clientid) {
+        return persistence.findAllWish(null, null, clientid);
+    }
+    
+    
+    
+        /**
      * Obtiene la lista de los registros de Item del carrito de compras que pertenecen a un Client.
      *
      * @param clientid id del Client el cual es padre de los Items.

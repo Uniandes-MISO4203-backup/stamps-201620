@@ -91,7 +91,11 @@ SOFTWARE.
                         controller: 'itemListCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                resolve: {
+                    items: ['client', '$stateParams', 'model', function (client, $params, model) {
+                            return client.getList(model.url, $params);
+                        }]                }
             });
             $sp.state('itemListCart', {
                 url: '/listCart',
@@ -103,7 +107,11 @@ SOFTWARE.
                         controller: 'itemListCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                resolve: {
+                    items: ['client', '$stateParams', 'model', function (client, $params, model) {
+                            return client.getList('cartList/cart', $params);
+                        }]                }
             });
             $sp.state('itemListAcquired', {
                 url: '/listAcquired',
@@ -115,7 +123,11 @@ SOFTWARE.
                         controller: 'itemListCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
+                },
+                resolve: {
+                    items: ['client', '$stateParams', 'model', function (client, $params, model) {
+                            return client.getList('acquiredList/acquired', $params);
+                        }]                }
             });
             $sp.state('itemNew', {
                 url: '/new',

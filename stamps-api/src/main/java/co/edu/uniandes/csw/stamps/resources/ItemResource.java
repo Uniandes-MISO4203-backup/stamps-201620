@@ -86,7 +86,7 @@ public class ItemResource {
             this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
             return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientId));
         }
-        return listEntity2DTO(itemLogic.getItems(clientId));
+        return listEntity2DTO(itemLogic.getWishItems(clientId));
     }
     
         /**
