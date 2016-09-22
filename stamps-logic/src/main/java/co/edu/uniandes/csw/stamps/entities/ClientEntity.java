@@ -38,6 +38,9 @@ import javax.persistence.CascadeType;
 @Entity
 public class ClientEntity extends BaseEntity implements Serializable {
 
+    private String address;
+    private Long telephone;
+    
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> wishList = new ArrayList<>();
@@ -112,5 +115,21 @@ public class ClientEntity extends BaseEntity implements Serializable {
     public void setAcquiredList(List<ItemEntity> acquiredlist) {
         this.acquiredList = acquiredlist;
     }
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }
+ 
 }
