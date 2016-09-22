@@ -32,6 +32,16 @@ SOFTWARE.
                 displayName: 'Name',
                 type: 'String',
                 required: true
+            },
+            address: {
+                displayName: 'Address',
+                type: 'String',
+                required: true
+            },
+            telephone: {
+                displayName: 'Telephone',
+                type: 'Long',
+                required: true
             }        }
     });
 
