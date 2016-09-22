@@ -35,7 +35,10 @@ public class ArtistDTO implements Serializable{
 
     private Long id;
     private String name;
-
+    private String address;
+    private Long telephone;
+    private short qualification;
+    private Long popularity;
     /**
      * @generated
      */
@@ -108,4 +111,36 @@ public class ArtistDTO implements Serializable{
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }
+
+    public short getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(short qualification) {
+        this.qualification = qualification;
+    }
+
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
+   
 }
