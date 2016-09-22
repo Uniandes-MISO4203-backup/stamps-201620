@@ -132,6 +132,7 @@ public class ItemTest {
             ItemEntity item = factory.manufacturePojo(ItemEntity.class);
             item.setId(i + 1L);
             item.setClient(fatherClientEntity);
+            item.setStatus(0);
             em.persist(item);
             oraculo.add(item);
         }
