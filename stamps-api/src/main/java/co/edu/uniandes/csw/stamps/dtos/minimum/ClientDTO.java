@@ -35,7 +35,8 @@ public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
-
+    private String address;
+    private Long telephone;
     /**
      * @generated
      */
@@ -108,4 +109,20 @@ public class ClientDTO implements Serializable{
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }    
+    
 }
