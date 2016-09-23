@@ -258,10 +258,10 @@ public class ArtistTest {
         ArtistDTO artistTest = (ArtistDTO) response.readEntity(ArtistDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(artist.getName(), artistTest.getName());
-        Assert.assertEquals(artistTest.getAddress(), oraculo.get(0).getAddress());
-        Assert.assertEquals(artistTest.getTelephone(), oraculo.get(0).getTelephone());
-        Assert.assertEquals(artistTest.getQualification(), oraculo.get(0).getQualification());
-        Assert.assertEquals(artistTest.getPopularity(), oraculo.get(0).getPopularity());
+        Assert.assertEquals(artistTest.getAddress(), artistTest.getAddress());
+        Assert.assertEquals(artistTest.getTelephone(), artistTest.getTelephone());
+        Assert.assertEquals(artistTest.getQualification(), artistTest.getQualification());
+        Assert.assertEquals(artistTest.getPopularity(), artistTest.getPopularity());
     }
     
     /**
