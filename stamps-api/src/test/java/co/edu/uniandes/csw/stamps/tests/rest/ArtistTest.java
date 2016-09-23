@@ -190,6 +190,10 @@ public class ArtistTest {
         
         ArtistDTO  artistTest = (ArtistDTO) response.readEntity(ArtistDTO.class);
         Assert.assertEquals(artist.getName(), artistTest.getName());
+        Assert.assertEquals(artist.getAddress(), artistTest.getAddress());
+        Assert.assertEquals(artist.getTelephone(), artistTest.getTelephone());
+        Assert.assertEquals(artist.getQualification(), artistTest.getQualification());
+        Assert.assertEquals(artist.getPopularity(), artistTest.getPopularity());
         Assert.assertEquals(Created, response.getStatus());
         ArtistEntity entity = em.find(ArtistEntity.class, artistTest.getId());
         Assert.assertNotNull(entity);
@@ -209,6 +213,10 @@ public class ArtistTest {
         
         Assert.assertEquals(artistTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(artistTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(artistTest.getAddress(), oraculo.get(0).getAddress());
+        Assert.assertEquals(artistTest.getTelephone(), oraculo.get(0).getTelephone());
+        Assert.assertEquals(artistTest.getQualification(), oraculo.get(0).getQualification());
+        Assert.assertEquals(artistTest.getPopularity(), oraculo.get(0).getPopularity());
     }
 
     /**
@@ -240,12 +248,20 @@ public class ArtistTest {
         PodamFactory factory = new PodamFactoryImpl();
         ArtistDTO artistChanged = factory.manufacturePojo(ArtistDTO.class);
         artist.setName(artistChanged.getName());
+        artist.setAddress(artistChanged.getAddress());
+        artist.setTelephone(artistChanged.getTelephone());
+        artist.setQualification(artistChanged.getQualification());
+        artist.setPopularity(artistChanged.getPopularity());
         Response response = target.path(artistPath).path(artist.getId().toString())
                 .request().cookie(cookieSessionId).put(Entity.entity(artist, MediaType.APPLICATION_JSON));
         
         ArtistDTO artistTest = (ArtistDTO) response.readEntity(ArtistDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(artist.getName(), artistTest.getName());
+        Assert.assertEquals(artistTest.getAddress(), oraculo.get(0).getAddress());
+        Assert.assertEquals(artistTest.getTelephone(), oraculo.get(0).getTelephone());
+        Assert.assertEquals(artistTest.getQualification(), oraculo.get(0).getQualification());
+        Assert.assertEquals(artistTest.getPopularity(), oraculo.get(0).getPopularity());
     }
     
     /**
