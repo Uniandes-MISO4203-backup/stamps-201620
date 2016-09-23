@@ -45,7 +45,7 @@ SOFTWARE.
             },
             qualification: {
                 displayName: 'Qualification',
-                type: 'short',
+                type: 'Byte',
                 required: true
             },
             popularity: {

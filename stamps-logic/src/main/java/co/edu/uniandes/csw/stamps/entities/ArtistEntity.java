@@ -40,7 +40,7 @@ public class ArtistEntity extends BaseEntity implements Serializable {
 
     private String address;
     private Long telephone;
-    private short qualification;
+    private Byte qualification;
     private Long popularity;
     
     @PodamExclude
@@ -83,11 +83,11 @@ public class ArtistEntity extends BaseEntity implements Serializable {
         this.telephone = telephone;
     }
 
-    public short getQualification() {
+    public Byte getQualification() {
         return qualification;
     }
 
-    public void setQualification(short qualification) {
+    public void setQualification(Byte qualification) {
         this.qualification = qualification;
     }
 
