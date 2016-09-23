@@ -55,6 +55,10 @@ public class ArtistDTO implements Serializable{
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.address=entity.getAddress();
+        this.telephone=entity.getTelephone();
+        this.qualification=entity.getQualification();
+        this.popularity=entity.getTelephone();
        }
     }
 
@@ -68,6 +72,10 @@ public class ArtistDTO implements Serializable{
         ArtistEntity entity = new ArtistEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setAddress(this.getAddress());
+        entity.setTelephone(this.getTelephone());
+        entity.setQualification(this.getQualification());
+        entity.setPopularity(this.getPopularity());
     return entity;
     }
 
