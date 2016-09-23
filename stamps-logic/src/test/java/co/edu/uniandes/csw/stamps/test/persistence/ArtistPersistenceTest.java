@@ -151,6 +151,10 @@ public class ArtistPersistenceTest {
         ArtistEntity entity = em.find(ArtistEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getAddress(), entity.getAddress());
+        Assert.assertEquals(newEntity.getTelephone(), entity.getTelephone());
+        Assert.assertEquals(newEntity.getQualification(), entity.getQualification());
+        Assert.assertEquals(newEntity.getPopularity(), entity.getPopularity());
     }
 
     /**
@@ -184,6 +188,10 @@ public class ArtistPersistenceTest {
         ArtistEntity newEntity = artistPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getAddress(), newEntity.getAddress());
+        Assert.assertEquals(entity.getTelephone(), newEntity.getTelephone());
+        Assert.assertEquals(entity.getQualification(), newEntity.getQualification());
+        Assert.assertEquals(entity.getPopularity(), newEntity.getPopularity());
     }
 
     /**
@@ -217,5 +225,9 @@ public class ArtistPersistenceTest {
         ArtistEntity resp = em.find(ArtistEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getAddress(), resp.getAddress());
+        Assert.assertEquals(newEntity.getTelephone(), resp.getTelephone());
+        Assert.assertEquals(newEntity.getQualification(), resp.getQualification());
+        Assert.assertEquals(newEntity.getPopularity(), resp.getPopularity());
     }
 }
