@@ -33,6 +33,18 @@ public class ArtistEditPage {
 
     @FindBy(id = "name")
     private WebElement nameInput;
+    
+    @FindBy(id = "address")
+    private WebElement addressInput;
+    
+    @FindBy(id = "telephone")
+    private WebElement telephoneInput;
+    
+    @FindBy(id = "qualification")
+    private WebElement qualificationInput;
+    
+    @FindBy(id = "popularity")
+    private WebElement popularityInput;
 
     @FindBy(id = "save-artist")
     private WebElement saveBtn;
@@ -44,6 +56,22 @@ public class ArtistEditPage {
          waitGui().until().element(nameInput).is().visible();
          nameInput.clear();
          nameInput.sendKeys(artist.getName());
+         
+         waitGui().until().element(addressInput).is().visible();
+         addressInput.clear();
+         addressInput.sendKeys(artist.getAddress());
+         
+         waitGui().until().element(telephoneInput).is().visible();
+         telephoneInput.clear();
+         telephoneInput.sendKeys(artist.getTelephone().toString());
+         
+         waitGui().until().element(qualificationInput).is().visible();
+         qualificationInput.clear();
+         qualificationInput.sendKeys(String.valueOf(artist.getQualification()));
+         
+         waitGui().until().element(popularityInput).is().visible();
+         popularityInput.clear();
+         popularityInput.sendKeys(artist.getPopularity().toString());
         guardAjax(saveBtn).click();
     }
 }
