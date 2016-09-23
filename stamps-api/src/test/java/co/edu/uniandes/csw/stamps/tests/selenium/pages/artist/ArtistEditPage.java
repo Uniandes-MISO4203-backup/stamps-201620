@@ -67,7 +67,7 @@ public class ArtistEditPage {
          
          waitGui().until().element(qualificationInput).is().visible();
          qualificationInput.clear();
-         qualificationInput.sendKeys(String.valueOf(artist.getQualification()));
+         qualificationInput.sendKeys(artist.getQualification().toString());
          
          waitGui().until().element(popularityInput).is().visible();
          popularityInput.clear();
