@@ -60,7 +60,7 @@ SOFTWARE.
                 required: true
             },
             popularity:{
-                displayName: 'popularity',
+                displayName: 'Popularity',
                 type: 'Long',
                 required: true
             }
