@@ -34,6 +34,12 @@ public class ClientEditPage {
     @FindBy(id = "name")
     private WebElement nameInput;
 
+    @FindBy(id = "address")
+    private WebElement addressInput;
+
+    @FindBy(id = "telephone")
+    private WebElement telephoneInput;
+
     @FindBy(id = "save-client")
     private WebElement saveBtn;
 
@@ -44,6 +50,15 @@ public class ClientEditPage {
          waitGui().until().element(nameInput).is().visible();
          nameInput.clear();
          nameInput.sendKeys(client.getName());
-        guardAjax(saveBtn).click();
+        
+         waitGui().until().element(addressInput).is().visible();
+         addressInput.clear();
+         addressInput.sendKeys(client.getAddress());
+        
+         waitGui().until().element(telephoneInput).is().visible();
+         telephoneInput.clear();
+         telephoneInput.sendKeys(client.getTelephone().toString());
+        
+         guardAjax(saveBtn).click();
     }
 }

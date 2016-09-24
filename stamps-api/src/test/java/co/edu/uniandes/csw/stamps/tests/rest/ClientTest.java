@@ -190,6 +190,8 @@ public class ClientTest {
         
         ClientDTO  clientTest = (ClientDTO) response.readEntity(ClientDTO.class);
         Assert.assertEquals(client.getName(), clientTest.getName());
+        Assert.assertEquals(client.getAddress(), clientTest.getAddress());
+        Assert.assertEquals(client.getTelephone(), clientTest.getTelephone());
         Assert.assertEquals(Created, response.getStatus());
         ClientEntity entity = em.find(ClientEntity.class, clientTest.getId());
         Assert.assertNotNull(entity);
@@ -209,6 +211,8 @@ public class ClientTest {
         
         Assert.assertEquals(clientTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(clientTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(clientTest.getAddress(), oraculo.get(0).getAddress());
+        Assert.assertEquals(clientTest.getTelephone(), oraculo.get(0).getTelephone());
     }
 
     /**
@@ -246,6 +250,8 @@ public class ClientTest {
         ClientDTO clientTest = (ClientDTO) response.readEntity(ClientDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(client.getName(), clientTest.getName());
+        Assert.assertEquals(client.getAddress(), clientTest.getAddress());
+        Assert.assertEquals(client.getTelephone(), clientTest.getTelephone());
     }
     
     /**

@@ -47,6 +47,12 @@ public class ClientListPage {
     private String findNameByIndex(Integer index) {
         return browser.findElement(By.id(index + "-name")).getText();
     }
+    private String findAddressByIndex(Integer index) {
+        return browser.findElement(By.id(index + "-address")).getText();
+    }
+    private String findTelephoneByIndex(Integer index) {
+        return browser.findElement(By.id(index + "-telephone")).getText();
+    }
 
     private WebElement findDetailsBtnByIndex(Integer index) {
         By selector = By.id(index + "-detail-btn");
