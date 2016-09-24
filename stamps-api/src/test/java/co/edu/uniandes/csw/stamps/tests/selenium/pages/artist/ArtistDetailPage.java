@@ -41,6 +41,18 @@ public class ArtistDetailPage {
     
     @FindBy(id = "name")
     private WebElement name;
+    
+    @FindBy(id = "address")
+    private WebElement address;
+    
+    @FindBy(id = "qualification")
+    private WebElement qualification;
+    
+    @FindBy(id = "popularity")
+    private WebElement popularity;
+    
+    @FindBy(id = "telephone")
+    private WebElement telephone;
 
     public void list() {
         listBtn.click();
@@ -57,6 +69,10 @@ public class ArtistDetailPage {
     public ArtistDTO getData() {
         ArtistDTO artist = new ArtistDTO();        
         artist.setName(name.getText());
+        artist.setAddress(address.getText());
+        artist.setQualification(Byte.parseByte(qualification.getText()));
+        artist.setPopularity(Long.parseLong(popularity.getText()));
+        artist.setTelephone(Long.parseLong(telephone.getText()));
         return artist;
     }
 }
