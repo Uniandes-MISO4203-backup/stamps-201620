@@ -35,6 +35,10 @@ public class ArtistDTO implements Serializable{
 
     private Long id;
     private String name;
+    private String address;
+    private Long telephone;
+    private Byte qualification;
+    private Long popularity;
 
     /**
      * @generated
@@ -52,6 +56,10 @@ public class ArtistDTO implements Serializable{
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.address=entity.getAddress();
+        this.telephone=entity.getTelephone();
+        this.qualification=entity.getQualification();
+        this.popularity=entity.getPopularity();        
        }
     }
 
@@ -65,6 +73,10 @@ public class ArtistDTO implements Serializable{
         ArtistEntity entity = new ArtistEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setAddress(this.getAddress());
+        entity.setTelephone(this.getTelephone());
+        entity.setQualification(this.getQualification());
+        entity.setPopularity(this.getPopularity());        
     return entity;
     }
 
@@ -107,5 +119,35 @@ public class ArtistDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }
+
+    public Byte getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(Byte qualification) {
+        this.qualification = qualification;
+    }
+
+    public Long getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Long popularity) {
+        this.popularity = popularity;
+    }
 }
