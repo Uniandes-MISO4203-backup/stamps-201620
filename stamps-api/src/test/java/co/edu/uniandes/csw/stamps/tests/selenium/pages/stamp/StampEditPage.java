@@ -41,6 +41,9 @@ public class StampEditPage {
     @FindBy(id = "description")
     private WebElement descriptionInput;
     
+    @FindBy(id = "artistComment")
+    private WebElement artistCommentInput;
+    
     @FindBy(id = "save-stamp")
     private WebElement saveBtn;
 
@@ -62,6 +65,10 @@ public class StampEditPage {
          waitGui().until().element(descriptionInput).is().visible();
          descriptionInput.clear();
          descriptionInput.sendKeys(stamp.getDescription());         
+         
+         waitGui().until().element(artistCommentInput).is().visible();
+         artistCommentInput.clear();
+         artistCommentInput.sendKeys(stamp.getArtistComment()); 
          
         guardAjax(saveBtn).click();
     }
