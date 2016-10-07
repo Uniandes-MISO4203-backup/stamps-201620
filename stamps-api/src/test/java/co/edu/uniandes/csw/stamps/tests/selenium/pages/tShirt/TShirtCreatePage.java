@@ -39,6 +39,8 @@ public class TShirtCreatePage {
     private WebElement colorInput;
     @FindBy(id = "price")
     private WebElement priceInput;
+    @FindBy(id = "material")
+    private WebElement materialInput;
 
     @FindBy(id = "save-tShirt")
     private WebElement saveBtn;
@@ -59,6 +61,9 @@ public class TShirtCreatePage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(tShirt.getPrice().toString());
+         materialInput.clear();
+         materialInput.sendKeys(tShirt.getMaterial());
+         waitGui().until().element(materialInput).is().visible();
         guardAjax(saveBtn).click();
     }
 }

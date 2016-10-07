@@ -76,7 +76,7 @@ public class ArtistIT {
     @Page
     private ArtistDeletePage deletePage;
 
-    @Deployment(testable = true)
+    @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
                 // Se agrega las dependencias

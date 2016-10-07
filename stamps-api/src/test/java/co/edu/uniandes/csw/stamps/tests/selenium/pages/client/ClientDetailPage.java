@@ -63,8 +63,8 @@ public class ClientDetailPage {
     public ClientDTO getData() {
         ClientDTO client = new ClientDTO();        
         client.setName(name.getText());
-        client.setAddress(name.getText());
-        client.setTelephone(Long.parseLong(name.getText()));
+        client.setAddress(address.getText());
+        client.setTelephone(Long.parseLong(telephone.getText()));
         return client;
     }
 }
