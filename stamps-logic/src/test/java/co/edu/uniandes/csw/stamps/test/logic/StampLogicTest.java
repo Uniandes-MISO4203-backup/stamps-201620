@@ -186,6 +186,7 @@ public class StampLogicTest {
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
         //Test
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
+        Assert.assertEquals(newEntity.getArtistComment(), entity.getArtistComment());
     }
 
     /**
@@ -224,6 +225,7 @@ public class StampLogicTest {
         Assert.assertEquals(entity.getImage(), resultEntity.getImage());
         Assert.assertEquals(entity.getPrice(), resultEntity.getPrice());
         Assert.assertEquals(entity.getDescription(), resultEntity.getDescription());
+        Assert.assertEquals(entity.getArtistComment(), resultEntity.getArtistComment());
     }
 
     /**
@@ -260,6 +262,7 @@ public class StampLogicTest {
         Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
         Assert.assertEquals(pojoEntity.getPrice(), resp.getPrice());
         Assert.assertEquals(pojoEntity.getDescription(), resp.getDescription());
+        Assert.assertEquals(pojoEntity.getArtistComment(), resp.getArtistComment());
     }
 
     /**
@@ -332,4 +335,3 @@ public class StampLogicTest {
         Assert.assertNull(response);
     }
 }
-

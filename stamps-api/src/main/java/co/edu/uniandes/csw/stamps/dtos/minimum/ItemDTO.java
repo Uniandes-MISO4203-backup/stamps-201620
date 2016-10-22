@@ -36,6 +36,7 @@ public class ItemDTO implements Serializable{
     private Long id;
     private String name;
     private Long qty;
+    private Integer status;
 
     /**
      * @generated
@@ -54,6 +55,7 @@ public class ItemDTO implements Serializable{
         this.id=entity.getId();
         this.name=entity.getName();
         this.qty=entity.getQty();
+        this.status=entity.getStatus();
        }
     }
 
@@ -68,6 +70,7 @@ public class ItemDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setQty(this.getQty());
+        entity.setStatus(this.getStatus());
     return entity;
     }
 
@@ -129,6 +132,26 @@ public class ItemDTO implements Serializable{
      */
     public void setQty(Long qty) {
         this.qty = qty;
+    }
+    
+        /**
+     * Obtiene el atributo status.
+     *
+     * @return atributo status.
+     * @generated
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * Establece el valor del atributo status.
+     *
+     * @param status nuevo valor del atributo
+     * @generated
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
 }

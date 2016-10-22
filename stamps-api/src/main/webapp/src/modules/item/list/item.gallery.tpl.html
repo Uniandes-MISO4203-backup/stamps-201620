@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<div class="list">            
+    <div class="col-md-10">
+        <div ng-repeat="item in records">
+            <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px" class="col-md-4 col-sm-6 col-lg-3 well">
+                <div class="col-md-12">
+                    <div class="img-thumbnail" >
+                        <a ng-href="{{item.stamp.image}}" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{item.stamp.image}}"></a>
+                    </div>
+                </div>
+                <div class="caption" >
+                    <p><strong>Name: </strong> {{item.stamp.name}}</p>
+                    <p><strong>TShirt: </strong> {{item.tShirt.name}}</p>
+                    <p><strong>Price: </strong> {{item.stamp.price| currency}}</p>
+                     <p><strong>Quantity:</strong> {{item.qty}}</p>
+                     <p><strong>Description: </strong> {{item.stamp.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

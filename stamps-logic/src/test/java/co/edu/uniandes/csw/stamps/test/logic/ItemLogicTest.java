@@ -157,12 +157,12 @@ public class ItemLogicTest {
      * @generated
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 12; i++) {
             TShirtEntity tShirt = factory.manufacturePojo(TShirtEntity.class);
             em.persist(tShirt);
             tShirtData.add(tShirt);
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 12; i++) {
             StampEntity stamp = factory.manufacturePojo(StampEntity.class);
             em.persist(stamp);
             stampData.add(stamp);
@@ -171,12 +171,42 @@ public class ItemLogicTest {
         fatherEntity = factory.manufacturePojo(ClientEntity.class);
         fatherEntity.setId(1L);
         em.persist(fatherEntity);
+        
+        // Agregar datos genericos
         for (int i = 0; i < 3; i++) {
             ItemEntity entity = factory.manufacturePojo(ItemEntity.class);
             entity.setClient(fatherEntity);
 
             entity.setTShirt(tShirtData.get(0));
             entity.setStamp(stampData.get(0));
+
+            em.persist(entity);
+            data.add(entity);
+        }
+        
+         // Agregar datos para cartList
+        for (int i = 3; i < 7; i++) {
+            ItemEntity entity = factory.manufacturePojo(ItemEntity.class);
+            entity.setClient(fatherEntity);
+
+            entity.setTShirt(tShirtData.get(0));
+            entity.setStamp(stampData.get(0));
+            
+            entity.setStatus(1);
+
+            em.persist(entity);
+            data.add(entity);
+        }
+        
+        // Agregar datos para acquiredList
+        for (int i = 7; i < 12; i++) {
+            ItemEntity entity = factory.manufacturePojo(ItemEntity.class);
+            entity.setClient(fatherEntity);
+
+            entity.setTShirt(tShirtData.get(0));
+            entity.setStamp(stampData.get(0));
+            
+            entity.setStatus(2);
 
             em.persist(entity);
             data.add(entity);
@@ -207,6 +237,46 @@ public class ItemLogicTest {
     public void getItemsTest() {
         List<ItemEntity> list = itemLogic.getItems(fatherEntity.getId());
         Assert.assertEquals(data.size(), list.size());
+        for (ItemEntity entity : list) {
+            boolean found = false;
+            for (ItemEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+        /**
+     * Prueba para consultar la lista de Items del carrito
+     *
+     * @generated
+     */
+    @Test
+    public void getCartItemsTest() {
+        List<ItemEntity> list = itemLogic.getCartItems(fatherEntity.getId());
+        Assert.assertEquals(4, list.size());
+        for (ItemEntity entity : list) {
+            boolean found = false;
+            for (ItemEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+            /**
+     * Prueba para consultar la lista de Items adquiridos
+     *
+     * @generated
+     */
+    @Test
+    public void getAcquiredItemsTest() {
+        List<ItemEntity> list = itemLogic.getAcquiredItems(fatherEntity.getId());
+        Assert.assertEquals(5, list.size());
         for (ItemEntity entity : list) {
             boolean found = false;
             for (ItemEntity storedEntity : data) {

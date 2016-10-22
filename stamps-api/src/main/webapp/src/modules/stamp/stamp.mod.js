@@ -59,6 +59,11 @@ SOFTWARE.
                 type: 'String',
                 required: true
             },
+            artistComment:{
+                displayName: 'Artist Comment',
+                type: 'String',
+                required: true
+            },            
             popularity:{
                 displayName: 'popularity',
                 type: 'Long',

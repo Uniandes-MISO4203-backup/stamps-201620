@@ -124,6 +124,10 @@ public class ArtistIT {
         ArtistDTO actual_artist = detailPage.getData();
 
         Assert.assertEquals(expected_artist.getName(), actual_artist.getName());
+        Assert.assertEquals(expected_artist.getAddress(), actual_artist.getAddress());
+        Assert.assertEquals(expected_artist.getQualification(), actual_artist.getQualification());
+        Assert.assertEquals(expected_artist.getPopularity(), actual_artist.getPopularity());
+        Assert.assertEquals(expected_artist.getTelephone(), actual_artist.getTelephone());
     }
 
     @Test
@@ -138,6 +142,10 @@ public class ArtistIT {
         ArtistDTO actual_artist = detailPage.getData();
 
         Assert.assertEquals(expected_artist.getName(), actual_artist.getName());
+        Assert.assertEquals(expected_artist.getAddress(), actual_artist.getAddress());
+        Assert.assertEquals(expected_artist.getQualification(), actual_artist.getQualification());
+        Assert.assertEquals(expected_artist.getPopularity(), actual_artist.getPopularity());
+        Assert.assertEquals(expected_artist.getTelephone(), actual_artist.getTelephone());
     }
 
     @Test

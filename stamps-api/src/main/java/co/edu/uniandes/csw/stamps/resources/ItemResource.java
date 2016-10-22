@@ -86,7 +86,39 @@ public class ItemResource {
             this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
             return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientId));
         }
-        return listEntity2DTO(itemLogic.getItems(clientId));
+        return listEntity2DTO(itemLogic.getWishItems(clientId));
+    }
+    
+        /**
+     * Obtiene la lista de los registros de Item asociados al carrito de compras de un Client
+     *
+     * @return Colección de objetos de ItemBasicDTO
+     * @generated
+     */
+    @GET
+    @Path("/cart")
+    public List<ItemDetailDTO> getItemsCart() {
+        if (page != null && maxRecords != null) {
+            this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
+            return listEntity2DTO(itemLogic.getCartItems(page, maxRecords, clientId));
+        }
+        return listEntity2DTO(itemLogic.getCartItems(clientId));
+    }
+    
+            /**
+     * Obtiene la lista de los registros de Item asociados a las compras de un Client
+     *
+     * @return Colección de objetos de ItemBasicDTO
+     * @generated
+     */
+    @GET
+    @Path("/acquired")
+    public List<ItemDetailDTO> getItemsAcquired() {
+        if (page != null && maxRecords != null) {
+            this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
+            return listEntity2DTO(itemLogic.getAcquiredItems(page, maxRecords, clientId));
+        }
+        return listEntity2DTO(itemLogic.getAcquiredItems(clientId));
     }
 
     /**

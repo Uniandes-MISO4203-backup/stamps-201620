@@ -128,10 +128,33 @@ public class ItemTest {
         fatherClientEntity.setId(1L);
         em.persist(fatherClientEntity);
         
+        
+        // ingresar items del wishlist
         for (int i = 0; i < 3; i++) {            
             ItemEntity item = factory.manufacturePojo(ItemEntity.class);
             item.setId(i + 1L);
             item.setClient(fatherClientEntity);
+            item.setStatus(0);
+            em.persist(item);
+            oraculo.add(item);
+        }
+        
+        //ingresar items del cartlist
+        for (int i = 0; i < 4; i++) {            
+            ItemEntity item = factory.manufacturePojo(ItemEntity.class);
+            item.setId(i + 1L);
+            item.setClient(fatherClientEntity);
+            item.setStatus(1);
+            em.persist(item);
+            oraculo.add(item);
+        }
+        
+        //ingresar items del acquiredlist
+        for (int i = 0; i < 5; i++) {            
+            ItemEntity item = factory.manufacturePojo(ItemEntity.class);
+            item.setId(i + 1L);
+            item.setClient(fatherClientEntity);
+            item.setStatus(2);
             em.persist(item);
             oraculo.add(item);
         }
@@ -227,7 +250,7 @@ public class ItemTest {
     }
 
     /**
-     * Prueba para consultar la lista de Items
+     * Prueba para consultar la lista de Items del wishlist
      *
      * @generated
      */
@@ -243,6 +266,44 @@ public class ItemTest {
         List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listItemTest.size());
+    }
+    
+        /**
+     * Prueba para consultar la lista de Items del cartlist
+     *
+     * @generated
+     */
+    @Test
+    public void cartListItemTest() throws IOException {
+        Cookie cookieSessionId = login(username, password);
+        Response response = target
+            .path(clientPath).path(fatherClientEntity.getId().toString())
+            .path("cartList/cart")
+            .request().cookie(cookieSessionId).get();
+        
+        String listItem = response.readEntity(String.class);
+        List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
+        Assert.assertEquals(Ok, response.getStatus());
+        Assert.assertEquals(4, listItemTest.size());
+    }
+    
+            /**
+     * Prueba para consultar la lista de Items del acquiredlist
+     *
+     * @generated
+     */
+    @Test
+    public void acquiredListItemTest() throws IOException {
+        Cookie cookieSessionId = login(username, password);
+        Response response = target
+            .path(clientPath).path(fatherClientEntity.getId().toString())
+            .path("acquiredList/acquired")
+            .request().cookie(cookieSessionId).get();
+        
+        String listItem = response.readEntity(String.class);
+        List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
+        Assert.assertEquals(Ok, response.getStatus());
+        Assert.assertEquals(5, listItemTest.size());
     }
 
     /**

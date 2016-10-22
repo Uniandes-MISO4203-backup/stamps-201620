@@ -35,7 +35,8 @@ public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
-
+    private String address;
+    private Long telephone;
     /**
      * @generated
      */
@@ -52,6 +53,8 @@ public class ClientDTO implements Serializable{
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.address=entity.getAddress();
+        this.telephone=entity.getTelephone();        
        }
     }
 
@@ -65,6 +68,8 @@ public class ClientDTO implements Serializable{
         ClientEntity entity = new ClientEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setAddress(this.getAddress());
+        entity.setTelephone(this.getTelephone());
     return entity;
     }
 
@@ -107,5 +112,19 @@ public class ClientDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(Long telephone) {
+        this.telephone = telephone;
+    }    
 }

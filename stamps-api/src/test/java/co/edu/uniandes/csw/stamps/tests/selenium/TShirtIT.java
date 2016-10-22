@@ -124,6 +124,10 @@ public class TShirtIT {
         TShirtDTO actual_tShirt = detailPage.getData();
 
         Assert.assertEquals(expected_tShirt.getName(), actual_tShirt.getName());
+        Assert.assertEquals(expected_tShirt.getSize(), actual_tShirt.getSize());
+        Assert.assertEquals(expected_tShirt.getColor(), actual_tShirt.getColor());
+        Assert.assertEquals(expected_tShirt.getPrice(), actual_tShirt.getPrice());
+        Assert.assertEquals(expected_tShirt.getMaterial(), actual_tShirt.getMaterial());
     }
 
     @Test
@@ -138,6 +142,10 @@ public class TShirtIT {
         TShirtDTO actual_tShirt = detailPage.getData();
 
         Assert.assertEquals(expected_tShirt.getName(), actual_tShirt.getName());
+        Assert.assertEquals(expected_tShirt.getSize(), actual_tShirt.getSize());
+        Assert.assertEquals(expected_tShirt.getColor(), actual_tShirt.getColor());
+        Assert.assertEquals(expected_tShirt.getPrice(), actual_tShirt.getPrice());
+        Assert.assertEquals(expected_tShirt.getMaterial(), actual_tShirt.getMaterial());
     }
 
     @Test

@@ -72,4 +72,34 @@ public class ItemPersistence extends CrudPersistence<ItemEntity> {
         }
         return q.getResultList();
     }
+    
+    public List<ItemEntity> findAllWish(Integer page, Integer maxRecords, Long clientid) {
+        TypedQuery<ItemEntity> q = em.createQuery("select p from ItemEntity p where (p.client.id = :clientid) and (p.status = 0)", ItemEntity.class);
+        q.setParameter("clientid", clientid);
+        if (page != null && maxRecords != null) {
+            q.setFirstResult((page - 1) * maxRecords);
+            q.setMaxResults(maxRecords);
+        }
+        return q.getResultList();
+    }
+    
+        public List<ItemEntity> findAllCart(Integer page, Integer maxRecords, Long clientid) {
+        TypedQuery<ItemEntity> q = em.createQuery("select p from ItemEntity p where (p.client.id = :clientid) and (p.status = 1)", ItemEntity.class);
+        q.setParameter("clientid", clientid);
+        if (page != null && maxRecords != null) {
+            q.setFirstResult((page - 1) * maxRecords);
+            q.setMaxResults(maxRecords);
+        }
+        return q.getResultList();
+    }
+        
+        public List<ItemEntity> findAllAcquired(Integer page, Integer maxRecords, Long clientid) {
+        TypedQuery<ItemEntity> q = em.createQuery("select p from ItemEntity p where (p.client.id = :clientid) and (p.status = 2)", ItemEntity.class);
+        q.setParameter("clientid", clientid);
+        if (page != null && maxRecords != null) {
+            q.setFirstResult((page - 1) * maxRecords);
+            q.setMaxResults(maxRecords);
+        }
+        return q.getResultList();
+    }
 }

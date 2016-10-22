@@ -47,6 +47,8 @@ public class TShirtDetailPage {
     private WebElement color;
     @FindBy(id = "price")
     private WebElement price;
+    @FindBy(id = "material")
+    private WebElement material;
 
     public void list() {
         listBtn.click();
@@ -66,6 +68,7 @@ public class TShirtDetailPage {
         tShirt.setSize(size.getText());
         tShirt.setColor(color.getText());
         tShirt.setPrice(Long.parseLong(price.getText()));
+        tShirt.setMaterial(material.getText());
         return tShirt;
     }
 }

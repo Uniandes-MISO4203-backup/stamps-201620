@@ -139,6 +139,26 @@ public class ItemPersistenceTest {
             em.persist(entity);
             data.add(entity);
         }
+        
+        // agregar items del carrito
+                for (int i = 0; i < 4; i++) {
+            ItemEntity entity = factory.manufacturePojo(ItemEntity.class);
+            
+            entity.setClient(fatherEntity);
+            entity.setStatus(1);
+            em.persist(entity);
+            data.add(entity);
+        }
+                
+         // agregar items adquiridos
+                for (int i = 0; i < 5; i++) {
+            ItemEntity entity = factory.manufacturePojo(ItemEntity.class);
+            
+            entity.setClient(fatherEntity);
+            entity.setStatus(2);
+            em.persist(entity);
+            data.add(entity);
+        }
     }
     /**
      * Prueba para crear un Item.
@@ -169,6 +189,46 @@ public class ItemPersistenceTest {
     public void getItemsTest() {
         List<ItemEntity> list = itemPersistence.findAll(null, null, fatherEntity.getId());
         Assert.assertEquals(data.size(), list.size());
+        for (ItemEntity ent : list) {
+            boolean found = false;
+            for (ItemEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+       /**
+     * Prueba para consultar la lista de Items del carrito.
+     *
+     * @generated
+     */
+    @Test
+    public void getCartItemsTest() {
+        List<ItemEntity> list = itemPersistence.findAllCart(null, null, fatherEntity.getId());
+        Assert.assertEquals(4, list.size());
+        for (ItemEntity ent : list) {
+            boolean found = false;
+            for (ItemEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+           /**
+     * Prueba para consultar la lista de Items adquiridos.
+     *
+     * @generated
+     */
+    @Test
+    public void getAcquiredItemsTest() {
+        List<ItemEntity> list = itemPersistence.findAllAcquired(null, null, fatherEntity.getId());
+        Assert.assertEquals(5, list.size());
         for (ItemEntity ent : list) {
             boolean found = false;
             for (ItemEntity entity : data) {

@@ -49,6 +49,9 @@ public class StampDetailPage {
     @FindBy(id = "description")
     private WebElement description;
     
+    @FindBy(id = "artistComment")
+    private WebElement artistComment;
+    
     public void list() {
         listBtn.click();
     }
@@ -68,6 +71,7 @@ public class StampDetailPage {
         stamp.setPrice(Long.parseLong(price.getText()));
         //Test
         stamp.setDescription(description.getText());
+        stamp.setArtistComment(artistComment.getText());
         return stamp;
     }
 }

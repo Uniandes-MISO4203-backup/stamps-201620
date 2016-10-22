@@ -94,5 +94,27 @@ SOFTWARE.
                     }
                 }
             };
+            $scope.galleryActions = {
+                edit: {
+                    displayName: 'Edit',
+                    icon: 'edit',
+                    fn: function (rc) {
+                        $state.go('itemEdit', {itemId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                },
+                delete: {
+                    displayName: 'Delete',
+                    icon: 'minus',
+                    fn: function (rc) {
+                        $state.go('itemDelete', {itemId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                }
+            };
         }]);
 })(window.angular);

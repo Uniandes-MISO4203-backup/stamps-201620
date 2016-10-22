@@ -41,6 +41,12 @@ public class ClientDetailPage {
     
     @FindBy(id = "name")
     private WebElement name;
+    
+    @FindBy(id = "address")
+    private WebElement address;
+    
+    @FindBy(id = "telephone")
+    private WebElement telephone;
 
     public void list() {
         listBtn.click();
@@ -57,6 +63,8 @@ public class ClientDetailPage {
     public ClientDTO getData() {
         ClientDTO client = new ClientDTO();        
         client.setName(name.getText());
+        client.setAddress(address.getText());
+        client.setTelephone(Long.parseLong(telephone.getText()));
         return client;
     }
 }

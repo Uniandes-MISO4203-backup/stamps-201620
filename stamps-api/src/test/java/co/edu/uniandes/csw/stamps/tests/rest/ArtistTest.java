@@ -190,6 +190,10 @@ public class ArtistTest {
         
         ArtistDTO  artistTest = (ArtistDTO) response.readEntity(ArtistDTO.class);
         Assert.assertEquals(artist.getName(), artistTest.getName());
+        Assert.assertEquals(artist.getAddress(), artistTest.getAddress());
+        Assert.assertEquals(artist.getQualification(), artistTest.getQualification());
+        Assert.assertEquals(artist.getPopularity(), artistTest.getPopularity());
+        Assert.assertEquals(artist.getTelephone(), artistTest.getTelephone());
         Assert.assertEquals(Created, response.getStatus());
         ArtistEntity entity = em.find(ArtistEntity.class, artistTest.getId());
         Assert.assertNotNull(entity);
@@ -209,6 +213,10 @@ public class ArtistTest {
         
         Assert.assertEquals(artistTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(artistTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(artistTest.getAddress(), oraculo.get(0).getAddress());
+        Assert.assertEquals(artistTest.getQualification(), oraculo.get(0).getQualification());
+        Assert.assertEquals(artistTest.getPopularity(), oraculo.get(0).getPopularity());
+        Assert.assertEquals(artistTest.getTelephone(), oraculo.get(0).getTelephone());
     }
 
     /**
@@ -246,6 +254,10 @@ public class ArtistTest {
         ArtistDTO artistTest = (ArtistDTO) response.readEntity(ArtistDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(artist.getName(), artistTest.getName());
+        Assert.assertEquals(artist.getAddress(), artistTest.getAddress());
+        Assert.assertEquals(artist.getQualification(), artistTest.getQualification());
+        Assert.assertEquals(artist.getPopularity(), artistTest.getPopularity());
+        Assert.assertEquals(artist.getTelephone(), artistTest.getTelephone());
     }
     
     /**

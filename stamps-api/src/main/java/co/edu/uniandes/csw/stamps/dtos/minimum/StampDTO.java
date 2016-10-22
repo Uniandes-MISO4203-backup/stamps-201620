@@ -41,7 +41,8 @@ public class StampDTO implements Serializable{
     private short qualification;
     private String description;
     private Long popularity;
-
+    private String artistComment;
+    
     /**
      * @generated
      */
@@ -64,6 +65,7 @@ public class StampDTO implements Serializable{
             this.qualification=entity.getQualification();
             this.description=entity.getDescription();
             this.popularity=entity.getPopularity();
+            this.artistComment=entity.getArtistComment();
         }
     }
 
@@ -83,6 +85,7 @@ public class StampDTO implements Serializable{
         entity.setQualification(this.getQualification());
         entity.setDescription(this.getDescription());
         entity.setPopularity(this.getPopularity());
+        entity.setArtistComment(this.getArtistComment());
         return entity;
     }
 
@@ -200,6 +203,14 @@ public class StampDTO implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getArtistComment() {
+        return this.artistComment;
+    }
+
+    public void setArtistComment(String artistComment) {
+        this.artistComment = artistComment;
     }
     
         /**

@@ -80,6 +80,72 @@ public class ItemLogic implements IItemLogic {
     public List<ItemEntity> getItems(Integer page, Integer maxRecords, Long clientid) {
         return persistence.findAll(page, maxRecords, clientid);
     }
+    
+        /**
+     * Obtiene la lista de los registros de Item del wishlist que pertenecen a un Client indicando los datos para la paginación.
+     *
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getWishItems(Long clientid) {
+        return persistence.findAllWish(null, null, clientid);
+    }
+    
+    
+    
+        /**
+     * Obtiene la lista de los registros de Item del carrito de compras que pertenecen a un Client.
+     *
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getCartItems(Long clientid) {
+        return persistence.findAllCart(null, null,clientid);
+    }
+
+    /**
+     * Obtiene la lista de los registros de Item del carrito de compras que pertenecen a un Client indicando los datos para la paginación.
+     *
+     * @param page Número de página.
+     * @param maxRecords Número de registros que se mostraran en cada página.
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getCartItems(Integer page, Integer maxRecords, Long clientid) {
+        return persistence.findAllCart(page, maxRecords, clientid);
+    }
+    
+            /**
+     * Obtiene la lista de los registros de Item de compras que pertenecen a un Client.
+     *
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getAcquiredItems(Long clientid) {
+        return persistence.findAllAcquired(null, null,clientid);
+    }
+
+    /**
+     * Obtiene la lista de los registros de Items de compras que pertenecen a un Client indicando los datos para la paginación.
+     *
+     * @param page Número de página.
+     * @param maxRecords Número de registros que se mostraran en cada página.
+     * @param clientid id del Client el cual es padre de los Items.
+     * @return Colección de objetos de ItemEntity.
+     * @generated
+     */
+    @Override
+    public List<ItemEntity> getAcquiredItems(Integer page, Integer maxRecords, Long clientid) {
+        return persistence.findAllAcquired(page, maxRecords, clientid);
+    }
 
     /**
      * Obtiene los datos de una instancia de Item a partir de su ID.

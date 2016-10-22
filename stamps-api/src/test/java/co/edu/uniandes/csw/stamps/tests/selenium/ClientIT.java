@@ -124,6 +124,8 @@ public class ClientIT {
         ClientDTO actual_client = detailPage.getData();
 
         Assert.assertEquals(expected_client.getName(), actual_client.getName());
+        Assert.assertEquals(expected_client.getAddress(), actual_client.getAddress());
+        Assert.assertEquals(expected_client.getTelephone(), actual_client.getTelephone());
     }
 
     @Test
@@ -138,6 +140,8 @@ public class ClientIT {
         ClientDTO actual_client = detailPage.getData();
 
         Assert.assertEquals(expected_client.getName(), actual_client.getName());
+        Assert.assertEquals(expected_client.getAddress(), actual_client.getAddress());
+        Assert.assertEquals(expected_client.getTelephone(), actual_client.getTelephone());
     }
 
     @Test
