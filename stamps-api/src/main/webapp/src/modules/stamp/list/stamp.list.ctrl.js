@@ -28,7 +28,6 @@ SOFTWARE.
     mod.controller("stampListCtrl", ["$scope", '$state', 'stamps', '$stateParams','Restangular',
         function ($scope, $state, stamps, $params,Restangular) {
             $scope.records = stamps;
-
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
@@ -42,11 +41,28 @@ SOFTWARE.
                     } 
                 });
             };
+            $scope.Reload=function()
+            {
+        $state.reload();
+            };
+            $scope.startGallery=function(response) {
+                $scope.records=response;
+					 angular.element('#owl-demo1').owlCarousel({
+						items : 4,
+						lazyLoad : true,
+						autoPlay : true,
+						pagination : true,
+					});
+                                       
+				};
             $scope.filtrar = function (parentCategory) {
                 $scope.getCategorys(parentCategory);
-                Restangular.all("stamps").customGET(parentCategory).then(function (response) {                    
-                        $scope.records=response;
+                Restangular.all("stamps").customGET(parentCategory).then(function (response) {                        
+                    $scope.startGallery(response);
+                    
+                    
                 });
+             
             };
             $scope.getCategorys("");
 

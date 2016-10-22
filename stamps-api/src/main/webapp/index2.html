@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2015 Los Andes University
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<html ng-app="mainApp">
+    <head>
+        <title>Stamps</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css(<%= meta.src %>) styles/vendor.css -->
+        <!-- bower:css -->
+      <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    
+    
+
+    <!-- Plugin CSS -->
+    <link href="styles/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+   <link href="styles/css/creative.css" rel="stylesheet">
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css(<%= meta.src %>) styles/main.css -->
+        <!-- include: "type": "css", "files": "<%= meta.includeCssFiles %>" -->
+        <!-- /include -->
+        <!-- endbuild -->
+
+        <!-- build:js(<%= meta.src %>) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/lodash/lodash.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/ng-crud/dist/ngcrud.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/checklist-model/checklist-model.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/csw-ng-auth/dist/csw-ng-auth.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js(<%= meta.src %>) scripts/scripts.js -->
+        <!-- include: "type": "js", "files": "<%= meta.includeJsFiles %>" -->
+        <script src="src/app.js"></script>
+        <script src="src/auth.js"></script>
+        <script src="src/modules/client/client.mod.js"></script>
+        <script src="src/modules/item/item.mod.js"></script>
+        <script src="src/modules/tShirt/tShirt.mod.js"></script>
+        <script src="src/modules/stamp/stamp.mod.js"></script>
+        <script src="src/modules/artist/artist.mod.js"></script>
+        <script src="src/modules/category/category.mod.js"></script>
+        <script src="src/modules/client/client.ctrl.js"></script>
+        <script src="src/modules/client/instance/delete/client.delete.ctrl.js"></script>
+        <script src="src/modules/client/instance/detail/client.detail.ctrl.js"></script>
+        <script src="src/modules/client/instance/edit/client.edit.ctrl.js"></script>
+        <script src="src/modules/client/list/client.list.ctrl.js"></script>
+        <script src="src/modules/client/new/client.new.ctrl.js"></script>
+        <script src="src/modules/item/item.ctrl.js"></script>
+        <script src="src/modules/item/instance/delete/item.delete.ctrl.js"></script>
+        <script src="src/modules/item/instance/detail/item.detail.ctrl.js"></script>
+        <script src="src/modules/item/instance/edit/item.edit.ctrl.js"></script>
+        <script src="src/modules/item/list/item.list.ctrl.js"></script>
+        <script src="src/modules/item/new/item.new.ctrl.js"></script>
+        <script src="src/modules/tShirt/tShirt.ctrl.js"></script>
+        <script src="src/modules/tShirt/instance/delete/tShirt.delete.ctrl.js"></script>
+        <script src="src/modules/tShirt/instance/detail/tShirt.detail.ctrl.js"></script>
+        <script src="src/modules/tShirt/instance/edit/tShirt.edit.ctrl.js"></script>
+        <script src="src/modules/tShirt/list/tShirt.list.ctrl.js"></script>
+        <script src="src/modules/tShirt/new/tShirt.new.ctrl.js"></script>
+        <script src="src/modules/stamp/stamp.ctrl.js"></script>
+        <script src="src/modules/stamp/instance/category/edit/stamp.category.edit.ctrl.js"></script>
+        <script src="src/modules/stamp/instance/category/list/stamp.category.list.ctrl.js"></script>
+        <script src="src/modules/stamp/instance/delete/stamp.delete.ctrl.js"></script>
+        <script src="src/modules/stamp/instance/detail/stamp.detail.ctrl.js"></script>
+        <script src="src/modules/stamp/instance/edit/stamp.edit.ctrl.js"></script>
+        <script src="src/modules/stamp/list/stamp.list.ctrl.js"></script>
+        <script src="src/modules/stamp/new/stamp.new.ctrl.js"></script>
+        <script src="src/modules/artist/artist.ctrl.js"></script>
+        <script src="src/modules/artist/instance/delete/artist.delete.ctrl.js"></script>
+        <script src="src/modules/artist/instance/detail/artist.detail.ctrl.js"></script>
+        <script src="src/modules/artist/instance/edit/artist.edit.ctrl.js"></script>
+        <script src="src/modules/artist/list/artist.list.ctrl.js"></script>
+        <script src="src/modules/artist/new/artist.new.ctrl.js"></script>
+        <script src="src/modules/category/category.ctrl.js"></script>
+        <script src="src/modules/category/instance/delete/category.delete.ctrl.js"></script>
+        <script src="src/modules/category/instance/detail/category.detail.ctrl.js"></script>
+        <script src="src/modules/category/instance/edit/category.edit.ctrl.js"></script>
+        <script src="src/modules/category/list/category.list.ctrl.js"></script>
+        <script src="src/modules/category/new/category.new.ctrl.js"></script>
+        <!-- /include -->
+        <!-- endbuild -->
+
+    </head>
+   <body id="page-top">
+       <!--AGREGADO POR MI-->
+   
+<!-- Agregado por mi-->
+
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">STAMPS</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul ng-controller="roleCtrl" class="nav navbar-nav">
+                                <li ng-if="client"><a ui-sref="clientList">Client</a></li>
+                                <li ng-if="tShirt"><a ui-sref="tShirtList">T Shirt</a></li>
+                                <li ng-if="artist"><a ui-sref="artistList">Artist</a></li>
+                                <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
+                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                                <login-button></login-button>
+                 </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+           
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+ <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                      <div ui-view="mainView"></div>
+                </div>
+            </div>
+        </div>
+             
+
+   
+
+  
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!--<script src="styles/vendor/scrollreveal/scrollreveal.min.js"></script>-->
+    <!--<script src="styles/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>-->
+
+    <!-- Theme JavaScript -->
+    <script src="styles/js/creative.min.js"></script>
+
+</body>
+
+</html>
