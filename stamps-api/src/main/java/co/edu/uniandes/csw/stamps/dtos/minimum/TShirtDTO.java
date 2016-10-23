@@ -53,13 +53,13 @@ public class TShirtDTO implements Serializable{
      * @generated
      */
     public TShirtDTO(TShirtEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.size=entity.getSize();
-        this.color=entity.getColor();
-        this.price=entity.getPrice();
-        this.material=entity.getMaterial();
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.size=entity.getSize();
+            this.color=entity.getColor();
+            this.price=entity.getPrice();
+            this.material=entity.getMaterial();
        }
     }
 
