@@ -53,13 +53,13 @@ public class ArtistDTO implements Serializable{
      * @generated
      */
     public ArtistDTO(ArtistEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.address=entity.getAddress();
-        this.telephone=entity.getTelephone();
-        this.qualification=entity.getQualification();
-        this.popularity=entity.getPopularity();        
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.address=entity.getAddress();
+            this.telephone=entity.getTelephone();
+            this.qualification=entity.getQualification();
+            this.popularity=entity.getPopularity();        
        }
     }
 
