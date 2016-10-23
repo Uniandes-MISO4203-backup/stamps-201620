@@ -51,11 +51,11 @@ public class ItemDTO implements Serializable{
      * @generated
      */
     public ItemDTO(ItemEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.qty=entity.getQty();
-        this.status=entity.getStatus();
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.qty=entity.getQty();
+            this.status=entity.getStatus();
        }
     }
 
