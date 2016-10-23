@@ -25,9 +25,11 @@ SOFTWARE.
 
     var mod = ng.module("tShirtModule");
 
-    mod.controller("tShirtDetailCtrl", ['$scope', "$state", "tShirt",
-        function ($scope, $state, tShirt) {
+    mod.controller("tShirtDetailCtrl", ['$scope', "$rootScope", "$state", "tShirt",
+        function ($scope, $rootScope, $state, tShirt) {
             $scope.currentRecord = tShirt;
+            
+            if ($rootScope.authenticated == true){
             $scope.actions = {
                 create: {
                     displayName: 'Create',
@@ -64,6 +66,24 @@ SOFTWARE.
                         $state.go('tShirtList');
                     }
                 }
-            };
+            };}
+        else {
+            $scope.actions = {
+                refresh: {
+                    displayName: 'Refresh',
+                    icon: 'refresh',
+                    fn: function () {
+                        $state.reload();
+                    }
+                },
+                list: {
+                    displayName: 'List',
+                    icon: 'th-list',
+                    fn: function () {
+                        $state.go('tShirtList');
+                    }
+                }
+            };            
+        }
         }]);
 })(window.angular);

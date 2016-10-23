@@ -25,8 +25,8 @@ SOFTWARE.
 
     var mod = ng.module("tShirtModule");
 
-    mod.controller("tShirtListCtrl", ["$scope", '$state', 'tShirts', '$stateParams',
-        function ($scope, $state, tShirts, $params) {
+    mod.controller("tShirtListCtrl", ["$scope", "$rootScope", '$state', 'tShirts', '$stateParams',
+        function ($scope, $rootScope, $state, tShirts, $params) {
             $scope.records = tShirts;
 
             //Paginación
@@ -37,6 +37,30 @@ SOFTWARE.
             this.pageChanged = function () {
                 $state.go('tShirtList', {page: this.currentPage});
             };
+
+            if ($rootScope.authenticated == false){
+            $scope.actions = {
+                refresh: {
+                    displayName: 'Refresh',
+                    icon: 'refresh',
+                    fn: function () {
+                        $state.reload();
+                    }
+                }            };
+            $scope.recordActions = {
+                detail: {
+                    displayName: 'Detail',
+                    icon: 'eye-open',
+                    fn: function (rc) {
+                        $state.go('tShirtDetail', {tShirtId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                }
+            };
+                
+            }else{
 
             $scope.actions = {
                 create: {
@@ -84,6 +108,6 @@ SOFTWARE.
                         return true;
                     }
                 }
-            };
+            };}
         }]);
 })(window.angular);
