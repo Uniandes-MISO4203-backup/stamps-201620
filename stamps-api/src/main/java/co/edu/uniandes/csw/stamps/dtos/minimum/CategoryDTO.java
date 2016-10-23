@@ -49,9 +49,9 @@ public class CategoryDTO implements Serializable{
      * @generated
      */
     public CategoryDTO(CategoryEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
        }
     }
 
