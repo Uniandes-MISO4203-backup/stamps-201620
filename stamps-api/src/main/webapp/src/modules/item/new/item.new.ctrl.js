@@ -35,6 +35,7 @@ SOFTWARE.
                     icon: 'save',
                     fn: function () {
                         if ($scope.itemForm.$valid) {
+                            $scope.currentRecord.status = 0;
                             items.post($scope.currentRecord).then(function (rc) {
                                 $state.go('itemDetail', {itemId: rc.id}, {reload: true});
                             });
