@@ -9,7 +9,9 @@
                         $rootScope.artist = false;
                         $rootScope.client = false;
                         $rootScope.tShirt = false;
+                        $rootScope.authenticated = false;
                     } else {
+                        $rootScope.authenticated = true;
                         var roles = $rootScope.roles = response.roles;
                         var isFreelance = false;
                         if (roles.indexOf("client") !== -1) {
