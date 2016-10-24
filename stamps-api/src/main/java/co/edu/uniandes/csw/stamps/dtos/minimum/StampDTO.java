@@ -42,6 +42,7 @@ public class StampDTO implements Serializable{
     private String description;
     private Long popularity;
     private String artistComment;
+    private String comments;
 
     /**
      * @generated
@@ -65,6 +66,8 @@ public class StampDTO implements Serializable{
             this.qualification=entity.getQualification();
             this.description=entity.getDescription();
             this.popularity=entity.getPopularity();
+            this.artistComment=entity.getArtistComment();
+            this.comments=entity.getComments();
         }
     }
 
@@ -85,9 +88,9 @@ public class StampDTO implements Serializable{
         entity.setDescription(this.getDescription());
         entity.setPopularity(this.getPopularity());
         entity.setArtistComment(this.getArtistComment());
+        entity.setComments(this.getComments());
         return entity;
     }
-
     /**
      * Obtiene el atributo id.
      *
@@ -97,7 +100,6 @@ public class StampDTO implements Serializable{
     public Long getId() {
         return id;
     }
-
     /**
      * Establece el valor del atributo id.
      *
@@ -107,7 +109,6 @@ public class StampDTO implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-
     /**
      * Obtiene el atributo name.
      *
@@ -117,7 +118,6 @@ public class StampDTO implements Serializable{
     public String getName() {
         return name;
     }
-
     /**
      * Establece el valor del atributo name.
      *
@@ -127,7 +127,6 @@ public class StampDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-
     /**
      * Obtiene el atributo image.
      *
@@ -137,7 +136,6 @@ public class StampDTO implements Serializable{
     public String getImage() {
         return image;
     }
-
     /**
      * Establece el valor del atributo image.
      *
@@ -147,7 +145,6 @@ public class StampDTO implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-
     /**
      * Obtiene el atributo price.
      *
@@ -157,7 +154,6 @@ public class StampDTO implements Serializable{
     public Long getPrice() {
         return price;
     }
-
     /**
      * Establece el valor del atributo price.
      *
@@ -167,15 +163,24 @@ public class StampDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
-   
+    /**
+     * Obtiene el atributo AvailableForSale.
+     *
+     * @return atributo AvailableForSale.
+     * @generated
+     */   
     public boolean isAvailableForSale() {
         return availableForSale;
     }
-
+    /**
+     * Establece el valor del atributo AvailableForSale.
+     *
+     * @param AvailableForSale nuevo valor del atributo
+     * @generated
+     */
     public void setAvailableForSale(boolean availableForSale) {
         this.availableForSale = availableForSale;
     }
-    
     /**
      * Obtiene el atributo qualification.
      *
@@ -185,7 +190,6 @@ public class StampDTO implements Serializable{
     public short getQualification() {
         return qualification;
     }
-
     /**
      * Establece el valor del atributo qualification.
      *
@@ -195,25 +199,44 @@ public class StampDTO implements Serializable{
     public void setQualification(short qualification) {
         this.qualification = qualification;
     }
-
+    /**
+     * Obtiene el atributo description.
+     *
+     * @return atributo description.
+     * @generated
+     */
     public String getDescription() {
         return this.description;
     }
-
+    /**
+     * Establece el valor del atributo description.
+     *
+     * @param description nuevo valor del atributo
+     * @generated
+     */
     public void setDescription(String description) {
         this.description = description;
     }
-    
+    /**
+     * Obtiene el atributo artistComment.
+     *
+     * @return atributo artistComment.
+     * @generated
+     */    
     public String getArtistComment() {
         return this.artistComment;
     }
-
+    /**
+     * Establece el valor del atributo artistComment.
+     *
+     * @param artistComment nuevo valor del atributo
+     * @generated
+     */
     public void setArtistComment(String artistComment) {
         this.artistComment = artistComment;
     }
-    
-        /**
-     * Obtiene el atributo Popularity.
+    /**
+     * Obtiene el atributo popularity.
      *
      * @return atributo popularity.
      * @generated
@@ -221,14 +244,31 @@ public class StampDTO implements Serializable{
     public Long getPopularity() {
         return popularity;
     }
-
     /**
-     * Establece el valor del atributo price.
+     * Establece el valor del atributo popularity.
      *
      * @param popularity nuevo valor del atributo
      * @generated
      */
     public void setPopularity(Long popularity) {
         this.popularity = popularity;
+    }
+    /**
+     * Obtiene el atributo comments.
+     *
+     * @return atributo comments.
+     * @generated
+     */
+    public String getComments() {
+        return comments;
+    }
+      /**
+     * Establece el valor del atributo comments.
+     *
+     * @param comments nuevo valor del atributo
+     * @generated
+     */
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }
