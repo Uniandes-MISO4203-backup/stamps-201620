@@ -45,6 +45,7 @@ public class StampEntity extends BaseEntity implements Serializable {
     private String description;
     private String artistComment;
     private Long popularity;
+    private String comments;
 
     @PodamExclude
     @ManyToOne
@@ -199,12 +200,34 @@ public class StampEntity extends BaseEntity implements Serializable {
     public void setArtistComment(String artistComment) {
         this.artistComment = artistComment;
     }
-    
+    /**
+     *Obtiene el valor de popularity 
+     * @return atributo popularity
+     */
     public Long getPopularity(){
         return this.popularity;
     }
-  
+     /**
+     * Establece el valor de popularity 
+     * 
+     * @param popularity nuevo valor del atributo
+    */
     public void setPopularity(Long popularity){
         this.popularity = popularity;
+    }
+    /**
+     *Obtiene el valor de comments 
+     * @return atributo comments
+     */
+    public String getComments() {
+        return comments;
+    }
+    /**
+     * Establece el valor de comments 
+     * 
+     * @param comments nuevo valor del atributo
+    */
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }
