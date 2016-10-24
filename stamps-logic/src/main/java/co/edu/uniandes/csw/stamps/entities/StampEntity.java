@@ -45,19 +45,10 @@ public class StampEntity extends BaseEntity implements Serializable {
     private String description;
     private String artistComment;
     private Long popularity;
-    private Long artist_id;
 
     @PodamExclude
     @ManyToOne
     private ArtistEntity artist;
-    
-    public Long getArtist_id() {
-        return artist_id;
-    }
-
-    public void setArtist_id(Long artist_id) {
-        this.artist_id = artist_id;
-    }
 
     @PodamExclude
     @ManyToMany
@@ -212,8 +203,7 @@ public class StampEntity extends BaseEntity implements Serializable {
     public Long getPopularity(){
         return this.popularity;
     }
-
-    
+  
     public void setPopularity(Long popularity){
         this.popularity = popularity;
     }
