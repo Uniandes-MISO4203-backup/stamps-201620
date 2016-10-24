@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'artist',
         displayName: 'Artist',
 		url: 'artists',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
