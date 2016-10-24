@@ -27,7 +27,7 @@
                         <div class="item" ng-repeat="stamp in records">
                             <div class=" box-in">
                                 <div class=" grid_box">		
-                                    <a ng-href="http://localhost:8080/stamps-api/index.html#/artists/{{stamp.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
+                                    <a ui-sref="clientList" ng-href="#/artists/{{stamp.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
                                         <div class="zoom-icon">
                                             <ul class="in-by">
                                                     <li><h5>Name:</h5></li>                     
