@@ -72,7 +72,7 @@ SOFTWARE.
             comments:{
                 displayName: 'Comments',
                 type: 'String',
-                required: false
+                required: true
             }
         }
     });
