@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <script src="js/owl.carousel.js"></script>
-			<script>
-				$(document).ready(function() {
-					$("#owl-demo1").owlCarousel({
-						items : 4,
-						lazyLoad : true,
-						autoPlay : true,
-						pagination : true,
-					});
-				});
-			</script>
+<script>
+    $(document).ready(function() {
+        $("#owl-demo1").owlCarousel({
+            items : 4,
+            lazyLoad : true,
+            autoPlay : true,
+            pagination : true,
+        });
+    });
+</script>
 <div class="list">            
     <div ng-if="true" class="col-md-2 well" >
         <h4>Categorías</h4>
@@ -20,41 +20,33 @@
     </div>
     <div class="content">
 	<div class="container">
-		<div class="content-top">
+            <div class="content-top">
 		<h2 class="new">Stamps gallery</h2>
 		<div class="pink">
-    
-    	<div id="owl-demo1" class="owl-carousel text-center" >
-            <div class="item" ng-repeat="stamp in records">
-                <div class=" box-in">
-                    <div class=" grid_box">		
-                        <a ng-href="http://localhost:8080/stamps-api/index.html#/artists/{{stamp.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
-                            <div class="zoom-icon">
-                                <ul class="in-by">
-                                        <li><h5>Name:</h5></li>                     
-                                        <li><span>{{stamp.name}}</span></li>
-                                </ul>					
-                            </div> 
-                        </a> 	
-                    </div>					
-                    <div class="grid_1 simpleCart_shelfItem">
-                            <a href="#" class="cup item_add"><span class=" item_price" >{{stamp.price| currency}} <i> </i> </span></a>					
-                    </div>
-                    <div class="grid_2 Commentary">
-                        <a class="cup item_add"><textarea rows="4" cols="33" style=""> </textarea> 
-                            <button> COMMENT </button>
-                        </a>					
-                    </div>
-                </div>
-            </div>
-                
-        </div>
-    
-    
-    
-    
-    
-    
+                    <div id="owl-demo1" class="owl-carousel text-center" >
+                        <div class="item" ng-repeat="stamp in records">
+                            <div class=" box-in">
+                                <div class=" grid_box">		
+                                    <a ng-href="http://localhost:8080/stamps-api/index.html#/artists/{{stamp.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
+                                        <div class="zoom-icon">
+                                            <ul class="in-by">
+                                                    <li><h5>Name:</h5></li>                     
+                                                    <li><span>{{stamp.name}}</span></li>
+                                            </ul>					
+                                        </div> 
+                                    </a> 	
+                                </div>					
+                                <div class="grid_1 simpleCart_shelfItem">
+                                        <a href="#" class="cup item_add"><span class=" item_price" >{{stamp.price| currency}} <i> </i> </span></a>					
+                                </div>
+                                <div class="grid_2 Commentary">
+                                    <a class="cup item_add"><textarea rows="4" cols="33" style=""> </textarea> 
+                                        <button> COMMENT </button>
+                                    </a>					
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
     <!--<div class="col-md-10">
         <div ng-repeat="stamp in records">
             <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px" class="col-md-4 col-sm-6 col-lg-3 well">
@@ -75,6 +67,6 @@
             </div>
         </div>
     </div>   -->
-</div>
-</div>
+                </div>
+            </div>
         </div>
