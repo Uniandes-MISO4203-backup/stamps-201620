@@ -68,11 +68,6 @@ SOFTWARE.
                 displayName: 'popularity',
                 type: 'Long',
                 required: true
-            },
-            artist_id:{
-                displayName: 'artist_ID',
-                type: 'Long',
-                required: true
             }
         }
     });
