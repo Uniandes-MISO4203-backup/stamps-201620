@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'item',
         displayName: 'Item',
 		url: 'wishList',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -51,7 +52,8 @@ SOFTWARE.
                 model: 'stampModel',
                 options: [],
                 required: true
-            }        }
+            }        
+        }
     });
 
     mod.config(['$stateProvider',
