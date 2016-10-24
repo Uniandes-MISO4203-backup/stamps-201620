@@ -51,7 +51,7 @@ SOFTWARE.
             },
             qualification:{
                 displayName: 'Qualification',
-                type: 'short',
+                type: 'Integer',
                 required: false   
             },
             description:{
@@ -65,9 +65,14 @@ SOFTWARE.
                 required: true
             },            
             popularity:{
-                displayName: 'popularity',
+                displayName: 'Popularity',
                 type: 'Long',
                 required: true
+            },
+            comments:{
+                displayName: 'Comments',
+                type: 'String',
+                required: false
             }
         }
     });
