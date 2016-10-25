@@ -43,12 +43,12 @@ SOFTWARE.
               <ul class="list-group">
                 <li class="list-group-item">Name: {{currentRecord.name}}</li>
                 <li class="list-group-item">Price {{currentRecord.price|currency}}</li>
-                <li class="list-group-item"ng-hide="{{!currentRecord.availableForSale}}">Avaliable</li>
-                <li class="list-group-item" >qualification  <div star-rating rating-value="currentRecord.qualification" max="currentRecord.qualification"> </div> </li>
-                <li class="list-group-item">description {{currentRecord.description}} </li>
-                <li class="list-group-item">comment {{currentRecord.artistComment}} </li>
-                <li class="list-group-item">popularity  <img src="images/like.png" height="22" width="22"/>= {{currentRecord.popularity}}</li>
-
+                <li class="list-group-item"ng-hide="{{!currentRecord.availableForSale}}">Available</li>
+                <li class="list-group-item" >qualification:  <div star-rating rating-value="currentRecord.qualification" max="currentRecord.qualification"> </div> </li>
+                <li class="list-group-item">description: </br> {{currentRecord.description}} </li>
+                <li class="list-group-item">comment Artist: </br>{{currentRecord.artistComment}} </li>
+                <li class="list-group-item">popularity <img src="images/like.png" height="22" width="22"/>= {{currentRecord.popularity}}</li>
+                <li class="list-group-item">comments User: </br> {{currentRecord.comments}}</li>
               </ul>
             </div>
           </div>
