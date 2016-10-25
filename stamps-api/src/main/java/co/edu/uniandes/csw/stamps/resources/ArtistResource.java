@@ -108,7 +108,7 @@ public class ArtistResource {
                 }
             }
         } 
-        return null;
+         return listEntity2DTO(artistLogic.getArtists(page, maxRecords));
         
     }
 
@@ -177,6 +177,12 @@ public class ArtistResource {
     public Class<StampResource> getStampResource(@PathParam("artistId") Long artistId){
         existsArtist(artistId);
         return StampResource.class;
+    }
+    
+     @GET
+    @Path("/HighlightedArtist")
+    public List<ArtistDetailDTO> getHighlighted() {
+           return listEntity2DTO(artistLogic.getHighlighted());
     }
     
 }

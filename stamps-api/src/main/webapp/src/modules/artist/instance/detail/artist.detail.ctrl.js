@@ -27,8 +27,10 @@ SOFTWARE.
 
     mod.controller("artistDetailCtrl", ['$scope', "$state", "artist",'$rootScope',
         function ($scope, $state, artist,$rootScope) {
+             $scope.actions = {}
             $scope.currentRecord = artist;
             var roles = $rootScope.roles;
+            if($rootScope.authenticated){
             $scope.actions = {
                 create: {
                     displayName: 'Create',
@@ -78,6 +80,6 @@ SOFTWARE.
                         $state.go('stampList');
                     }
                 }
-            };
+            };}
         }]);
 })(window.angular);

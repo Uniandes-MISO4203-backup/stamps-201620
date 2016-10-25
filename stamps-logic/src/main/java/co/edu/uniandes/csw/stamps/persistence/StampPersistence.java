@@ -86,5 +86,29 @@ public class StampPersistence extends CrudPersistence<StampEntity> {
         public List<StampEntity> findAllNoPage() {
         TypedQuery<StampEntity> q = em.createQuery("select p from StampEntity p where (1 = 1)", StampEntity.class);
         return q.getResultList();
+        }
+
+     public List<StampEntity> getHighlighted() {
+         List<StampEntity> retorno=executeListNamedQuery("Stamp.getHighlighted");
+         if(retorno.size()>=4)
+         {
+             return retorno.subList(0, 4);
+         }else
+         {
+          return retorno;   
+         }
+         
+    }
+     
+     public List<StampEntity> getLatest() {
+         List<StampEntity> retorno=executeListNamedQuery("Stamp.getLatest");
+         if(retorno.size()>=4)
+         {
+             return retorno.subList(0, 4);
+         }else
+         {
+          return retorno;   
+         }
+
     }
 }

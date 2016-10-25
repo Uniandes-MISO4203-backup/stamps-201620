@@ -42,4 +42,7 @@ public interface IStampLogic {
     public List<CategoryEntity> replaceCategory(Long stampId, List<CategoryEntity> list);
     public void removeCategory(Long stampId, Long categoryId);
     public List<StampEntity> getStampsAll();
+    public List<StampEntity> getHighlighted();
+    public List<StampEntity> getLatest();
+
 }

@@ -24,9 +24,9 @@ SOFTWARE.
 (function (ng) {
     var mod = ng.module('mainApp');
 
-    mod.controller('storeCtrl', ['$scope', 'Restangular',
-        function ($scope,r) {
-           // $scope.model = model;
+    mod.controller('storeCtrl', ['$scope', 'Restangular', '$rootScope',
+        function ($scope,r, items, $rootScope) {
+            //console.log($rootScope.authenticated);
             //Alertas
             $scope.alerts = [];
             this.closeAlert = function (index) {
@@ -44,6 +44,13 @@ SOFTWARE.
             });
             
             console.log($scope.stamps);
+            
+            $scope.addToWishList = function(stamp){
+                var obj = {stamp:stamp,tShirt: $scope.shirts[0],name:"item",qty:1,status:0};
+                            items.post(obj).then(function (rc) {
+                                alert("Item added to Wish List");
+                            });
+            }
 
             /* Función showMessage: Recibe el mensaje en String y
              * su tipo con el fin de almacenarlo en el array $scope.alerts.

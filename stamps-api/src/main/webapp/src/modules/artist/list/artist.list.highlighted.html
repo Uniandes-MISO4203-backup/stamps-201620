@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="container">
+<div class="resume">
+    <header class="page-header">
+    <h1 class="page-title">Best artist </h1>
+  </header>
+<div class="row" ng-repeat="artist in highLightedArtist">
+  <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading resume-heading">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-xs-12 col-sm-4">
+              <figure>
+                <img class="img-circle img-responsive" alt="" src="http://placehold.it/300x300">
+              </figure>
+              
+            </div>
+
+            <div class="col-xs-12 col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">Name:{{artist.name}}</li>
+                <li class="list-group-item">Address:{{artist.address}}</li>
+                <li class="list-group-item">Telephone:{{artist.telephone}} </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+    
+</div>
+
+</div>

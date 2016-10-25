@@ -109,6 +109,7 @@ public class RootStampResource {
         return listEntity2DTO(stampLogic.getStampByCategory(null,null,categoryid));
     }
     
+
         
         /**
      * Obtiene la lista de los registros de Stamp
@@ -123,4 +124,17 @@ public class RootStampResource {
             return listEntity2DTO(stampLogic.getStampsAll());
         
     }
+
+    @GET
+    @Path("/HighlightedStamps")
+    public List<StampDetailDTO> getHighlighted() {
+           return listEntity2DTO(stampLogic.getHighlighted());
+    }
+    
+    @GET
+    @Path("/latestStamps")
+    public List<StampDetailDTO> getLatest() {
+           return listEntity2DTO(stampLogic.getLatest());
+    }
+
 }

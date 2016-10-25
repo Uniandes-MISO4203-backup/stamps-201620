@@ -247,4 +247,12 @@ public class StampLogic implements IStampLogic {
     public List<StampEntity> getStampsAll() {
        return persistence.findAllNoPage();
     }
+
+     public List<StampEntity> getHighlighted() {
+        return persistence.getHighlighted();
+    }
+     
+     public List<StampEntity> getLatest() {
+        return persistence.getLatest();
+    }
 }

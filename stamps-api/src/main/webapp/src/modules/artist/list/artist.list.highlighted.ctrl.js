@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,6 +20,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}} </alert>
-<div ui-view="stampView"></div>
+*/
+(function (ng) {
+
+    var mod = ng.module("artistModule");
+
+    mod.controller("artistListHighLightedCtrl", ["$scope", '$state', 'artists', '$stateParams','$rootScope','Restangular',
+        function ($scope, $state, artists, $params,$rootScope,Restangular) {
+            $scope.highLightedArtist = artists;
+            $scope.getHighlightedArtist = function () {
+                Restangular.all("artists").customGET('HighlightedArtist/').then(function (response) {
+                    if (response.length>0) {
+                        console.log(response);
+                          $scope.highLightedArtist=response;
+                        
+                    } 
+                });
+            };
+            $scope.getHighlightedArtist();
+            
+           
+        }]);
+})(window.angular);

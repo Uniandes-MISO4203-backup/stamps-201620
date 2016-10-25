@@ -25,9 +25,11 @@ SOFTWARE.
 
     var mod = ng.module("stampModule");
 
-    mod.controller("stampDetailCtrl", ['$scope', "$state", "stamp",
-        function ($scope, $state, stamp) {
+    mod.controller("stampDetailCtrl", ['$scope',"$rootScope", "$state", "stamp",
+        function ($scope,$rootScope, $state, stamp) {
             $scope.currentRecord = stamp;
+            $scope.actions={};
+            if($rootScope.authenticated){
             $scope.actions = {
                 create: {
                     displayName: 'Create',
@@ -71,6 +73,28 @@ SOFTWARE.
                         $state.go('stampCategoryList');
                     }
                 }
-            };
+            };}
         }]);
+   mod.directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="star">' +
+            '<li ng-repeat="star in stars">'  +
+            '<a href="#"><i> </i> </a>'+
+            '</li>' +
+            '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '='
+        },
+        link: function (scope, elem, attrs) {
+            scope.stars = [];
+            for (var i = 0; i < scope.max; i++) {
+                scope.stars.push({
+                    filled: i < scope.ratingValue
+                });
+            }
+        }
+    }
+});
 })(window.angular);
