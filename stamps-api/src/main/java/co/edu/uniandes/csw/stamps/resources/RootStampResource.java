@@ -108,4 +108,19 @@ public class RootStampResource {
         }
         return listEntity2DTO(stampLogic.getStampByCategory(null,null,categoryid));
     }
+    
+        
+        /**
+     * Obtiene la lista de los registros de Stamp
+     *
+     * @return Colección de objetos de StampBasicDTO
+     * @generated
+     */
+    @GET
+    @Path("/all")
+    public List<StampDetailDTO> getStampsAll() {
+
+            return listEntity2DTO(stampLogic.getStampsAll());
+        
+    }
 }

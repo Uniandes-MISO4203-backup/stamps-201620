@@ -242,4 +242,9 @@ public class StampLogic implements IStampLogic {
         categoryEntity.setId(categoryId);
         entity.getCategory().remove(categoryEntity);
     }
+
+    @Override
+    public List<StampEntity> getStampsAll() {
+       return persistence.findAllNoPage();
+    }
 }
