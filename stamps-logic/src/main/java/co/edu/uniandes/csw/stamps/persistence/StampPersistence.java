@@ -83,8 +83,9 @@ public class StampPersistence extends CrudPersistence<StampEntity> {
         return q.getResultList();
     }
     
+    // Funci{on para obtener todas las estampas disponibles para la venta
         public List<StampEntity> findAllNoPage() {
-        TypedQuery<StampEntity> q = em.createQuery("select p from StampEntity p where (1 = 1)", StampEntity.class);
+        TypedQuery<StampEntity> q = em.createQuery("select p from StampEntity p where (p.availableForSale = true)", StampEntity.class);
         return q.getResultList();
         }
 

@@ -164,6 +164,11 @@ public class StampLogicTest {
             entity.setArtist(fatherEntity);
 
             entity.getCategory().add(categoryData.get(0));
+            if(i <2){
+            entity.setAvailableForSale(true);
+            }else{
+            entity.setAvailableForSale(false);
+        }
 
             em.persist(entity);
             data.add(entity);
@@ -198,6 +203,26 @@ public class StampLogicTest {
     public void getStampsTest() {
         List<StampEntity> list = stampLogic.getStamps(fatherEntity.getId());
         Assert.assertEquals(data.size(), list.size());
+        for (StampEntity entity : list) {
+            boolean found = false;
+            for (StampEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+        /**
+     * Prueba para consultar la lista de Stamps disponibles para la venta
+     *
+     * @generated
+     */
+    @Test
+    public void getAvaliableStampsTest() {
+        List<StampEntity> list = stampLogic.getStampsAll();
+        Assert.assertEquals(2, list.size());
         for (StampEntity entity : list) {
             boolean found = false;
             for (StampEntity storedEntity : data) {

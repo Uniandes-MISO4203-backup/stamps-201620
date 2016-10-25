@@ -128,13 +128,23 @@ public class StampTest {
         fatherArtistEntity.setId(1L);
         em.persist(fatherArtistEntity);
         
-        for (int i = 0; i < 3; i++) {            
+        for (int i = 0; i < 2; i++) {            
             StampEntity stamp = factory.manufacturePojo(StampEntity.class);
             stamp.setId(i + 1L);
             stamp.setArtist(fatherArtistEntity);
+            stamp.setAvailableForSale(false);
             em.persist(stamp);
             oraculo.add(stamp);
         }
+        
+        StampEntity stamp = factory.manufacturePojo(StampEntity.class);
+            stamp.setId(2 + 1L);
+            stamp.setArtist(fatherArtistEntity);
+            stamp.setAvailableForSale(true);
+            em.persist(stamp);
+            oraculo.add(stamp);
+        
+        
     }
 
     /**
@@ -250,6 +260,24 @@ public class StampTest {
         List<StampDTO> listStampTest = new ObjectMapper().readValue(listStamp, List.class);
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listStampTest.size());
+    }
+    
+        /**
+     * Prueba para consultar la lista de Stamps disponibles para la venta
+     *
+     * @generated
+     */
+    @Test
+    public void listAvaliableStampTest() throws IOException {
+        //Cookie cookieSessionId = login(username, password);
+        Response response = target
+            .path("stamps/all")
+            .request().get();
+        
+        String listStamp = response.readEntity(String.class);
+        List<StampDTO> listStampTest = new ObjectMapper().readValue(listStamp, List.class);
+        Assert.assertEquals(Ok, response.getStatus());
+        Assert.assertEquals(1, listStampTest.size());
     }
 
     /**
