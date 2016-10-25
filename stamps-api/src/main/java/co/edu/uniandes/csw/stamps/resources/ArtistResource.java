@@ -108,7 +108,7 @@ public class ArtistResource {
                 }
             }
         } 
-        return null;
+         return listEntity2DTO(artistLogic.getArtists(page, maxRecords));
         
     }
 
