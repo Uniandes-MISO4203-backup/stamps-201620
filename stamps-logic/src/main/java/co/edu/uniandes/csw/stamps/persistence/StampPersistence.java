@@ -82,4 +82,28 @@ public class StampPersistence extends CrudPersistence<StampEntity> {
         }
         return q.getResultList();
     }
+    
+     public List<StampEntity> getHighlighted() {
+         List<StampEntity> retorno=executeListNamedQuery("Stamp.getHighlighted");
+         if(retorno.size()>=4)
+         {
+             return retorno.subList(0, 4);
+         }else
+         {
+          return retorno;   
+         }
+         
+    }
+     
+     public List<StampEntity> getLatest() {
+         List<StampEntity> retorno=executeListNamedQuery("Stamp.getLatest");
+         if(retorno.size()>=4)
+         {
+             return retorno.subList(0, 4);
+         }else
+         {
+          return retorno;   
+         }
+         
+    }
 }

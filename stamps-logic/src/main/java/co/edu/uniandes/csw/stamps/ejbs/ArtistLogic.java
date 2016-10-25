@@ -120,5 +120,9 @@ public class ArtistLogic implements IArtistLogic {
     public void deleteArtist(Long id) {
         persistence.delete(id);
     }
+    
+      public List<ArtistEntity> getHighlighted() {
+        return persistence.getHighlighted();
+    }
   
 }

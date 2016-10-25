@@ -8,6 +8,16 @@ body{
 	background:#f7f8fa;
 	font-family: 'Amaranth', sans-serif;
 }
+#login-btn
+{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:white
+}
 body a{
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -83,7 +93,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 }
 .header-para{
 	float:left;
-	  width: 20%;
+	  width: 30%;
 	    margin-top: 0.3em;
 }
 ul.social-in li{
@@ -1432,7 +1442,7 @@ ul.header-in li a {
   width: 100%;
 }
 .header-para {
-  width: 20%;
+  width: 60%;
 }
 .logo {
   width: 30%;
@@ -2118,4 +2128,5 @@ a.order {
 #owl-demo .item {
   width: 78% !important;
 }
+
 }

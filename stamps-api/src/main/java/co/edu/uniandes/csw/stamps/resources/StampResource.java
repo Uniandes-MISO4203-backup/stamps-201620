@@ -161,4 +161,6 @@ public class StampResource {
         return StampCategoryResource.class;
     }
     
+    
+    
 }

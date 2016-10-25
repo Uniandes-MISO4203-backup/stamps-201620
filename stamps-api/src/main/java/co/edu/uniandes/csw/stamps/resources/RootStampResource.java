@@ -108,4 +108,17 @@ public class RootStampResource {
         }
         return listEntity2DTO(stampLogic.getStampByCategory(null,null,categoryid));
     }
+    
+    @GET
+    @Path("/HighlightedStamps")
+    public List<StampDetailDTO> getHighlighted() {
+           return listEntity2DTO(stampLogic.getHighlighted());
+    }
+    
+    @GET
+    @Path("/latestStamps")
+    public List<StampDetailDTO> getLatest() {
+           return listEntity2DTO(stampLogic.getLatest());
+    }
+
 }

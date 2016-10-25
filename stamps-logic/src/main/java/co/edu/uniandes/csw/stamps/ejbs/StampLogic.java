@@ -242,4 +242,12 @@ public class StampLogic implements IStampLogic {
         categoryEntity.setId(categoryId);
         entity.getCategory().remove(categoryEntity);
     }
+    
+     public List<StampEntity> getHighlighted() {
+        return persistence.getHighlighted();
+    }
+     
+     public List<StampEntity> getLatest() {
+        return persistence.getLatest();
+    }
 }

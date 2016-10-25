@@ -21,51 +21,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.persistence;
+(function (ng) {
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
-import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
-import java.util.List;
+    var mod = ng.module("artistModule");
 
-/**
- * @generated
- */
-@Stateless
-public class ArtistPersistence extends CrudPersistence<ArtistEntity> {
-
-    @PersistenceContext(unitName="StampsPU")
-    protected EntityManager em;
-
-    /**
-     * @generated
-     */
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    /**
-     * @generated
-     */
-    @Override
-    protected Class<ArtistEntity> getEntityClass() {
-        return ArtistEntity.class;
-    }
-    
-    
-     public List<ArtistEntity> getHighlighted() {
-         List<ArtistEntity> retorno=executeListNamedQuery("Artist.getHighlighted");
-         if(retorno.size()>=4)
-         {
-             return retorno.subList(0, 4);
-         }else
-         {
-          return retorno;   
-         }
-         
-    }
-
-}
+    mod.controller("artistListHighLightedCtrl", ["$scope", '$state', 'artists', '$stateParams','$rootScope','Restangular',
+        function ($scope, $state, artists, $params,$rootScope,Restangular) {
+            $scope.highLightedArtist = artists;
+            $scope.getHighlightedArtist = function () {
+                Restangular.all("artists").customGET('HighlightedArtist/').then(function (response) {
+                    if (response.length>0) {
+                        console.log(response);
+                          $scope.highLightedArtist=response;
+                        
+                    } 
+                });
+            };
+            $scope.getHighlightedArtist();
+            
+           
+        }]);
+})(window.angular);

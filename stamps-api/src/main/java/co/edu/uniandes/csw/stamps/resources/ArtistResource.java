@@ -179,4 +179,10 @@ public class ArtistResource {
         return StampResource.class;
     }
     
+     @GET
+    @Path("/HighlightedArtist")
+    public List<ArtistDetailDTO> getHighlighted() {
+           return listEntity2DTO(artistLogic.getHighlighted());
+    }
+    
 }

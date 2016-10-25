@@ -1,3 +1,10 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 /*
 The MIT License (MIT)
 
@@ -21,51 +28,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.stamps.persistence;
+(function (ng) {
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
-import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
-import java.util.List;
-
-/**
- * @generated
- */
-@Stateless
-public class ArtistPersistence extends CrudPersistence<ArtistEntity> {
-
-    @PersistenceContext(unitName="StampsPU")
-    protected EntityManager em;
-
-    /**
-     * @generated
-     */
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    /**
-     * @generated
-     */
-    @Override
-    protected Class<ArtistEntity> getEntityClass() {
-        return ArtistEntity.class;
-    }
+    var mod = ng.module("stampModule");
     
-    
-     public List<ArtistEntity> getHighlighted() {
-         List<ArtistEntity> retorno=executeListNamedQuery("Artist.getHighlighted");
-         if(retorno.size()>=4)
-         {
-             return retorno.subList(0, 4);
-         }else
-         {
-          return retorno;   
-         }
-         
-    }
-
-}
+    mod.controller("stampListLatestCtrl", ["$scope", "$rootScope",'$state', 'stamps', '$stateParams','Restangular',
+        function ($scope, $state,$rootScope, stamps, $params,Restangular) {
+          $scope.latest=stamps;
+            $scope.getLatest = function () {
+                Restangular.all("stamps").customGET('latestStamps/').then(function (response) {
+                    if (response.length>0) {
+                        console.log("yujuuuu");
+                        $scope.latest=response;
+                        
+                    } 
+                });
+            };
+            $scope.getLatest();
+        }]);
+})(window.angular);
