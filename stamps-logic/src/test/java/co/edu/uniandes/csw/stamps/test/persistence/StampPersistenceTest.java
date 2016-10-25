@@ -136,6 +136,13 @@ public class StampPersistenceTest {
             StampEntity entity = factory.manufacturePojo(StampEntity.class);
             
             entity.setArtist(fatherEntity);
+            
+            if(i < 2){
+                entity.setAvailableForSale(true);
+            }else{
+                entity.setAvailableForSale(false);
+            }
+            
             em.persist(entity);
             data.add(entity);
         }
@@ -173,6 +180,26 @@ public class StampPersistenceTest {
     public void getStampsTest() {
         List<StampEntity> list = stampPersistence.findAll(null, null, fatherEntity.getId());
         Assert.assertEquals(data.size(), list.size());
+        for (StampEntity ent : list) {
+            boolean found = false;
+            for (StampEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+        /**
+     * Prueba para consultar la lista de Stamps disponibles para la venta
+     *
+     * @generated
+     */
+    @Test
+    public void getAvaliableStampsTest() {
+        List<StampEntity> list = stampPersistence.findAllNoPage();
+        Assert.assertEquals(2, list.size());
         for (StampEntity ent : list) {
             boolean found = false;
             for (StampEntity entity : data) {

@@ -31,11 +31,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.util.List;
 import java.util.ArrayList;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * @generated
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Stamp.getHighlighted", query = "select u from StampEntity u ORDER BY u.qualification desc"),
+    @NamedQuery(name="Stamp.getLatest", query = "select u from StampEntity u ORDER BY u.id desc")
+})    
 public class StampEntity extends BaseEntity implements Serializable {
 
     private String image;

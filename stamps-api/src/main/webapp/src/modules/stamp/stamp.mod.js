@@ -223,8 +223,8 @@ SOFTWARE.
                      mainView: {
                         templateUrl: basePath + 'list/stamp.gallery.tpl.html',
                         controller: 'stampListCtrl',
-                        controllerAs: 'ctrl'    
-                    }
+                        controllerAs: 'ctrl'
+                    },
                 },
                 resolve: {
                     model: 'stampModel',
@@ -233,5 +233,25 @@ SOFTWARE.
                         }]                
                 }
             });
+            
+             $sp.state('latest', {
+                url: '/new',
+                views: {
+                     mainView: {
+                        templateUrl: basePath + 'list/stamp.list.latest.html',
+                        controller: 'stampListLatestCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                },
+                resolve: {
+                    model: 'stampModel',
+                    stamps: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                            return r.all(model.url).getList($params);
+                        }]                
+                }
+            });
+          
 	}]);
+    
+    
 })(window.angular);

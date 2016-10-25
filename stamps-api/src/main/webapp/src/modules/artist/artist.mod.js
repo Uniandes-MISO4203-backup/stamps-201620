@@ -149,5 +149,21 @@ SOFTWARE.
                     }
                 }
             });
+               $sp.state('highlightedList', {
+                url: '/bestArtist',
+                views: {
+                    mainView: {
+                        templateUrl: basePath + 'list/artist.list.highlighted.html',
+                        controller: 'artistListHighLightedCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                 resolve: {
+                    model: 'artistModel',
+                    artists: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                            return r.all(model.url).getList($params);
+                        }]
+                }
+            });
 	}]);
 })(window.angular);

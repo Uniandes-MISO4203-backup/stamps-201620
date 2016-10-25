@@ -87,6 +87,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script src="src/modules/stamp/instance/delete/stamp.delete.ctrl.js"></script>
         <script src="src/modules/stamp/instance/detail/stamp.detail.ctrl.js"></script>
         <script src="src/modules/stamp/instance/edit/stamp.edit.ctrl.js"></script>
+        <script src="src/modules/stamp/list/stamp.list.Highlighted.ctrl.js"></script>
+        <script src="src/modules/stamp/list/stamp.list.latest.ctrl.js"></script>
         <script src="src/modules/stamp/list/stamp.list.ctrl.js"></script>
         <script src="src/modules/stamp/new/stamp.new.ctrl.js"></script>
         <script src="src/modules/artist/artist.ctrl.js"></script>
@@ -94,6 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script src="src/modules/artist/instance/detail/artist.detail.ctrl.js"></script>
         <script src="src/modules/artist/instance/edit/artist.edit.ctrl.js"></script>
         <script src="src/modules/artist/list/artist.list.ctrl.js"></script>
+        <script src="src/modules/artist/list/artist.list.highlighted.ctrl.js"></script>
         <script src="src/modules/artist/new/artist.new.ctrl.js"></script>
         <script src="src/modules/category/category.ctrl.js"></script>
         <script src="src/modules/category/instance/delete/category.delete.ctrl.js"></script>
@@ -101,6 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script src="src/modules/category/instance/edit/category.edit.ctrl.js"></script>
         <script src="src/modules/category/list/category.list.ctrl.js"></script>
         <script src="src/modules/category/new/category.new.ctrl.js"></script>
+        <script src="src/modules/store/store.ctrl.js"></script>
        
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
@@ -118,11 +122,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="#"><i> </i></a></li>						
 					<li><a href="#"><i class="ic"> </i></a></li>
 					<li><a href="#"><i class="ic1"> </i></a></li>
+                                        <li><a href="#/new"><img src="images/newIcon.png" height="42" width="42"/></a></li>
+                                        <li><a href="#/bestArtist"><img src="images/artist.png" height="32" width="32"/></a></li>
+                                        <li><a> <login-button></login-button></a></li>
+                                        
+
 					
 				</ul>			
 			</div>	
 			
-			   <login-button></login-button>
+			  
 		</div>
 		</div>
 	</div>
@@ -158,12 +167,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 	</div>
-                <div ui-view="mainView"> 
-</div>
+
 <div class="content">
+                                       <div ui-view="mainView"> 
+</div>
 	<div class="container">
 		<div class="content-top">
-		<h2 class="new">NEW ARRIVALS</h2>
+		<h2 class="new" ></h2>
 		<div class="pink">
 			<!-- requried-jsfiles-for owl -->
 		<link href="css/owl.carousel.css" rel="stylesheet">
@@ -178,342 +188,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					});
 				});
 			</script>
+                        
+     
 		<!-- //requried-jsfiles-for owl -->
-			<div id="owl-demo" class="owl-carousel text-center">
-			<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-					<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi11.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				  <!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-					<!---
-				<a class="cup" href="single.html">123 $<i> </i> </a>
-				-->
-				</div>
-			</div>
-
-			<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi12.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				   <!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-
-			<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi13.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-
-			<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi11.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-
-			<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi13.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi12.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-<div class="item">
-				<div class=" box-in">
-			<div class=" grid_box">		
-							 <a href="single.html" > <img src="images/pi11.jpg" class="img-responsive" alt="">
-							 	<div class="zoom-icon">
-							 		
-									<ul class="in-by">
-										<li><h5>sizes:</h5></li>                     
-										<li><span>S</span></li>
-										<li><span>XS</span></li>
-										<li><span>M</span></li>
-										<li><span> L</span></li>
-										<li><span>XL</span></li>
-										<li><span> XXL</span></li>
-									</ul>
-					
-					
-						<ul class="in-by-color">
-							<li><h5>colors:</h5></li>                   
-							<li><span > </span></li>
-							<li><span class="color"> </span></li>
-							<li><span class="color1"> </span></li>
-							<li><span class="color2"> </span></li>
-							<li><span class="color3"> </span></li>
-							
-						</ul>
-					
-						</div> </a> 	
-		           </div>
-				<!---->
-						<div class="grid_1 simpleCart_shelfItem">
-							<a href="#" class="cup item_add"><span class=" item_price" >123 $ <i> </i> </span></a>					
-						</div>
-					<!---->
-				</div>
-			</div>
-				<div class="clearfix"> </div>
-			</div>
+			
 			
 		</div>
 		
@@ -589,7 +267,61 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-	<!---->
+        <!--  Store -->
+        
+        <div class="content" style="text-align:center" ng-controller="storeCtrl">
+            <h1 class="middle">Store</h1>
+  
+            
+            <div class="input-group input-group-lg" style="margin: 0 auto; max-width:500px">
+                <span class="input-group-addon glyphicon glyphicon-search" id="sizing-addon1"></span>
+                <input ng-model="searchText" type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1">
+            </div>
+        
+        
+        <div class="item" ng-repeat="stamp in stamps | filter:searchText">
+				<div class="box-in col-md-4">
+                                    <h2>{{stamp.name}}</h2>
+			<div class="grid_box ">		
+							 <a href="" > <img ng-src="{{stamp.image}}" class="img-responsive" alt="">
+							 	<div class="zoom-icon">
+							 		
+									<ul class="in-by">
+										<li><h5>TShirt:</h5></li>                     
+										<li ng-repeat="shirt in shirts"><span>{{shirt.name}} {{shirt.price}}$</span></li>
+									</ul>
+                                                                    
+                                                                        <ul class="in-by">
+                                                                            <li><span class="glyphicon glyphicon-heart"></span></li>
+										<!--<li><span class="glyphicon glyphicon-shopping-cart"></span></li>-->
+									</ul>
+					
+					
+						<!--<ul class="in-by-color">
+							<li><h5>colors:</h5></li>                   
+							<li><span > </span></li>
+							<li><span class="color"> </span></li>
+							<li><span class="color1"> </span></li>
+							<li><span class="color2"> </span></li>
+							<li><span class="color3"> </span></li>
+							
+						</ul> -->
+					
+						</div> </a> 	
+		           </div>
+					
+						<div class="grid_1 simpleCart_shelfItem">
+							<a class="cup item_add"><span class=" item_price" >{{stamp.price}} $ <i> </i> </span></a>					
+						</div>
+					
+				</div>
+			</div>
+        
+                
+                
+        </div>
+                
+	<!---
 		
 			<div class="content-bottom">
 				<div class="col-md-8 latter">
@@ -612,7 +344,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 
-	<!---->
+	
 	<div class="bottom-content">
 	
 			<div class="col-md-4">
@@ -625,7 +357,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<img src="images/ad1.png" class="img-responsive" alt="">
 			</div>
 			<div class="clearfix"> </div>
-		</div>
+		</div>--->
 	
 	</div>
 </div>
@@ -686,6 +418,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
 	</div>
-
+</div>
 </body>
 </html>

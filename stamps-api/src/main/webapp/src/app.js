@@ -55,32 +55,32 @@ SOFTWARE.
                 return data;
             });
         }]);
-
-    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-                $urlRouterProvider.otherwise('/');
-        }]);
-
-    mod.config(['$stateProvider',
+ mod.config(['$stateProvider',
         function($sp){
             var basePath = 'src/modules/';
-            
-            $sp.state('home', {
+               $sp.state('home', {
                 url: '/',
                 views: {
                      mainView: {
-                        templateUrl: basePath + 'tShirt/list/tShirt.list.tpl.html',
-                        controller: 'tShirtListCtrl',
+                        templateUrl: basePath + 'stamp/list/stamp.list.Highlighted.html',
+                        controller: 'stampListHighlightedCtrl',
                         controllerAs: 'ctrl'    
-                    }
+                    },
                 },
                 resolve: {
-                    model: 'tShirtModel',
-                    tShirts: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                    model: 'stampModel',
+                    stamps: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
-                        }]                }
-            });            
+                        }]                
+                }
+            });   
     }]);
-
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            
+            
+                $urlRouterProvider.otherwise('/');
+        }]);
+    
     mod.config(['authServiceProvider', 'baseUrl', function (auth, baseUrl) {
             auth.setValues({
                 apiUrl: baseUrl + '/users/',

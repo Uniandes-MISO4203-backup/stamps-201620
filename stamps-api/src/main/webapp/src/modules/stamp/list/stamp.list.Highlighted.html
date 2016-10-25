@@ -1,0 +1,37 @@
+<div class="content">
+	<div class="container">
+		<div class="content-top">
+		<h2 class="new">BEST STAMPS</h2>
+		<div id="wrapper" style="text-align: center">    
+    <div id="yourdiv" style="display: inline-block;">
+
+<div class="row">
+			<div class="item col-md-3" ng-repeat="stamp1 in Highlighted" >
+                         
+				<div class=" box-in">
+			<div class=" grid_box">		
+							 <a ng-href="#artists/{{stamp1.artist.id}}/details/stamps/{{stamp1.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp1.image}}">
+							 	<div class="zoom-icon">
+							 		
+									<ul class="in-by">
+										<li><h5>Name:</h5></li>                     
+										<li><span>{{stamp1.name}}</span></li>
+									</ul>
+					
+					
+					
+						</div> </a> 	
+		           </div>
+					
+						<div class="grid_1 simpleCart_shelfItem">
+							<a href="#" class="cup item_add"><span class=" item_price" >{{stamp1.price| currency}} <i> </i> </span></a>					
+						</div>
+                                                
+                                                    
+				</div>
+			</div>
+     
+					
+    </div>
+</div>
+                </div></div></div>
