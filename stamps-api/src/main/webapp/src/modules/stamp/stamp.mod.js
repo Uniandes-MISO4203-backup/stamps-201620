@@ -240,4 +240,6 @@ SOFTWARE.
             });
           
 	}]);
+    
+    
 })(window.angular);
