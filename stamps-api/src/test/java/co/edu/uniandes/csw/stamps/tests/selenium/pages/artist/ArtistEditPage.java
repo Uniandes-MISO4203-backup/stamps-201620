@@ -46,6 +46,9 @@ public class ArtistEditPage {
     @FindBy(id = "telephone")
     private WebElement telephoneInput;
 
+    @FindBy(id = "artisticCareer")
+    private WebElement artisticCareerInput;
+
     @FindBy(id = "save-artist")
     private WebElement saveBtn;
 
@@ -72,6 +75,10 @@ public class ArtistEditPage {
          waitGui().until().element(telephoneInput).is().visible();
          telephoneInput.clear();
          telephoneInput.sendKeys(artist.getTelephone().toString());
+
+         waitGui().until().element(artisticCareerInput).is().visible();
+         artisticCareerInput.clear();
+         artisticCareerInput.sendKeys(artist.getArtisticCareer());
          
         guardAjax(saveBtn).click();
     }

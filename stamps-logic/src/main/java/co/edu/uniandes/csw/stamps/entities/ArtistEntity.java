@@ -45,6 +45,7 @@ public class ArtistEntity extends BaseEntity implements Serializable {
     private Long telephone;
     private Byte qualification;
     private Long popularity;
+    private String artisticCareer;
     
     @PodamExclude
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -70,7 +71,7 @@ public class ArtistEntity extends BaseEntity implements Serializable {
         this.stamps = stamps;
     }
     
-        public String getAddress() {
+    public String getAddress() {
         return address;
     }
 
@@ -100,5 +101,21 @@ public class ArtistEntity extends BaseEntity implements Serializable {
 
     public void setPopularity(Long popularity) {
         this.popularity = popularity;
+    }
+    
+    /**
+     *Obtiene el valor de artist career 
+     * @return
+     */
+    public String getArtisticCareer(){
+        return this.artisticCareer;
+    }
+    /**
+     * Establece el valor de artist career  
+     * 
+     * @param artisticCareer nuevo valor del atributo
+    */
+    public void setArtisticCareer(String artisticCareer) {
+        this.artisticCareer = artisticCareer;
     }
 }

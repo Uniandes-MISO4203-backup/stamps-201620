@@ -53,7 +53,12 @@ SOFTWARE.
                 displayName: 'Popularity',
                 type: 'Long',
                 required: true
-            }
+            },
+            artisticCareer: {
+                displayName: 'Artistic Career',
+                type: 'String',
+                required: true
+            }            
         }
     });
 

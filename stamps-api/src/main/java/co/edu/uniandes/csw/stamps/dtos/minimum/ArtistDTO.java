@@ -39,6 +39,7 @@ public class ArtistDTO implements Serializable{
     private Long telephone;
     private Byte qualification;
     private Long popularity;
+    private String artisticCareer;
 
     /**
      * @generated
@@ -59,7 +60,8 @@ public class ArtistDTO implements Serializable{
             this.address=entity.getAddress();
             this.telephone=entity.getTelephone();
             this.qualification=entity.getQualification();
-            this.popularity=entity.getPopularity();        
+            this.popularity=entity.getPopularity();
+            this.artisticCareer=entity.getArtisticCareer();
        }
     }
 
@@ -76,7 +78,8 @@ public class ArtistDTO implements Serializable{
         entity.setAddress(this.getAddress());
         entity.setTelephone(this.getTelephone());
         entity.setQualification(this.getQualification());
-        entity.setPopularity(this.getPopularity());        
+        entity.setPopularity(this.getPopularity());    
+        entity.setArtisticCareer(this.getArtisticCareer());
     return entity;
     }
 
@@ -149,5 +152,21 @@ public class ArtistDTO implements Serializable{
 
     public void setPopularity(Long popularity) {
         this.popularity = popularity;
+    }
+    
+        /**
+     *Obtiene el valor de artist career 
+     * @return
+     */
+    public String getArtisticCareer(){
+        return this.artisticCareer;
+    }
+    /**
+     * Establece el valor de artist career  
+     * 
+     * @param artisticCareer nuevo valor del atributo
+    */
+    public void setArtisticCareer(String artisticCareer) {
+        this.artisticCareer = artisticCareer;
     }
 }

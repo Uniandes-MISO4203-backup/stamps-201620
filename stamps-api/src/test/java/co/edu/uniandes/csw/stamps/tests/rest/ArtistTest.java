@@ -194,6 +194,7 @@ public class ArtistTest {
         Assert.assertEquals(artist.getQualification(), artistTest.getQualification());
         Assert.assertEquals(artist.getPopularity(), artistTest.getPopularity());
         Assert.assertEquals(artist.getTelephone(), artistTest.getTelephone());
+        Assert.assertEquals(artist.getArtisticCareer(), artistTest.getArtisticCareer());
         Assert.assertEquals(Created, response.getStatus());
         ArtistEntity entity = em.find(ArtistEntity.class, artistTest.getId());
         Assert.assertNotNull(entity);
@@ -217,6 +218,7 @@ public class ArtistTest {
         Assert.assertEquals(artistTest.getQualification(), oraculo.get(0).getQualification());
         Assert.assertEquals(artistTest.getPopularity(), oraculo.get(0).getPopularity());
         Assert.assertEquals(artistTest.getTelephone(), oraculo.get(0).getTelephone());
+        Assert.assertEquals(artistTest.getArtisticCareer(), oraculo.get(0).getArtisticCareer());
     }
 
     /**
@@ -258,6 +260,7 @@ public class ArtistTest {
         Assert.assertEquals(artist.getQualification(), artistTest.getQualification());
         Assert.assertEquals(artist.getPopularity(), artistTest.getPopularity());
         Assert.assertEquals(artist.getTelephone(), artistTest.getTelephone());
+        Assert.assertEquals(artist.getArtisticCareer(), artistTest.getArtisticCareer());
     }
     
     /**

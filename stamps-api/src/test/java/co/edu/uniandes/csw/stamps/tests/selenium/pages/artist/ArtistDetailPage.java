@@ -54,6 +54,9 @@ public class ArtistDetailPage {
     @FindBy(id = "telephone")
     private WebElement telephone;
 
+    @FindBy(id = "artisticCareer")
+    private WebElement artisticCareer;
+
     public void list() {
         listBtn.click();
     }
@@ -73,6 +76,7 @@ public class ArtistDetailPage {
         artist.setQualification(Byte.parseByte(qualification.getText()));
         artist.setPopularity(Long.parseLong(popularity.getText()));
         artist.setTelephone(Long.parseLong(telephone.getText()));
+        artist.setArtisticCareer(artisticCareer.getText());
         return artist;
     }
 }

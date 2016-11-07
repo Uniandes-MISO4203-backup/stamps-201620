@@ -155,6 +155,7 @@ public class ArtistPersistenceTest {
         Assert.assertEquals(newEntity.getQualification(), entity.getQualification());
         Assert.assertEquals(newEntity.getPopularity(), entity.getPopularity());
         Assert.assertEquals(newEntity.getTelephone(), entity.getTelephone());
+        Assert.assertEquals(newEntity.getArtisticCareer(), entity.getArtisticCareer());
     }
 
     /**
@@ -192,6 +193,7 @@ public class ArtistPersistenceTest {
         Assert.assertEquals(entity.getQualification(), newEntity.getQualification());
         Assert.assertEquals(entity.getPopularity(), newEntity.getPopularity());
         Assert.assertEquals(entity.getTelephone(), newEntity.getTelephone());
+        Assert.assertEquals(entity.getArtisticCareer(), newEntity.getArtisticCareer());
     }
 
     /**
@@ -229,5 +231,6 @@ public class ArtistPersistenceTest {
         Assert.assertEquals(newEntity.getQualification(), resp.getQualification());
         Assert.assertEquals(newEntity.getPopularity(), resp.getPopularity());
         Assert.assertEquals(newEntity.getTelephone(), resp.getTelephone());
+        Assert.assertEquals(newEntity.getArtisticCareer(), resp.getArtisticCareer());
     }
 }

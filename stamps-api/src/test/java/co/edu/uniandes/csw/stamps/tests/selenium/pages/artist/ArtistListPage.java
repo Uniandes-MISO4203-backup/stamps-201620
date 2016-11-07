@@ -46,18 +46,26 @@ public class ArtistListPage {
 
     private String findNameByIndex(Integer index) {
         return browser.findElement(By.id(index + "-name")).getText();
-     }   
+    }   
+    
     private String findAddressByIndex(Integer index) {
         return browser.findElement(By.id(index + "-address")).getText();
-     }
+    }
+    
     private String findQualificationByIndex(Integer index) {
         return browser.findElement(By.id(index + "-qualification")).getText();
-     }
+    }
+    
     private String findPopularityByIndex(Integer index) {
         return browser.findElement(By.id(index + "-popularity")).getText();
-     }
+    }
+    
     private String findTelephoneByIndex(Integer index) {
         return browser.findElement(By.id(index + "-telephone")).getText();
+    }
+
+    private String findArtisticCareerByIndex(Integer index) {
+        return browser.findElement(By.id(index + "-artisticCareer")).getText();
     }
 
     private WebElement findDetailsBtnByIndex(Integer index) {
