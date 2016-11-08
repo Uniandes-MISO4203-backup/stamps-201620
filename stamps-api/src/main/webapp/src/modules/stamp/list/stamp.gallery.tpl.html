@@ -10,11 +10,12 @@
 				});
 			</script>
 <div class="list">            
-    <div ng-if="true" class="col-md-2 well" >
-        <h4>Categorías</h4>
+    <div ng-if="true" class="col-md-2 well category" style="">
+        <h3>Categorías</h3>
         <span style="cursor: pointer" class="glyphicon glyphicon-repeat" ng-click="Reload()"></span>
-        <ul style="list-style:none">
-            <li ng-repeat="category in categorys"><a ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
+        <ul style="list-style:none;">
+            <li style= "" 
+                ng-repeat="category in categorys"><a  ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
         </ul>
     </div>
     <div class="content">
