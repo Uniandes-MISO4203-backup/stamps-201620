@@ -160,6 +160,7 @@ public class ArtistLogicTest {
         Assert.assertEquals(newEntity.getQualification(), entity.getQualification());
         Assert.assertEquals(newEntity.getPopularity(), entity.getPopularity());
         Assert.assertEquals(newEntity.getTelephone(), entity.getTelephone());
+        Assert.assertEquals(newEntity.getArtisticCareer(), entity.getArtisticCareer());
     }
 
     /**
@@ -199,6 +200,7 @@ public class ArtistLogicTest {
         Assert.assertEquals(entity.getQualification(), resultEntity.getQualification());
         Assert.assertEquals(entity.getPopularity(), resultEntity.getPopularity());
         Assert.assertEquals(entity.getTelephone(), resultEntity.getTelephone());
+        Assert.assertEquals(entity.getArtisticCareer(), resultEntity.getArtisticCareer());
     }
 
     /**
@@ -236,6 +238,7 @@ public class ArtistLogicTest {
         Assert.assertEquals(pojoEntity.getQualification(), resp.getQualification());
         Assert.assertEquals(pojoEntity.getPopularity(), resp.getPopularity());
         Assert.assertEquals(pojoEntity.getTelephone(), resp.getTelephone());
+        Assert.assertEquals(pojoEntity.getArtisticCareer(), resp.getArtisticCareer());
     }
 }
 

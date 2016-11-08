@@ -50,11 +50,11 @@ public class ClientDTO implements Serializable{
      * @generated
      */
     public ClientDTO(ClientEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.address=entity.getAddress();
-        this.telephone=entity.getTelephone();        
+	if (entity!=null){
+            this.id=entity.getId();
+            this.name=entity.getName();
+            this.address=entity.getAddress();
+            this.telephone=entity.getTelephone();        
        }
     }
 

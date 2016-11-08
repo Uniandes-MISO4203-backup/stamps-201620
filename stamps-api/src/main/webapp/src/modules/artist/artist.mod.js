@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'artist',
         displayName: 'Artist',
 		url: 'artists',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -52,7 +53,12 @@ SOFTWARE.
                 displayName: 'Popularity',
                 type: 'Long',
                 required: true
-            }
+            },
+            artisticCareer: {
+                displayName: 'Artistic Career',
+                type: 'String',
+                required: true
+            }            
         }
     });
 

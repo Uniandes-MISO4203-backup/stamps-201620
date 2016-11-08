@@ -128,6 +128,7 @@ public class ArtistIT {
         Assert.assertEquals(expected_artist.getQualification(), actual_artist.getQualification());
         Assert.assertEquals(expected_artist.getPopularity(), actual_artist.getPopularity());
         Assert.assertEquals(expected_artist.getTelephone(), actual_artist.getTelephone());
+        Assert.assertEquals(expected_artist.getArtisticCareer(), actual_artist.getArtisticCareer());
     }
 
     @Test
@@ -146,6 +147,7 @@ public class ArtistIT {
         Assert.assertEquals(expected_artist.getQualification(), actual_artist.getQualification());
         Assert.assertEquals(expected_artist.getPopularity(), actual_artist.getPopularity());
         Assert.assertEquals(expected_artist.getTelephone(), actual_artist.getTelephone());
+        Assert.assertEquals(expected_artist.getArtisticCareer(), actual_artist.getArtisticCareer());
     }
 
     @Test

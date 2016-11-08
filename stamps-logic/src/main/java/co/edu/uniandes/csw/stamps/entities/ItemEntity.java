@@ -36,7 +36,6 @@ import javax.persistence.ManyToOne;
 public class ItemEntity extends BaseEntity implements Serializable {
 
     private Long qty;
-    
     private int status;
 
     @PodamExclude

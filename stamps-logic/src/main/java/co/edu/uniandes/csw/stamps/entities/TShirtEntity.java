@@ -34,11 +34,8 @@ import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 public class TShirtEntity extends BaseEntity implements Serializable {
 
     private String size;
-
     private String color;
-
     private Long price;
-
     private String material;
 
     /**
