@@ -280,16 +280,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         
         
-        <div class="item" ng-repeat="stamp in stamps | filter:searchText">
-				<div class="box-in col-md-4">
-                                    <h2>{{stamp.name}}</h2>
+        <div class="item" ng-repeat="stamp in filteredStamps | filter:searchText">
+				<div class="box-in col-md-4" >
+                                    <h2 style="height:50px">{{stamp.name}}</h2>
 			<div class="grid_box ">		
-							 <a href="" > <img ng-src="{{stamp.image}}" class="img-responsive" alt="">
+                            <a href="" > <img ng-src="{{stamp.image}}" class="img-responsive" alt="" style="height:100px">
 							 	<div class="zoom-icon">
 							 		
 									<ul class="in-by">
 										<li><h5>TShirt:</h5></li>                     
-										<li ng-repeat="shirt in shirts"><span>{{shirt.name}} {{shirt.price}}$</span></li>
+										<!--<li ng-repeat="shirt in shirts"><span>{{shirt.name}} {{shirt.price}}$</span></li>-->
+                                                                                <div class="form-group">
+                                                                                    <select class="form-control">
+                                                                                      <option ng-repeat="shirt in  shirts">{{shirt.name}} {{shirt.price}}$</option>
+                                                                                    </select>
+                                                                                  </div>
 									</ul>
                                                                     
                                                                         <ul class="in-by">
@@ -317,6 +322,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					
 				</div>
 			</div>
+            
+            
+      <!--      <pagination 
+              ng-model="currentPage"
+              total-items="stamps.length"
+              max-size="maxSize"  
+              boundary-links="true">
+            </pagination>
+      
+      -->
+            
+            <pagination 
+                total-items="stamps.length"
+                max-size="maxSize"
+                ng-model="currentPage"
+                items-per-page="numPerPage"
+                class="pagination-md" 
+                boundary-links="true" 
+                rotate="false">
+            </pagination>
         
                 
                 

@@ -26,6 +26,12 @@ SOFTWARE.
 
     mod.controller('storeCtrl', ['$scope', 'Restangular', '$rootScope',
         function ($scope,r, items, $rootScope) {
+            
+            //$scope.filteredStanps = [];
+           // $scope.currentPage = 1;
+            $scope.numPerPage = 9;
+            $scope.maxSize = 5;
+            
             //console.log($rootScope.authenticated);
             //Alertas
             $scope.alerts = [];
@@ -40,8 +46,21 @@ SOFTWARE.
                 r.all("tShirts").getList().then(function(resp2){
                     $scope.stamps = resp;
                     $scope.shirts = resp2;
+                    
+                    $scope.currentPage = 1;
+                    
+
                 });
             });
+            
+            $scope.$watch("currentPage + numPerPage", function() {
+            var begin = (($scope.currentPage - 1) * $scope.numPerPage);
+            var end = begin + $scope.numPerPage;
+
+            $scope.filteredStamps = $scope.stamps.slice(begin, end);
+          });
+            
+              
             
             console.log($scope.stamps);
             
