@@ -45,6 +45,7 @@ SOFTWARE.
             
                 r.all("tShirts").getList().then(function(resp2){
                     $scope.stamps = resp;
+                    console.log($scope.stamps)
                     $scope.shirts = resp2;
                     
                     $scope.currentPage = 1;
