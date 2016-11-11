@@ -8,6 +8,7 @@
         <class>co.edu.uniandes.csw.stamps.entities.StampEntity</class>
         <class>co.edu.uniandes.csw.stamps.entities.ArtistEntity</class>
         <class>co.edu.uniandes.csw.stamps.entities.CategoryEntity</class>
+        <class>co.edu.uniandes.csw.stamps.entities.StampCommentaryEntity</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <shared-cache-mode>NONE</shared-cache-mode>
         <properties>

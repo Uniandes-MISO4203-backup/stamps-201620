@@ -161,6 +161,9 @@ public class StampResource {
         return StampCategoryResource.class;
     }
     
-    
-    
+    @Path("{stampId: \\d+}/stampCommentaries")
+    public Class<StampCommentaryResource> getStampCommentaryResource(@PathParam("stampId") Long stampId){
+        existsStamp(stampId);
+        return StampCommentaryResource.class;
+    }
 }

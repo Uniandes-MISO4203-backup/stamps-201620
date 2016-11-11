@@ -14,13 +14,14 @@ import java.util.Date;
  *
  * @author ga.chica10
  */
+@XmlRootElement
 public class StampCommentaryDTO implements Serializable{
     
     private Long id;
     private String name;
     private String commentary;
     private short qualification;
-    private Date DateCommentary;
+    private Date dateCommentary;
 
     /**
      * Crea un objeto StampCommentaryMinimumDTO a partir de un objeto StampCommentaryEntity.
@@ -35,7 +36,7 @@ public class StampCommentaryDTO implements Serializable{
             this.name = entity.getName();
             this.commentary = entity.getCommentary();
             this.qualification = entity.getQualification();
-            this.DateCommentary = entity.getDateCommentary();
+            this.dateCommentary = entity.getDateCommentary();
         }
     }
     
@@ -52,7 +53,7 @@ public class StampCommentaryDTO implements Serializable{
         entity.setName(this.getName());
         entity.setCommentary(this.getCommentary());
         entity.setQualification(this.getQualification());
-        entity.setDateCommentary(this.DateCommentary);
+        entity.setDateCommentary(this.getDateCommentary());
     return entity;
     }
     
@@ -89,10 +90,10 @@ public class StampCommentaryDTO implements Serializable{
     }
 
     public Date getDateCommentary() {
-        return DateCommentary;
+        return dateCommentary;
     }
 
-    public void setDateCommentary(Date DateCommentary) {
-        this.DateCommentary = DateCommentary;
+    public void setDateCommentary(Date dateCommentary) {
+        this.dateCommentary = dateCommentary;
     }
 }

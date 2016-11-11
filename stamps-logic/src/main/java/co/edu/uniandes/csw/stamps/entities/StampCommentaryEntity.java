@@ -5,9 +5,9 @@
  */
 package co.edu.uniandes.csw.stamps.entities;
 
+import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.util.Date;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.ManyToOne;
@@ -16,15 +16,12 @@ import javax.persistence.ManyToOne;
  *
  * @author ga.chica10
  */
+@Entity
 public class StampCommentaryEntity extends BaseEntity implements Serializable {
     
     private String commentary;
     private short qualification;
     private Date DateCommentary;
-    
-    @PodamExclude
-    @ManyToOne
-    private ClientEntity client;
     
     @PodamExclude
     @ManyToOne
@@ -53,15 +50,7 @@ public class StampCommentaryEntity extends BaseEntity implements Serializable {
     public void setDateCommentary(Date DateCommentary) {
         this.DateCommentary = DateCommentary;
     }
-
-    public ClientEntity getClient() {
-        return client;
-    }
-
-    public void setClient(ClientEntity client) {
-        this.client = client;
-    }
-
+   
     public StampEntity getStamp() {
         return stamp;
     }
@@ -69,7 +58,5 @@ public class StampCommentaryEntity extends BaseEntity implements Serializable {
     public void setStamp(StampEntity stamp) {
         this.stamp = stamp;
     }
-    
-    
 }
 

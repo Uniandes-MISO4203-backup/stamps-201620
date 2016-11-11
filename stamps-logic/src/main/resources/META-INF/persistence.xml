@@ -9,6 +9,7 @@
     <class>co.edu.uniandes.csw.stamps.entities.StampEntity</class>
     <class>co.edu.uniandes.csw.stamps.entities.ArtistEntity</class>
     <class>co.edu.uniandes.csw.stamps.entities.CategoryEntity</class>
+    <class>co.edu.uniandes.csw.stamps.entities.StampCommentaryEntity</class>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
         <property name="javax.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
