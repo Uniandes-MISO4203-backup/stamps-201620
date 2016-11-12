@@ -72,6 +72,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('stampCategoryList');
                     }
+                },
+                stampCommentaries: {
+                    displayName: 'Commentaries',
+                    icon: 'link',
+                    fn: function () {
+                        $state.go('stampCommentaryList');
+                    }
                 }
             };}
         }]);

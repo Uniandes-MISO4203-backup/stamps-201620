@@ -64,14 +64,14 @@ public class StampEntity extends BaseEntity implements Serializable {
     
     @PodamExclude
     @OneToMany(mappedBy = "stamp")
-    private List<StampCommentaryEntity> commentaries = new ArrayList<>();
+    private List<StampCommentaryEntity> stampCommentaries = new ArrayList<>();
     
-    public List<StampCommentaryEntity> getCommentaries(){
-        return commentaries;
+    public List<StampCommentaryEntity> getStampCommentaries(){
+        return stampCommentaries;
     } 
     
-    public void setCommentary(List<StampCommentaryEntity> commentaries){
-        this.commentaries = commentaries;
+    public void setStampCommentary(List<StampCommentaryEntity> stampCommentaries){
+        this.stampCommentaries = stampCommentaries;
     }
     /**
      * Obtiene el atributo image.

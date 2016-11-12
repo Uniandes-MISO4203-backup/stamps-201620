@@ -44,12 +44,12 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @generated
      */
     @Override
-    public List<StampCommentaryEntity> getStampCommentaries(Long stampid){
-        StampEntity stamp = stampLogic.getStamp(stampid);
-        return stamp.getCommentaries();
+    public List<StampCommentaryEntity> getStampCommentaries(Long stampId){
+        StampEntity stamp = stampLogic.getStamp(stampId);
+        return stamp.getStampCommentaries();
     }
      /**
-     * Obtiene la lista de los registros de Contact que pertenecen a un Author indicando los datos para la paginación.
+     * Obtiene la lista de los registros de StampCommentary que pertenecen a un Stamp indicando los datos para la paginación.
      *
      * @param page Número de página.
      * @param maxRecords Número de registros que se mostraran en cada página.
@@ -57,9 +57,11 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @return Colección de objetos de StampCommentaryEntity.
      * @generated
      */
+    
+    
     @Override
-    public List<StampCommentaryEntity> getStampCommentaries(Integer page, Integer maxRecords, Long stampid){
-        return persistence.findAll(page, maxRecords, stampid);
+    public List<StampCommentaryEntity> getStampCommentaries(Integer page, Integer maxRecords, Long stampId){
+        return persistence.findAll(page, maxRecords, stampId);
     }
     /**
      * Obtiene los datos de una instancia de StampCommentary a partir de su ID.
@@ -70,11 +72,11 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @generated
      */
     @Override
-    public StampCommentaryEntity getStampCommentary(Long stampcommentaryid){       
+    public StampCommentaryEntity getStampCommentary(Long stampCommentaryId){       
         try {
-            return persistence.find(stampcommentaryid);
+            return persistence.find(stampCommentaryId);
         } catch (NoResultException e){
-            throw new IllegalArgumentException("El Comentario de la estampa no existe");
+            throw new IllegalArgumentException("La estampa no tiene comentarios");
         }
     }
      /**
@@ -86,8 +88,8 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @generated
      */
     @Override
-    public StampCommentaryEntity createStampCommentary(Long stampid, StampCommentaryEntity entity){
-        StampEntity stamp = stampLogic.getStamp(stampid);
+    public StampCommentaryEntity createStampCommentary(Long stampId, StampCommentaryEntity entity){
+        StampEntity stamp = stampLogic.getStamp(stampId);
         entity.setStamp(stamp);
         entity = persistence.create(entity);
         return entity;
@@ -101,8 +103,8 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @generated
      */
     @Override
-    public StampCommentaryEntity updateStampCommentary(Long stampid, StampCommentaryEntity entity){
-        StampEntity stamp = stampLogic.getStamp(stampid);
+    public StampCommentaryEntity updateStampCommentary(Long stampId, StampCommentaryEntity entity){
+        StampEntity stamp = stampLogic.getStamp(stampId);
         entity.setStamp(stamp);
         return persistence.update(entity);
     }
@@ -114,8 +116,8 @@ public class StampCommentaryLogic implements IStampCommentaryLogic {
      * @generated
      */
     @Override
-    public void deleteStampCommentary(Long stampcommentaryid){
-        StampCommentaryEntity old = getStampCommentary(stampcommentaryid);
+    public void deleteStampCommentary(Long stampCommentaryId){
+        StampCommentaryEntity old = getStampCommentary(stampCommentaryId);
         persistence.delete(old.getId());
     }
 }

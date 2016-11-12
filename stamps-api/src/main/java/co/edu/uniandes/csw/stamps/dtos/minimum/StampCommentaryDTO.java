@@ -22,14 +22,15 @@ public class StampCommentaryDTO implements Serializable{
     private String commentary;
     private short qualification;
     private Date dateCommentary;
-
+    
+    public StampCommentaryDTO(){
+    }
     /**
      * Crea un objeto StampCommentaryMinimumDTO a partir de un objeto StampCommentaryEntity.
      *
      * @param entity Entidad StampCommentaryEntity desde la cual se va a crear el nuevo objeto.
      * @generated
-     */
-    
+     */   
     public StampCommentaryDTO(StampCommentaryEntity entity) {
         if (entity!=null){
             this.id = entity.getId();
@@ -38,15 +39,13 @@ public class StampCommentaryDTO implements Serializable{
             this.qualification = entity.getQualification();
             this.dateCommentary = entity.getDateCommentary();
         }
-    }
-    
+    }   
     /**
      * Convierte un objeto StampCommentaryMinimumDTO a StampCommentaryEntity.
      *
      * @return Nueva objeto StampCommentaryEntity.
      * @generated
-     */
-    
+     */   
     public StampCommentaryEntity toEntity() {
         StampCommentaryEntity entity = new StampCommentaryEntity();
         entity.setId(this.getId());
@@ -54,7 +53,7 @@ public class StampCommentaryDTO implements Serializable{
         entity.setCommentary(this.getCommentary());
         entity.setQualification(this.getQualification());
         entity.setDateCommentary(this.getDateCommentary());
-    return entity;
+        return entity;
     }
     
     public Long getId() {

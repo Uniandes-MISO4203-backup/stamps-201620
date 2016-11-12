@@ -19,9 +19,9 @@ public class StampCommentaryDetailDTO extends StampCommentaryDTO {
     @PodamExclude
     private StampDTO stamp;
     
-    /*public StampCommentaryDetailDTO(){
+    public StampCommentaryDetailDTO(){
         super();
-    }*/
+    }
     /**
      * Crea un objeto StampCommentaryDetailDTO a partir de un objeto StampCommentaryEntity incluyendo los atributos de StampDTO.
      *
@@ -37,7 +37,7 @@ public class StampCommentaryDetailDTO extends StampCommentaryDTO {
     /**
      * Convierte un objeto StampCommentaryDetailDTO a StampCommentaryEntity incluyendo los atributos de StampDTO.
      *
-     * @return Nueva objeto AwardEntity.
+     * @return Nuevo objeto StampCommentaryEntity.
      * @generated
      */
     @Override

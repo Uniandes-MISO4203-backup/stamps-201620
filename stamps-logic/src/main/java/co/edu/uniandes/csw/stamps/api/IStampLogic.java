@@ -46,9 +46,9 @@ public interface IStampLogic {
     public List<StampEntity> getHighlighted();
     public List<StampEntity> getLatest();
     //Relación con StampCommentary
-    public List<StampCommentaryEntity> listStampCommentaries(Long stampid);
-    public StampCommentaryEntity getStampCommentary(Long stampid, Long stampcommentaryid);
-    public StampCommentaryEntity addStampCommentary(Long stampid, Long stampcommentaryid);
-    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampid, List<StampCommentaryEntity> list);
-    public void removeStampCommentary(Long stampid, Long stampcommentaryid);
+    public List<StampCommentaryEntity> listStampCommentaries(Long stampId);
+    public StampCommentaryEntity getStampCommentaries(Long stampId, Long stampCommentaryId);
+    public StampCommentaryEntity addStampCommentaries(Long stampId, Long stampCommentaryId);
+    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampId, List<StampCommentaryEntity> list);
+    public void removeStampCommentaries(Long stampId, Long stampCommentaryId);
 }

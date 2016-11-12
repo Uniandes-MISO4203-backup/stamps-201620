@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div ng-messages="stampCommentaryForm.$error" multiple>
+    <ng-message when="required">
+        <alert type="warning">Please, Fill the required fields!</alert>
+    </ng-message>
+    <ng-message when="url">
+        <alert type="warning">Image field must be a URL</alert>
+    </ng-message>
+</div>
+<header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<form novalidate name="stampCommentaryForm" role="form">
+    <fieldset>
+        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
+    </fieldset>
+</form>

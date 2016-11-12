@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface IStampCommentaryLogic {
     public int countStampCommentaries();
-    public List<StampCommentaryEntity> getStampCommentaries(Long stampid);
-    public List<StampCommentaryEntity> getStampCommentaries(Integer page, Integer maxRecords, Long stampid);
+    public List<StampCommentaryEntity> getStampCommentaries(Long stampId);
+    public List<StampCommentaryEntity> getStampCommentaries(Integer page, Integer maxRecords, Long stampId);
     public StampCommentaryEntity getStampCommentary(Long stampcommentaryid);
-    public StampCommentaryEntity createStampCommentary(Long stampid, StampCommentaryEntity entity);
-    public StampCommentaryEntity updateStampCommentary(Long stampid, StampCommentaryEntity entity);
-    public void deleteStampCommentary(Long stampcommentaryid);
+    public StampCommentaryEntity createStampCommentary(Long stampId, StampCommentaryEntity entity);
+    public StampCommentaryEntity updateStampCommentary(Long stampId, StampCommentaryEntity entity);
+    public void deleteStampCommentary(Long stampCommentaryId);
 }

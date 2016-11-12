@@ -29,7 +29,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author ga.chica10
  */
-@Path("/stampCommentary")
+@Path("/stampCommentaries")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class StampCommentaryResource {
@@ -46,7 +46,7 @@ public class StampCommentaryResource {
      * @return Lista de StampCommentaryDetailDTO convertida
      * @generated
      */
-    private List<StampCommentaryDetailDTO> listEntity2DTO(List<StampCommentaryEntity> entityList){
+    private List<StampCommentaryDetailDTO> listEntity2DTO(List<StampCommentaryEntity> entityList) {
         List<StampCommentaryDetailDTO> list = new ArrayList<>();
         for (StampCommentaryEntity entity : entityList){
             list.add(new StampCommentaryDetailDTO(entity));
@@ -59,7 +59,7 @@ public class StampCommentaryResource {
      * @return Colección de objetos de StampCommentaryDetailDTO
      * @generated
      */
-     @GET
+    @GET
     public List<StampCommentaryDetailDTO> getStampCommentaries() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", stampCommentaryLogic.countStampCommentaries());
@@ -78,7 +78,7 @@ public class StampCommentaryResource {
     @Path("{stampCommentaryId: \\d+}")
     public StampCommentaryDetailDTO getStampCommentary(@PathParam("stampCommentaryId") Long stampCommentaryId) {
         StampCommentaryEntity entity = stampCommentaryLogic.getStampCommentary(stampCommentaryId);
-        if (entity.getStamp()!=null && !stampId.equals(entity.getStamp().getId())){
+        if (entity.getStamp() == null && !stampId.equals(entity.getStamp().getId())){
             throw new WebApplicationException(404);
         }
         return new StampCommentaryDetailDTO(entity);
@@ -108,6 +108,8 @@ public class StampCommentaryResource {
     public StampCommentaryDetailDTO updateStampCommentary(@PathParam("stampCommentaryId") Long stampCommentaryId, StampCommentaryDetailDTO dto){
         StampCommentaryEntity entity = dto.toEntity();
         entity.setId(stampCommentaryId);
+        StampCommentaryEntity oldEntity = stampCommentaryLogic.getStampCommentary(stampCommentaryId);
+        entity.setStamp(oldEntity.getStamp());
         return new StampCommentaryDetailDTO(stampCommentaryLogic.updateStampCommentary(stampId, entity));
     }
     /**
@@ -118,7 +120,14 @@ public class StampCommentaryResource {
      */
     @DELETE
     @Path("{stampCommentaryId: \\d+}")
-    public void deleteContact(@PathParam("stampCommentaryId") Long stampCommentaryId) {
+    public void deleteStampCommentary(@PathParam("stampCommentaryId") Long stampCommentaryId) {
         stampCommentaryLogic.deleteStampCommentary(stampCommentaryId);
+    }
+    
+    public void existsStampCommentary(Long stampCommentaryId){
+        StampCommentaryDetailDTO stampCommentary = getStampCommentary(stampCommentaryId);
+        if (stampCommentary == null) {
+            throw new WebApplicationException(404);
+        }
     }
 }

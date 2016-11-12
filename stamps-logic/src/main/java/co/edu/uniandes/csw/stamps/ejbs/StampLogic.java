@@ -260,17 +260,17 @@ public class StampLogic implements IStampLogic {
     public List<StampEntity> getLatest() {
         return persistence.getLatest();
     }
-     
+    //Métodos de StampCommentaries 
     @Override 
-    public List<StampCommentaryEntity> listStampCommentaries(Long stampid){
-        return getStamp(stampid).getCommentaries();
+    public List<StampCommentaryEntity> listStampCommentaries(Long stampId) {
+        return getStamp(stampId).getStampCommentaries();
     }
     
     @Override
-    public StampCommentaryEntity getStampCommentary(Long stampid, Long stampcommentaryid){
-        List<StampCommentaryEntity> list = getStamp(stampid).getCommentaries();
+    public StampCommentaryEntity getStampCommentaries(Long stampId, Long stampCommentaryId) {
+        List<StampCommentaryEntity> list = getStamp(stampId).getStampCommentaries();
         StampCommentaryEntity stampCommentaryEntity = new StampCommentaryEntity();
-        stampCommentaryEntity.setId(stampcommentaryid);
+        stampCommentaryEntity.setId(stampCommentaryId);
         int index = list.indexOf(stampCommentaryEntity);
         if (index >= 0) {
             return list.get(index);
@@ -279,17 +279,17 @@ public class StampLogic implements IStampLogic {
     }
     
     @Override
-    public StampCommentaryEntity addStampCommentary(Long stampid, Long stampcommentaryid){
-        StampEntity stampEntity = getStamp(stampid);
-        StampCommentaryEntity stampCommentaryEntity = StampCommentaryLogic.getStampCommentary(stampcommentaryid);
+    public StampCommentaryEntity addStampCommentaries(Long stampId, Long stampCommentaryId) {
+        StampEntity stampEntity = getStamp(stampId);
+        StampCommentaryEntity stampCommentaryEntity = StampCommentaryLogic.getStampCommentary(stampCommentaryId);
         stampCommentaryEntity.setStamp(stampEntity);
         return stampCommentaryEntity;
     }
     
-    /*@Override
-    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampid, List<StampCommentaryEntity> list){
-        StampEntity stampEntity = getStamp(stampid);
-        List<StampCommentaryEntity> stampCommentaryList = StampCommentaryLogic.getStampCommentaries(stampid);
+    @Override
+    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampId, List<StampCommentaryEntity> list){
+        StampEntity stampEntity = getStamp(stampId);
+        List<StampCommentaryEntity> stampCommentaryList = StampCommentaryLogic.getStampCommentaries(stampId);
         for (StampCommentaryEntity stampCommentary : stampCommentaryList){
             if (list.contains(stampCommentary)){
                 stampCommentary.setStamp(stampEntity);
@@ -299,10 +299,10 @@ public class StampLogic implements IStampLogic {
         }
         stampEntity.setStampCommentary(list);
         return stampEntity.getStampCommentaries();
-    }*/
+    }
     @Override
-    public void removeStampCommentary(Long stampid, Long stampcommentaryid){
-        StampCommentaryEntity entity = StampCommentaryLogic.getStampCommentary(stampcommentaryid);
+    public void removeStampCommentaries(Long stampId, Long stampCommentaryId){
+        StampCommentaryEntity entity = StampCommentaryLogic.getStampCommentary(stampCommentaryId);
         entity.setStamp(null);
     }
 }
