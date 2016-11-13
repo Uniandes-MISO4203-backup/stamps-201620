@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<div  class="container-fluid well">
+    <div class="col-md-12">
+        <p>
+            <label><strong>Username: </strong></label>
+            <span id="Username">{{currentRecord.name}}</span>
+        </p>
+        <p>
+            <label><strong>Commentary: </strong></label>
+            <span id="commentary">{{currentRecord.commentary}}</span>
+        </p>
+        <p>
+            <label><strong>Qualification: </strong></label>
+            <span id="qualification">
+                <div star-rating rating-value="currentRecord.qualification" max="currentRecord.qualification"></div>
+            </span>
+        </p>
+         <p>
+            <label><strong>Date: </strong></label>
+            <span id="dateCommentary">{{currentRecord.dateCommentary}}</span>
+        </p>
+    </div>
+</div>
+<div ui-view="stampCommentaryChieldView"></div>

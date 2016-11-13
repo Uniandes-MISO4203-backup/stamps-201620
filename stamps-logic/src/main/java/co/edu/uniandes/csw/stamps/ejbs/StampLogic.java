@@ -29,6 +29,9 @@ import co.edu.uniandes.csw.stamps.persistence.StampPersistence;
 import co.edu.uniandes.csw.stamps.api.IArtistLogic;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
+import co.edu.uniandes.csw.stamps.api.IStampCommentaryLogic;
+import co.edu.uniandes.csw.stamps.entities.StampCommentaryEntity;
+import co.edu.uniandes.csw.stamps.persistence.StampCommentaryPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -44,6 +47,9 @@ public class StampLogic implements IStampLogic {
 
     @Inject
     private IArtistLogic artistLogic;
+    
+    @Inject
+    private IStampCommentaryLogic StampCommentaryLogic;
 
     /**
      * Obtiene el número de registros de Stamp.
@@ -255,4 +261,49 @@ public class StampLogic implements IStampLogic {
      public List<StampEntity> getLatest() {
         return persistence.getLatest();
     }
+    //Métodos de StampCommentaries 
+    @Override 
+    public List<StampCommentaryEntity> listStampCommentaries(Long stampId) {
+        return getStamp(stampId).getStampCommentaries();
+    }
+    
+    @Override
+    public StampCommentaryEntity getStampCommentaries(Long stampId, Long stampCommentaryId) {
+        List<StampCommentaryEntity> list = getStamp(stampId).getStampCommentaries();
+        StampCommentaryEntity stampCommentaryEntity = new StampCommentaryEntity();
+        stampCommentaryEntity.setId(stampCommentaryId);
+        int index = list.indexOf(stampCommentaryEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+    
+    @Override
+    public StampCommentaryEntity addStampCommentaries(Long stampId, Long stampCommentaryId) {
+        StampEntity stampEntity = getStamp(stampId);
+        StampCommentaryEntity stampCommentaryEntity = StampCommentaryLogic.getStampCommentary(stampCommentaryId);
+        stampCommentaryEntity.setStamp(stampEntity);
+        return stampCommentaryEntity;
+    }
+    
+    @Override
+    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampId, List<StampCommentaryEntity> list){
+        StampEntity stampEntity = getStamp(stampId);
+        List<StampCommentaryEntity> stampCommentaryList = StampCommentaryLogic.getStampCommentaries(stampId);
+        for (StampCommentaryEntity stampCommentary : stampCommentaryList){
+            if (list.contains(stampCommentary)){
+                stampCommentary.setStamp(stampEntity);
+            } else if (stampCommentary.getStamp() != null && stampCommentary.getStamp().equals(stampEntity)){
+                stampCommentary.setStamp(null);
+            }
+        }
+        stampEntity.setStampCommentary(list);
+        return stampEntity.getStampCommentaries();
+    }
+    @Override
+    public void removeStampCommentaries(Long stampId, Long stampCommentaryId){
+        StampCommentaryEntity entity = StampCommentaryLogic.getStampCommentary(stampCommentaryId);
+        entity.setStamp(null);
+    } 
 }

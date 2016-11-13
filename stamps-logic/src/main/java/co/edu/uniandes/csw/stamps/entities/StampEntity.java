@@ -29,6 +29,8 @@ import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.NamedQueries;
@@ -60,6 +62,18 @@ public class StampEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @ManyToMany
     private List<CategoryEntity> category = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "stamp", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StampCommentaryEntity> stampCommentaries = new ArrayList<>();
+    
+    public List<StampCommentaryEntity> getStampCommentaries(){
+        return stampCommentaries;
+    } 
+    
+    public void setStampCommentary(List<StampCommentaryEntity> stampCommentaries){
+        this.stampCommentaries = stampCommentaries;
+    }
 
     /**
      * Obtiene el atributo image.

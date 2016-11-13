@@ -250,8 +250,50 @@ SOFTWARE.
                         }]                
                 }
             });
-          
-	}]);
-    
-    
+            //Relación con stampCommentaries
+            $sp.state('commentariesStamp', {
+                url: '/stampCommentaries',
+                parent: 'stampDetail',
+                abstract: true,
+                views: {
+                    stampChieldView: {
+                        template: '<div ui-view="commentariesStampView"></div>'
+                    }
+                },
+                resolve: {
+                    commentaries: ['stamp', function (stamp) {
+                            return stamp.getList('stampCommentaries');
+                        }],
+                    model: 'stampCommentaryModel'
+                }
+            });
+            
+            $sp.state('commentariesStampList', {
+                url: '/list',
+                parent: 'commentariesStamp',
+                views: {
+                    commentariesStampView: {
+                        templateUrl: baseInstancePath + 'commentariesStamp/list/stamp.commentariesStamp.list.tpl.html',
+                        controller: 'commentariesStampListCtrl'
+                    }
+                }
+            });
+            
+            $sp.state('commentariesStampEdit', {
+                url: '/edit',
+                parent: 'commentariesStamp',
+                views: {
+                    commentariesStampView: {
+                        templateUrl: baseInstancePath + 'commentariesStamp/edit/stamp.commentariesStamp.edit.tpl.html',
+                        controller: 'commentariesStampEditCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                resolve: {
+                    pool: ['Restangular', 'model', function (r, model) {
+                            return r.all(model.url).getList();
+                        }]
+                }
+            });
+	}]);    
 })(window.angular);

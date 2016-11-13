@@ -69,7 +69,4 @@ public class StampCommentaryEntity extends BaseEntity implements Serializable {
     public void setStamp(StampEntity stamp) {
         this.stamp = stamp;
     }
-    
-    
 }
-

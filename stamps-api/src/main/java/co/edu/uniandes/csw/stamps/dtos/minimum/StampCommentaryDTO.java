@@ -14,46 +14,46 @@ import java.util.Date;
  *
  * @author ga.chica10
  */
+@XmlRootElement
 public class StampCommentaryDTO implements Serializable{
     
     private Long id;
     private String name;
     private String commentary;
     private short qualification;
-    private Date DateCommentary;
-
+    private Date dateCommentary;
+    
+    public StampCommentaryDTO(){
+    }
     /**
      * Crea un objeto StampCommentaryMinimumDTO a partir de un objeto StampCommentaryEntity.
      *
      * @param entity Entidad StampCommentaryEntity desde la cual se va a crear el nuevo objeto.
      * @generated
-     */
-    
+     */   
     public StampCommentaryDTO(StampCommentaryEntity entity) {
         if (entity!=null){
             this.id = entity.getId();
             this.name = entity.getName();
             this.commentary = entity.getCommentary();
             this.qualification = entity.getQualification();
-            this.DateCommentary = entity.getDateCommentary();
+            this.dateCommentary = entity.getDateCommentary();
         }
-    }
-    
+    }   
     /**
      * Convierte un objeto StampCommentaryMinimumDTO a StampCommentaryEntity.
      *
      * @return Nueva objeto StampCommentaryEntity.
      * @generated
-     */
-    
+     */   
     public StampCommentaryEntity toEntity() {
         StampCommentaryEntity entity = new StampCommentaryEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setCommentary(this.getCommentary());
         entity.setQualification(this.getQualification());
-        entity.setDateCommentary(this.DateCommentary);
-    return entity;
+        entity.setDateCommentary(this.getDateCommentary());
+        return entity;
     }
     
     public Long getId() {
@@ -89,10 +89,10 @@ public class StampCommentaryDTO implements Serializable{
     }
 
     public Date getDateCommentary() {
-        return DateCommentary;
+        return dateCommentary;
     }
 
-    public void setDateCommentary(Date DateCommentary) {
-        this.DateCommentary = DateCommentary;
+    public void setDateCommentary(Date dateCommentary) {
+        this.dateCommentary = dateCommentary;
     }
 }

@@ -33,7 +33,8 @@ SOFTWARE.
         'artistModule',
         'categoryModule',
         'authModule',
-        'roleModule'
+        'roleModule',
+        'stampCommentaryModule'//Nuevo módulo
     ]);
     mod.constant('baseUrl', 'api');
     mod.config(['$logProvider', function ($logProvider) {

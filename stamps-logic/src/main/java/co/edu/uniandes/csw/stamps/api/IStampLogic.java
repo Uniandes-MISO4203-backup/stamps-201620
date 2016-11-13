@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.stamps.api;
 
 import co.edu.uniandes.csw.stamps.entities.StampEntity;
 import co.edu.uniandes.csw.stamps.entities.CategoryEntity;
+import co.edu.uniandes.csw.stamps.entities.StampCommentaryEntity;
 import java.util.List;
 
 public interface IStampLogic {
@@ -44,5 +45,10 @@ public interface IStampLogic {
     public List<StampEntity> getStampsAll();
     public List<StampEntity> getHighlighted();
     public List<StampEntity> getLatest();
-
+    //Relación con StampCommentary
+    public List<StampCommentaryEntity> listStampCommentaries(Long stampId);
+    public StampCommentaryEntity getStampCommentaries(Long stampId, Long stampCommentaryId);
+    public StampCommentaryEntity addStampCommentaries(Long stampId, Long stampCommentaryId);
+    public List<StampCommentaryEntity> replaceStampCommentaries(Long stampId, List<StampCommentaryEntity> list);
+    public void removeStampCommentaries(Long stampId, Long stampCommentaryId);
 }
