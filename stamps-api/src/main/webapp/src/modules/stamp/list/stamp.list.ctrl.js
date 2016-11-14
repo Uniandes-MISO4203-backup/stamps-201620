@@ -27,8 +27,6 @@ SOFTWARE.
 
     mod.controller("stampListCtrl", ["$scope", '$state', 'stamps', '$stateParams','Restangular',
         function ($scope, $state, stamps, $params,Restangular) {
-            
-         
             $scope.records = stamps;
             //Paginación
             this.itemsPerPage = $params.limit;
