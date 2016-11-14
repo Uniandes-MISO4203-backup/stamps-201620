@@ -71,7 +71,7 @@ SOFTWARE.
 						pagination : true,
 					});
                                        
-				};
+    				};
             $scope.filtrar = function (parentCategory) {
                 $scope.getCategorys(parentCategory);
                 Restangular.all("stamps").customGET(parentCategory).then(function (response) {                        

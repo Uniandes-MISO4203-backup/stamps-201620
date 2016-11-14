@@ -34,6 +34,24 @@ SOFTWARE.
     
     mod.controller("stampListHighlightedCtrl", ["$scope", "$rootScope",'$state', 'stamps', '$stateParams','Restangular',
         function ($scope, $state,$rootScope, stamps, $params,Restangular) {
+                        $scope.categorys = [];
+            $scope.getCategorys = function (parentCategory) {
+                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
+                    if (response.length>0) {
+                        $scope.categorys=response;
+                    } 
+                });
+            };
+            $scope.getCategorys = function (parentCategory) {
+                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
+                    if (response.length>0) {
+                        $scope.categorys=response;
+                    } 
+                });
+            };
+
+            
+            
           $scope.Highlighted=stamps;
             $scope.getHighlighted = function () {
                 Restangular.all("stamps").customGET('HighlightedStamps/').then(function (response) {
@@ -45,5 +63,20 @@ SOFTWARE.
                 });
             };
             $scope.getHighlighted();
+                        $scope.Reload=function()
+            {
+        $state.reload();
+            };
+            $scope.filtrar = function (parentCategory) {
+                $scope.getCategorys(parentCategory);
+                Restangular.all("stamps").customGET(parentCategory).then(function (response) {                        
+                   // $scope.startGallery(response);
+                    $scope.getHighlighted(response);
+                    
+                });
+             
+            };
+            $scope.getCategorys("");
+
         }]);
 })(window.angular);
