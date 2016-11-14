@@ -133,7 +133,7 @@ SOFTWARE.
      * This configuration allows to print said errors
      */
     //mod.run(['$rootScope', '$log', function ($rootScope, $log) {
-    mod.run(['$rootScope', '$log', 'authService','$cookieStore', function ($rootScope, $log, auth,$cookieStore,$route) {
+    mod.run(['$rootScope', '$log', 'authService','$cookieStore', function ($rootScope, $log, auth,$cookieStore) {
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 $log.warn(error);
             });
