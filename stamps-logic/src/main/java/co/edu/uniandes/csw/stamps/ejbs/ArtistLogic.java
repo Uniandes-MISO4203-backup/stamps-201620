@@ -124,5 +124,17 @@ public class ArtistLogic implements IArtistLogic {
       public List<ArtistEntity> getHighlighted() {
         return persistence.getHighlighted();
     }
+
+    /**
+     * Obtiene los datos de una instancia de Artist a partir de su nombre.
+     *
+     * @param name nombre de la instancia a consultar
+     * @return Instancia de ArtistEntity con los datos del Artist consultado.
+     * @generated
+     */
+    @Override
+    public ArtistEntity getArtistByName(String name) {
+        return persistence.findByNamex(name);
+    }
   
 }

@@ -125,6 +125,19 @@ public class ClientResource {
     public ClientDetailDTO getClient(@PathParam("id") Long id) {
         return new ClientDetailDTO(clientLogic.getClient(id));
     }
+    
+            /**
+     * Obtiene los datos de una instancia de Client a partir de su nombre
+     *
+     * @param name nombre de la instancia a consultar
+     * @return Instancia de ClientBasicDTO con los datos del Client consultado
+     * @generated
+     */
+    @GET
+    @Path("/byname/{name}")
+    public ClientDetailDTO getClientByName(@PathParam("name") String name) {
+        return new ClientDetailDTO(clientLogic.getClientByName(name));
+    }
 
     /**
      * Se encarga de crear un Client en la base de datos

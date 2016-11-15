@@ -29,6 +29,7 @@ import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.stamps.entities.ArtistEntity;
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
 import java.util.List;
+import javax.persistence.TypedQuery;
 
 /**
  * @generated
@@ -66,6 +67,12 @@ public class ArtistPersistence extends CrudPersistence<ArtistEntity> {
           return retorno;   
          }
          
+    }
+     
+    public ArtistEntity findByNamex(String name) {
+        TypedQuery<ArtistEntity> q = em.createQuery("select p from ArtistEntity p where (p.name = :name)", ArtistEntity.class);
+        q.setParameter("name", name);
+        return q.getSingleResult();
     }
 
 }

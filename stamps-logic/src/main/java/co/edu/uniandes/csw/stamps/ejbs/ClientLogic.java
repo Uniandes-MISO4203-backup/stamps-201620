@@ -120,5 +120,17 @@ public class ClientLogic implements IClientLogic {
     public void deleteClient(Long id) {
         persistence.delete(id);
     }
+    
+        /**
+     * Obtiene los datos de una instancia de Client a partir de su nombre.
+     *
+     * @param name nombre de la instancia a consultar
+     * @return Instancia de ClientEntity con los datos del Client consultado.
+     * @generated
+     */
+    @Override
+    public ClientEntity getClientByName(String name) {
+        return persistence.findByNamex(name);
+    }
   
 }

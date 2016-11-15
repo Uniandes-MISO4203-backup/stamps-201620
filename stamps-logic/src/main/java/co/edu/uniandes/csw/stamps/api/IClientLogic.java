@@ -34,4 +34,5 @@ public interface IClientLogic {
     public ClientEntity createClient(ClientEntity entity); 
     public ClientEntity updateClient(ClientEntity entity);
     public void deleteClient(Long id);
+    public ClientEntity getClientByName(String name);
 }

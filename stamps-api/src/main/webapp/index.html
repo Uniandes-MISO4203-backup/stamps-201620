@@ -151,10 +151,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		<div class="top-nav">		
 			  <ul class="megamenu skyblue"  ng-controller="roleCtrl">
-				 <li ng-if="client"><a ui-sref="clientList">Client</a></li>
+                                <li ng-if="client"><a ui-sref="clientList">Client</a></li>
                                 <li ng-if="tShirt"><a ui-sref="tShirtList">T Shirt</a></li>
                                 <li ng-if="artist"><a ui-sref="artistList">Artist</a></li>
+                                <li ng-if="artist"><a href="{{newStampUrl}}">New Stamp</a></li>
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
+
 			
 				
 			  </ul> 

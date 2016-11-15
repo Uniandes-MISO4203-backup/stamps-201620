@@ -1,6 +1,22 @@
 (function (ng) {
     var mod = ng.module('roleModule', ['ngCrud']);
-    mod.controller('roleCtrl', ['$rootScope', 'Restangular','$state', function ($rootScope, Restangular) {
+    mod.controller('roleCtrl', ['$rootScope', 'Restangular','$scope','$state', function ($rootScope, Restangular, $scope) {
+
+        var getArtistByName = function(nam){
+            
+                Restangular.all("artists/byname/"+nam).customGET().then(function(resp){
+                    $rootScope.artistObject = resp;
+                    $scope.newStampUrl = "#/artists/"+ resp.id +"/details/stamps/new";
+                    console.log($scope.newStampUrl);
+                });
+        }
+        
+        var getClientByName = function(nam){
+            
+                Restangular.all("clients/byname/"+nam).customGET().then(function(resp){
+                    $rootScope.clientObject = resp;
+                });
+        }
 
         $rootScope.auth = function () {
                 Restangular.all("users").customGET('me').then(function (response) {
@@ -20,18 +36,30 @@
                             $rootScope.artist = false;
                             $rootScope.client = true;
                             $rootScope.tShirt = false;
+                            
+                            getClientByName(response.userName);
                         }
                         if (roles.indexOf("artist") !== -1) {
                             $rootScope.category = false;
                             $rootScope.artist = true;
                             $rootScope.client = false;
                             $rootScope.tShirt = false;
+                            
+                            getArtistByName(response.userName);
                         }
                         if (roles.indexOf("admin") !== -1) {
                             $rootScope.category = true;
                             $rootScope.artist = true;
                             $rootScope.client = true;
                             $rootScope.tShirt = true;
+                            
+                            if(!$rootscope.artistObject){
+                                getArtistByName(response.userName);
+                            }
+                            
+                            if(!$rootscope.clientObject){
+                                getClientByName(response.userName);
+                            }
                         }
                     }
                 });
