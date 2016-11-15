@@ -49,12 +49,16 @@
  insert into APP.Artistentity (id, address, name, popularity, qualification, telephone) values (49, '1 Holmberg Alley', 'Patrick Spencer', 10, 3, 76517925312)
  insert into APP.Artistentity (id, address, name, popularity, qualification, telephone) values (50, '5 Killdeer Street', 'Catherine Hernandez', 26, 2, 9728819285004)
 
+alter table APP.Artistentity alter column id restart with 51
+
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (1, 'SISTEMAS', NULL)
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (2, 'COMICS', NULL)
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (3, 'DEPORTES', NULL)
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (4, 'HUMOR', NULL)
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (5, 'MUSICA', NULL)
  insert into APP.CATEGORYENTITY (Id, name, parentcategory_id) values (6, 'MASCOTAS', NULL)
+
+alter table APP.CATEGORYENTITY alter column id restart with 7
 
  insert into APP.CLIENTENTITY (id, address, name, telephone) values (1, '554 Drewry Place', 'Cynthia Rice', 7750783)
  insert into APP.CLIENTENTITY (id, address, name, telephone) values (2, '35 Pond Point', 'Justin Larson', 3850701)
@@ -357,6 +361,8 @@
  insert into APP.CLIENTENTITY (id, address, name, telephone) values (299, '363 Waubesa Road', 'Robert Stanley', 6423834)
  insert into APP.CLIENTENTITY (id, address, name, telephone) values (300, '00223 Doe Crossing Alley', 'Philip King', 9451184)
 
+ alter table APP.CLIENTENTITY alter column id restart with 301
+
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (1, 'Nulla tempus.', 1, 'Curabitur in libero ut massa volutpat convallis.', 'images/39.jpg', 'Sed accumsan felis.', 84, 23, 2, 32)
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (2, 'Curabitur at ipsum ac tellus semper interdum.', 0, 'Pellentesque at nulla.', 'images/23.jpg', 'Pellentesque viverra pede ac diam.', 3801, 38, 3, 38)
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (3, 'Donec semper sapien a libero.', 0, 'Proin risus.', 'images/2.jpg', 'Aenean sit amet justo.', 4354, 5, 5, 46)
@@ -657,6 +663,8 @@
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (298, 'Quisque ut erat.', 0, 'Sed accumsan felis.', 'images/34.jpg', 'Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 9980, 6, 1, 5)
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (299, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae Duis faucibus accumsan odio.', 0, 'Donec dapibus.', 'images/1.jpg', 'Proin at turpis a pede posuere nonummy.', 7381, 16, 3, 6)
  insert into APP.STAMPENTITY (id, artistcomment, availableforsale, description, image, name, popularity, price, qualification, artist_id) values (300, 'Nulla mollis molestie lorem.', 0, 'Nulla ac enim.', 'images/2.jpg', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.', 9513, 27, 1, 50)
+
+ alter table APP.STAMPENTITY alter column id restart with 301
 
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (271, 6)
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (287, 3)
@@ -1049,6 +1057,8 @@ insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values 
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (279, 4)
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (227, 2)
 
+ alter table APP.STAMPENTITY alter column id restart with 301
+
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (1, 'Indigo', 'Polyester', 'Bamity', 8.33, 'S')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (2, 'Aquamarine', 'Cotton', 'Regrant', 9.35, '2XL')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (3, 'Crimson', 'Polyester', 'Lotstring', 9.61, 'S')
@@ -1079,3 +1089,4 @@ insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values 
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (28, 'Indigo', 'jean', 'Rank', 8.71, 'S')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (29, 'Purple', 'Cotton', 'Fixflex', 6.83, 'XS')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (30, 'Indigo', 'Cotton', 'Opela', 8.88, '2XL')
+ alter table APP.STAMPENTITY alter column id restart with 31
