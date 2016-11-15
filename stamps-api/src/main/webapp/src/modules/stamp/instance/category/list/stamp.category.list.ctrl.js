@@ -26,6 +26,7 @@ SOFTWARE.
 
     mod.controller('stampCategoryListCtrl', ['$scope', 'category', 'model', '$state',
         function ($scope, category, model, $state) {
+            console.log("prueba1")
             $scope.records = category;
             $scope.model = model;
             $scope.actions = {

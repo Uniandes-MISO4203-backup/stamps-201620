@@ -35,5 +35,6 @@ public interface IArtistLogic {
     public ArtistEntity updateArtist(ArtistEntity entity);
     public void deleteArtist(Long id);
     public List<ArtistEntity> getHighlighted();
+    public ArtistEntity getArtistByName(String name);
 
 }

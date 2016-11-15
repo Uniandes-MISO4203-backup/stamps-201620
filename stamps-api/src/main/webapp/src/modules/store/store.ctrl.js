@@ -25,7 +25,8 @@ SOFTWARE.
     var mod = ng.module('mainApp');
 
     mod.controller('storeCtrl', ['$scope', 'Restangular', '$rootScope',
-        function ($scope,r, items, $rootScope) {
+        function ($scope,r, $rootScope) {
+            
             
             //$scope.filteredStanps = [];
            // $scope.currentPage = 1;
@@ -65,11 +66,16 @@ SOFTWARE.
             
             console.log($scope.stamps);
             
-            $scope.addToWishList = function(stamp){
-                var obj = {stamp:stamp,tShirt: $scope.shirts[0],name:"item",qty:1,status:0};
-                            items.post(obj).then(function (rc) {
-                                alert("Item added to Wish List");
-                            });
+            $scope.addToWishList = function(stamp, shirt){
+                
+                console.log($rootScope);
+
+                
+                r.all("clients/"+ $rootScope.clientObject.id + "/wishList").post({stamp:stamp,tShirt: shirt,name:"item",qty:1,status:0}).then(function(res){
+                    
+                    alert("Item added to wishlist");
+                    
+                });
             }
 
             /* Función showMessage: Recibe el mensaje en String y

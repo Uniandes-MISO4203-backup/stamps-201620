@@ -63,6 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script src="src/modules/tShirt/tShirt.mod.js"></script>
         <script src="src/modules/stamp/stamp.mod.js"></script>
         <script src="src/modules/artist/artist.mod.js"></script>
+        <script src="src/modules/profile/profile.mod.js"></script>
         <script src="src/modules/category/category.mod.js"></script>
         <script src="src/modules/client/client.ctrl.js"></script>
         <script src="src/modules/client/instance/delete/client.delete.ctrl.js"></script>
@@ -106,6 +107,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <script src="src/modules/category/list/category.list.ctrl.js"></script>
         <script src="src/modules/category/new/category.new.ctrl.js"></script>
         <script src="src/modules/store/store.ctrl.js"></script>
+        <script src="src/modules/profile/profile.ctrl.js"></script>
+
 
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
@@ -114,17 +117,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body> 
 <!--header-->	
+
 <div class="header" >
 	<div class="top-header" >		
 		<div class="container">
 		<div class="top-head" >
 			<div class="header-para">
 				<ul class="social-in">
-					<li><a href="#"><i> </i></a></li>						
+					<li ><a href="#"><i> </i></a></li>						
 					<li><a href="#"><i class="ic"> </i></a></li>
 					<li><a href="#"><i class="ic1"> </i></a></li>
-                                        <li><a href="#/new"><img src="images/newIcon.png" height="42" width="42"/></a></li>
-                                        <li><a href="#/bestArtist"><img src="images/artist.png" height="32" width="32"/></a></li>
+                                        <li><a href="#/new"><img src="images/newIcon.png" height="24" width="24"/></a></li>
+                                        <li><a href="#/bestArtist"><img src="images/artist.png" height="24" width="24"/></a></li>
+                                        <li><a href="#/profile" ng-hide="!authenticated"><img src="images/avatar.png" height="24" width="24"/></a></li>
                                         <li><a> <login-button></login-button></a></li>
                                         
 
@@ -146,10 +151,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		<div class="top-nav">		
 			  <ul class="megamenu skyblue"  ng-controller="roleCtrl">
-				 <li ng-if="client"><a ui-sref="clientList">Client</a></li>
+                                <li ng-if="client"><a ui-sref="clientList">Client</a></li>
                                 <li ng-if="tShirt"><a ui-sref="tShirtList">T Shirt</a></li>
                                 <li ng-if="artist"><a ui-sref="artistList">Artist</a></li>
+                                <li ng-if="artist && artistObject"><a href="{{newStampUrl}}">New Stamp</a></li>
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
+
 			
 				
 			  </ul> 
@@ -168,7 +175,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		</div>
 	</div>
-
 <div class="content">
                                        <div ui-view="mainView"> 
 </div>
@@ -229,8 +235,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                   </div>
 									</ul>
                                                                     
-                                                                        <ul class="in-by">
-                                                                            <li><span class="glyphicon glyphicon-heart"></span></li>
+                                                                        <ul class="in-by" ng-if="client && clientObject">
+                                                                            <li ng-click="addToWishList(stamp)"><span class="glyphicon glyphicon-heart"></span></li>
 										<!--<li><span class="glyphicon glyphicon-shopping-cart"></span></li>-->
 									</ul>
 					

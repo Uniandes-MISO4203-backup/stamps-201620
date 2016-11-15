@@ -28,6 +28,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.stamps.entities.ClientEntity;
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
+import javax.persistence.TypedQuery;
 
 /**
  * @generated
@@ -52,6 +53,12 @@ public class ClientPersistence extends CrudPersistence<ClientEntity> {
     @Override
     protected Class<ClientEntity> getEntityClass() {
         return ClientEntity.class;
+    }
+    
+    public ClientEntity findByNamex(String name) {
+        TypedQuery<ClientEntity> q = em.createQuery("select p from ClientEntity p where (p.name = :name)", ClientEntity.class);
+        q.setParameter("name", name);
+        return q.getSingleResult();
     }
 
 }

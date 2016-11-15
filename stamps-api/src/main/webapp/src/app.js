@@ -33,8 +33,11 @@ SOFTWARE.
         'artistModule',
         'categoryModule',
         'authModule',
-        'roleModule'
+        'roleModule',
+        'profileModule',
+        'ngCookies'
     ]);
+    
     mod.constant('baseUrl', 'api');
     mod.config(['$logProvider', function ($logProvider) {
             $logProvider.debugEnabled(true);
@@ -81,7 +84,7 @@ SOFTWARE.
                 $urlRouterProvider.otherwise('/');
         }]);
     
-    mod.config(['authServiceProvider', 'baseUrl', function (auth, baseUrl) {
+    mod.config(['authServiceProvider','baseUrl', function (auth, baseUrl) {
             auth.setValues({
                 apiUrl: baseUrl + '/users/',
                 successState: 'stampGallery'
@@ -130,16 +133,17 @@ SOFTWARE.
      * This configuration allows to print said errors
      */
     //mod.run(['$rootScope', '$log', function ($rootScope, $log) {
-    mod.run(['$rootScope', '$log', 'authService', function ($rootScope, $log, auth) {
+    mod.run(['$rootScope', '$log', 'authService','$cookieStore', function ($rootScope, $log, auth,$cookieStore) {
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 $log.warn(error);
             });
-            
             $rootScope.CheckAuthenticated = function() {
               if (!$rootScope.authenticated) {
                   auth.goToLogin();
               }
             };
-            
+            $rootScope.$on('logged-in', function (events, user) {
+            $cookieStore.put("usr",user);    
+        });
         }]);
 })(window.angular);

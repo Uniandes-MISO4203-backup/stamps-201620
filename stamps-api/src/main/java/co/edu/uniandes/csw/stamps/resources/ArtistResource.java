@@ -124,6 +124,19 @@ public class ArtistResource {
     public ArtistDetailDTO getArtist(@PathParam("id") Long id) {
         return new ArtistDetailDTO(artistLogic.getArtist(id));
     }
+    
+        /**
+     * Obtiene los datos de una instancia de Artist a partir de su nombre
+     *
+     * @param name nombre de la instancia a consultar
+     * @return Instancia de ArtistBasicDTO con los datos del Artist consultado
+     * @generated
+     */
+    @GET
+    @Path("/byname/{name}")
+    public ArtistDetailDTO getArtistByName(@PathParam("name") String name) {
+        return new ArtistDetailDTO(artistLogic.getArtistByName(name));
+    }
 
     /**
      * Se encarga de crear un Artist en la base de datos
