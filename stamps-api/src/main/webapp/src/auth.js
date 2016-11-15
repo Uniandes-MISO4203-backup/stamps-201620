@@ -52,7 +52,7 @@
                             $rootScope.artist = true;
                             $rootScope.client = true;
                             $rootScope.tShirt = true;
-                            
+                            /*
                             if(!$rootscope.artistObject){
                                 getArtistByName(response.userName);
                             }
@@ -60,6 +60,7 @@
                             if(!$rootscope.clientObject){
                                 getClientByName(response.userName);
                             }
+                            */
                         }
                     }
                 });

@@ -154,7 +154,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li ng-if="client"><a ui-sref="clientList">Client</a></li>
                                 <li ng-if="tShirt"><a ui-sref="tShirtList">T Shirt</a></li>
                                 <li ng-if="artist"><a ui-sref="artistList">Artist</a></li>
-                                <li ng-if="artist"><a href="{{newStampUrl}}">New Stamp</a></li>
+                                <li ng-if="artist && artistObject"><a href="{{newStampUrl}}">New Stamp</a></li>
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
 
 			
@@ -303,8 +303,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                                   </div>
 									</ul>
                                                                     
-                                                                        <ul class="in-by">
-                                                                            <li><span class="glyphicon glyphicon-heart"></span></li>
+                                                                        <ul class="in-by" ng-if="client && clientObject">
+                                                                            <li ng-click="addToWishList(stamp)"><span class="glyphicon glyphicon-heart"></span></li>
 										<!--<li><span class="glyphicon glyphicon-shopping-cart"></span></li>-->
 									</ul>
 					
