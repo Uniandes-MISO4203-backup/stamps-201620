@@ -35,15 +35,34 @@ SOFTWARE.
     mod.controller("stampListLatestCtrl", ["$scope", "$rootScope",'$state', 'stamps', '$stateParams','Restangular',
         function ($scope, $state,$rootScope, stamps, $params,Restangular) {
           $scope.latest=stamps;
+          $scope.categorys = [];
+            $scope.getCategorys = function (parentCategory) {
+                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
+                    if (response.length>0) {
+                        $scope.categorys=response;
+                    } 
+                });
+            };
+          
             $scope.getLatest = function () {
                 Restangular.all("stamps").customGET('latestStamps/').then(function (response) {
                     if (response.length>0) {
-                        console.log("yujuuuu");
+                        console.log(response);
                         $scope.latest=response;
                         
                     } 
                 });
             };
+                        $scope.filtrar = function (parentCategory) {
+                            console.log(parentCategory);
+                $scope.getCategorys(parentCategory);
+                Restangular.all("stamps").customGET(parentCategory).then(function (response) {                        
+                        $scope.latest=response;                    
+                });
+             
+            };
             $scope.getLatest();
+            $scope.getCategorys("");
+
         }]);
 })(window.angular);
