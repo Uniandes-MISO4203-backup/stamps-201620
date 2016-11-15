@@ -73,13 +73,6 @@ SOFTWARE.
                 displayName: 'Comments',
                 type: 'String',
                 required: false
-            },
-            artist:{
-                displayName: 'Artist',
-                type: 'Reference',
-                model: 'artistModel',
-                options: [],
-                required: true
             }
         }
     });
