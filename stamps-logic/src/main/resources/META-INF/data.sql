@@ -1057,8 +1057,6 @@ insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values 
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (279, 4)
 insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values (227, 2)
 
- alter table APP.STAMPENTITY alter column id restart with 301
-
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (1, 'Indigo', 'Polyester', 'Bamity', 8.33, 'S')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (2, 'Aquamarine', 'Cotton', 'Regrant', 9.35, '2XL')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (3, 'Crimson', 'Polyester', 'Lotstring', 9.61, 'S')
@@ -1089,4 +1087,5 @@ insert into APP.STAMPENTITY_CATEGORYENTITY (stampentity_Id, category_Id) values 
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (28, 'Indigo', 'jean', 'Rank', 8.71, 'S')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (29, 'Purple', 'Cotton', 'Fixflex', 6.83, 'XS')
  insert into APP.TSHIRTENTITY (id, color, material, name, price, size) values (30, 'Indigo', 'Cotton', 'Opela', 8.88, '2XL')
- alter table APP.STAMPENTITY alter column id restart with 31
+ 
+ alter table APP.TSHIRTENTITY alter column id restart with 31
