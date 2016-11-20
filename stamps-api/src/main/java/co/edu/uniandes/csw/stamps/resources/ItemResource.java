@@ -180,4 +180,17 @@ public class ItemResource {
         itemLogic.deleteItem(itemId);
     }
     
+        /**
+     * Compra los items del carrito.
+     *
+     * @param clientId Identificador de la instancia de Item a modificar
+     * @generated
+     */
+    @POST
+    @Path("/acquirecart")
+    public void acquireCart() {
+ 
+        itemLogic.acquireCart(clientId);
+    }
+    
 }

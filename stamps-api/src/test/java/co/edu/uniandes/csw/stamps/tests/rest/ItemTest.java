@@ -331,6 +331,23 @@ public class ItemTest {
         Assert.assertEquals(item.getQty(), itemTest.getQty());
     }
     
+        /**
+     * Prueba para comprar elementos del carrito
+     *
+     * @generated
+     */
+    @Test
+    public void acquireTest() throws IOException {
+        Cookie cookieSessionId = login(username, password);
+        Response response = target
+            .path(clientPath).path(fatherClientEntity.getId().toString())
+            .path(itemPath)
+            .path("acquirecart")
+            .request().cookie(cookieSessionId).post(null);
+        
+        Assert.assertEquals(OkWithoutContent, response.getStatus());
+    }
+    
     /**
      * Prueba para eliminar un Item
      *
