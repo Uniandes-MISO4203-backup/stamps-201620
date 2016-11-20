@@ -27,13 +27,9 @@ SOFTWARE.
     mod.controller('storeCtrl', ['$scope', 'Restangular', '$rootScope',
         function ($scope,r, $rootScope) {
             
-            
-            //$scope.filteredStanps = [];
-           // $scope.currentPage = 1;
             $scope.numPerPage = 9;
             $scope.maxSize = 5;
             
-            //console.log($rootScope.authenticated);
             //Alertas
             $scope.alerts = [];
             this.closeAlert = function (index) {
@@ -62,15 +58,12 @@ SOFTWARE.
             $scope.filteredStamps = $scope.stamps.slice(begin, end);
           });
             
-              
-            
             console.log($scope.stamps);
             
             $scope.addToWishList = function(stamp, shirt){
                 
                 console.log($rootScope);
 
-                
                 r.all("clients/"+ $rootScope.clientObject.id + "/wishList").post({stamp:stamp,tShirt: shirt,name:"item",qty:1,status:0}).then(function(res){
                     
                     alert("Item added to wishlist");

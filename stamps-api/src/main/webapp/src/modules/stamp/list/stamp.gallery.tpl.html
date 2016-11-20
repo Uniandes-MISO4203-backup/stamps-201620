@@ -25,52 +25,32 @@
                 ng-repeat="category in categorys"><a  ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
         </ul>
     </div>
-    </div>
-    <div class="content">
-	<div class="container" style="padding-right:0;padding-left:0;margin-right:inherit;width:1100px">
-            <div class="content-top">
-		<h2 class="new">Stamps gallery</h2>
-		<div class="pink">
-                    <div id="owl-demo1" class="owl-carousel text-center" >
-                        <div class="item" ng-repeat="stamp in records">
-                            <div class=" box-in">
-                                <div class=" grid_box">		
-                                    <a ui-sref="clientList" ng-href="#/artists/{{stamp.artist.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
-                                        <div class="zoom-icon">
-                                            <ul class="in-by">
-                                                    <li><h5>Name:</h5></li>                     
-                                                    <li><span>{{stamp.name}}</span></li></br>
-                                                    <div star-rating rating-value="stamp.qualification" max="stamp.qualification"> </div></li>                     
-                                            </ul>					
-                                        </div> 
-                                    </a> 	
-                                </div>					
-                                <div class="grid_1 simpleCart_shelfItem">
-                                        <a href="#" class="cup item_add"><span class=" item_price" >{{stamp.price| currency}} <i> </i> </span></a>					
-                                </div>
+</div>
+<div class="content">
+    <div class="container" style="padding-right:0;padding-left:0;margin-right:inherit;width:1100px">
+        <div class="content-top">
+            <h2 class="new">Stamps gallery</h2>
+            <div class="pink">
+                <div id="owl-demo1" class="owl-carousel text-center" >
+                    <div class="item" ng-repeat="stamp in records">
+                        <div class=" box-in">
+                            <div class=" grid_box">		
+                                <a ui-sref="clientList" ng-href="#/artists/{{stamp.artist.id}}/details/stamps/{{stamp.id}}/details" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}">
+                                    <div class="zoom-icon">
+                                        <ul class="in-by">
+                                                <li><h5>Name:</h5></li>                     
+                                                <li><span>{{stamp.name}}</span></li></br>
+                                                <div star-rating rating-value="stamp.qualification" max="stamp.qualification"> </div></li>                     
+                                        </ul>					
+                                    </div> 
+                                </a> 	
+                            </div>					
+                            <div class="grid_1 simpleCart_shelfItem">
+                                    <a href="#" class="cup item_add"><span class=" item_price" >{{stamp.price| currency}} <i> </i> </span></a>					
                             </div>
                         </div>
-                    </div>   
-    <!--<div class="col-md-10">
-        <div ng-repeat="stamp in records">
-            <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px" class="col-md-4 col-sm-6 col-lg-3 well">
-            <div class="col-md-12">
-                <div class="img-thumbnail" >
-                    <a ng-href="{{stamp.image}}" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{stamp.image}}"></a>
-                </div>
-            </div>
-            <div class="caption" >
-                <p><strong>Name: </strong> {{stamp.name}}</p>
-                <p><strong>Price: </strong> {{stamp.price| currency}}</p>
-                 <p><strong>Available For Sale: </strong> {{stamp.availableForSale}}</p>
-                 <p><strong>Qualification: </strong> {{stamp.qualification}}</p>
-                 <p><strong>Description : </strong> {{stamp.description}}</p>
-                 <p><strong>Artist Comment : </strong> {{stamp.artistComment}}</p>
-                 <p><strong>Popularity : </strong> {{stamp.popularity}}</p>
-                </div>
-            </div>
-        </div>
-    </div>   -->
+                    </div>
+                </div>   
             </div>
         </div>
     </div>
