@@ -25,9 +25,10 @@ SOFTWARE.
 
     var mod = ng.module("stampModule");
 
-    mod.controller("stampDetailCtrl", ['$scope',"$rootScope", "$state", "stamp",
-        function ($scope,$rootScope, $state, stamp) {
+    mod.controller("stampDetailCtrl", ['$scope',"$rootScope", "$state", "stamp",'$cookieStore',
+        function ($scope,$rootScope, $state, stamp, $cookieStore) {
             $scope.currentRecord = stamp;
+            $scope.CurrentUser = $cookieStore.get("usr");
             $scope.actions={};
             if($rootScope.authenticated){
             $scope.actions = {
@@ -73,7 +74,39 @@ SOFTWARE.
                         $state.go('stampCategoryList');
                     }
                 }
-            };}
+            };
+            document.getElementById('DisplayCommentary').style.display = 'block';
+            }
+            $scope.CreateComment = function() {  
+                var commentariesUsers = $scope.currentRecord.comments;
+                var StampCommentary = document.getElementById('commentaries').value;
+                var commentariesUsers = $scope.currentRecord.comments;
+                //if (commentariesUsers == "0"){
+                  //  commentariesUsers = "";
+                //}
+                if (StampCommentary != ""){
+                    var username = $scope.CurrentUser.userName;                    
+                    var commentaryUser = username + ':  "' + StampCommentary;
+                    var StampCommentaries = commentaryUser + '";  ' + commentariesUsers;
+                    $scope.currentRecord.comments = StampCommentaries;
+                    $scope.currentRecord.put().then(function (rc) {
+                        $state.go('stampDetail', {stampId: rc.id}, {reload: true});
+                    });
+                }
+                else {
+                    document.getElementById('commentaries').value = "Escribe aqui tu comentario";
+                    document.getElementById('Botones').style.display = 'none';
+                }
+                
+                //alert(StampId);
+                //$scope.commentaries = currentRecord.comments;
+                ///$scope.commentaries.put().then(function (rc) {
+                                
+                            //});
+                //alert('Controler1');
+                
+
+            };  
         }]);
    mod.directive('starRating', function () {
     return {

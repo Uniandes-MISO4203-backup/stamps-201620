@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 (function (ng) {
-    var mod = ng.module('stampModule', ['ngCrud', 'ui.router']);
+    var mod = ng.module('stampModule', ['ngCrud', 'ui.router', 'ngCookies']);
 
     mod.constant('stampModel', {
         name: 'stamp',
@@ -73,6 +73,13 @@ SOFTWARE.
                 displayName: 'Comments',
                 type: 'String',
                 required: false
+            },
+            artist:{
+                displayName: 'Artist',
+                type: 'Reference',
+                model: 'artistModel',
+                options: [],
+                required: true
             }
         }
     });

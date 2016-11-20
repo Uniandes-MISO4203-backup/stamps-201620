@@ -24,6 +24,18 @@ SOFTWARE.
 <header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
+<script>
+    function cleanCommentary(){
+        document.getElementById('commentaries').value = "";
+        document.getElementById('Botones').style.display = 'block';
+    }
+</script>
+<script>
+    function DeleteComment(){
+        document.getElementById('commentaries').value = "Escribe aqui tu comentario";
+        document.getElementById('Botones').style.display = 'none';
+    }
+</script>
 <div  class="container-fluid well">
     <div class="col-md-12">
         <div class="row">
@@ -48,7 +60,14 @@ SOFTWARE.
                 <li class="list-group-item">description: </br> {{currentRecord.description}} </li>
                 <li class="list-group-item">comment Artist: </br>{{currentRecord.artistComment}} </li>
                 <li class="list-group-item">popularity <img src="images/like.png" height="22" width="22"/>= {{currentRecord.popularity}}</li>
-                <li class="list-group-item">comments User: </br> {{currentRecord.comments}}</li>
+                <li class="list-group-item" id="DisplayCommentary" style="display:none;">comment Current User: </br> <textarea id="commentaries" rows="3" cols="58" onfocus="cleanCommentary();" > Escribe aqui tu comentario</textarea></li>
+                <div id="Botones" style="display:none;">
+                    <center>
+                        <button value="Comment" id="comment" ng-click="CreateComment()"> Comment </button>
+                        <button value="Cancel" id="cleanComment" onclick="DeleteComment();"> Cancel </button>
+                    </center>
+                </div>
+                <li class="list-group-item" id="commentariesUsers">comments User: </br>  {{currentRecord.comments}}</li>  
               </ul>
             </div>
           </div>
