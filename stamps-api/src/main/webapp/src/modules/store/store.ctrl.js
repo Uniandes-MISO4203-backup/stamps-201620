@@ -70,6 +70,18 @@ SOFTWARE.
                     
                 });
             }
+            
+            $scope.acquire = function(){
+                
+                console.log($rootScope);
+
+                
+                r.all("clients/"+ $rootScope.clientObject.id + "/wishList/acquirecart").post({}).then(function(res){
+                    
+                    alert("Cart Items acquired");
+                    
+                });
+            }
 
             /* Función showMessage: Recibe el mensaje en String y
              * su tipo con el fin de almacenarlo en el array $scope.alerts.

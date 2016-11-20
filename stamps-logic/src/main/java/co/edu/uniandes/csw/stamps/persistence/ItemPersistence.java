@@ -102,4 +102,10 @@ public class ItemPersistence extends CrudPersistence<ItemEntity> {
         }
         return q.getResultList();
     }
+
+    public void acquireCart(Long clientId) {
+        TypedQuery q = em.createQuery("update ItemEntity p set p.status = 2 where (p.client.id = :clientId) and (p.status = 1)", ItemEntity.class);
+            q.setParameter("clientId", clientId);
+            q.executeUpdate();
+    }
 }

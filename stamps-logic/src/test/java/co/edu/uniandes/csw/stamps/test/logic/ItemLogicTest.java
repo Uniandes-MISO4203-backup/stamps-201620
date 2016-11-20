@@ -337,5 +337,21 @@ public class ItemLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getQty(), resp.getQty());
     }
+    
+        /**
+     * Prueba para adquirir items del carrito
+     *
+     * @generated
+     */
+    @Test
+    public void acquireTest() {
+        itemLogic.acquireCart(fatherEntity.getId());
+        boolean any = false;
+        List<ItemEntity> listz = itemLogic.getCartItems(fatherEntity.getId());
+        if(listz.size() > 0){
+            any = true;
+        }
+        Assert.assertEquals(any, false);
+    }
 }
 

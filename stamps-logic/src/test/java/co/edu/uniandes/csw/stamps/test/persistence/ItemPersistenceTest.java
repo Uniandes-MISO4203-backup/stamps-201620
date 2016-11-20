@@ -287,4 +287,20 @@ public class ItemPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getQty(), resp.getQty());
     }
+    
+            /**
+     * Prueba para adquirir items del carrito
+     *
+     * @generated
+     */
+    @Test
+    public void acquireTest() {
+        itemPersistence.acquireCart(fatherEntity.getId());
+        boolean any = false;
+        List<ItemEntity> listz = itemPersistence.findAllCart(null, null, fatherEntity.getId());
+        if(listz.size() > 0){
+            any = true;
+        }
+        Assert.assertEquals(any, false);
+    }
 }
