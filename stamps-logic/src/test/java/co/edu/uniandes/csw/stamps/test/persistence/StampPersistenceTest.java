@@ -168,7 +168,11 @@ public class StampPersistenceTest {
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
         Assert.assertEquals(newEntity.getArtistComment(), entity.getArtistComment());
-        
+        //Automatic Test
+        Assert.assertEquals(newEntity.isAvailableForSale(), entity.isAvailableForSale());
+        Assert.assertEquals(newEntity.getQualification(), entity.getQualification());
+        Assert.assertEquals(newEntity.getPopularity(), entity.getPopularity());
+        Assert.assertEquals(newEntity.getComments(), entity.getComments());
     }
 
     /**
@@ -224,9 +228,14 @@ public class StampPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
-        //Test
-        Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
-        Assert.assertEquals(newEntity.getArtistComment(), entity.getArtistComment());
+        //Automatic Test
+        Assert.assertEquals(entity.isAvailableForSale(), newEntity.isAvailableForSale());
+        Assert.assertEquals(entity.getDescription(), newEntity.getDescription());
+        Assert.assertEquals(entity.getArtistComment(), newEntity.getArtistComment());
+        Assert.assertEquals(entity.getQualification(), newEntity.getQualification());
+        Assert.assertEquals(entity.getPopularity(), newEntity.getPopularity());
+        Assert.assertEquals(entity.getComments(), newEntity.getComments());
+        
     }
 
     /**
@@ -264,5 +273,10 @@ public class StampPersistenceTest {
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
         Assert.assertEquals(newEntity.getDescription(), resp.getDescription());
         Assert.assertEquals(newEntity.getArtistComment(), resp.getArtistComment());
+        //Automatic Test
+        Assert.assertEquals(newEntity.isAvailableForSale(), resp.isAvailableForSale());
+        Assert.assertEquals(newEntity.getQualification(), resp.getQualification());
+        Assert.assertEquals(newEntity.getPopularity(), resp.getPopularity());
+        Assert.assertEquals(newEntity.getComments(), resp.getComments());
     }
 }

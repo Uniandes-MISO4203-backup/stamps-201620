@@ -213,9 +213,14 @@ public class StampTest {
         Assert.assertEquals(stamp.getName(), stampTest.getName());
         Assert.assertEquals(stamp.getImage(), stampTest.getImage());
         Assert.assertEquals(stamp.getPrice(), stampTest.getPrice());
-        //Test
+        //Automatic Test
+        Assert.assertEquals(stamp.isAvailableForSale(), stampTest.isAvailableForSale());
         Assert.assertEquals(stamp.getDescription(), stampTest.getDescription());
         Assert.assertEquals(stamp.getArtistComment(), stampTest.getArtistComment());
+        Assert.assertEquals(stamp.getQualification(), stampTest.getQualification());
+        Assert.assertEquals(stamp.getPopularity(), stampTest.getPopularity());
+        Assert.assertEquals(stamp.getComments(), stampTest.getComments());
+        
         Assert.assertEquals(Created, response.getStatus());
         StampEntity entity = em.find(StampEntity.class, stampTest.getId());
         Assert.assertNotNull(entity);
@@ -241,6 +246,11 @@ public class StampTest {
         Assert.assertEquals(stampTest.getPrice(), oraculo.get(0).getPrice());
         Assert.assertEquals(stampTest.getDescription(), oraculo.get(0).getDescription());
         Assert.assertEquals(stampTest.getArtistComment(), oraculo.get(0).getArtistComment());
+        //Automatic Test
+        Assert.assertEquals(stampTest.isAvailableForSale(), oraculo.get(0).isAvailableForSale());
+        Assert.assertEquals(stampTest.getQualification(), oraculo.get(0).getQualification());
+        Assert.assertEquals(stampTest.getPopularity(), oraculo.get(0).getPopularity());
+        Assert.assertEquals(stampTest.getComments(), oraculo.get(0).getComments());
     }
 
     /**
@@ -296,6 +306,12 @@ public class StampTest {
         stamp.setPrice(stampChanged.getPrice());
         stamp.setDescription(stampChanged.getDescription());
         stamp.setArtistComment(stampChanged.getArtistComment());
+        //Automatic Test
+        stamp.setAvailableForSale(stampChanged.isAvailableForSale());
+        stamp.setQualification(stampChanged.getQualification());
+        stamp.setPopularity(stampChanged.getPopularity());
+        stamp.setComments(stampChanged.getComments());
+        
         Response response = target
             .path(artistPath).path(fatherArtistEntity.getId().toString())
           .path(stampPath)

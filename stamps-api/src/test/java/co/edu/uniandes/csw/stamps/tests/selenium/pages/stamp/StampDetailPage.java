@@ -52,6 +52,16 @@ public class StampDetailPage {
     @FindBy(id = "artistComment")
     private WebElement artistComment;
     
+    //Automatic Test
+    @FindBy(id = "availableForSale")
+    private WebElement availableForSale;
+    @FindBy(id = "qualification")
+    private WebElement qualification;
+    @FindBy(id = "popularity")
+    private WebElement popularity;
+    @FindBy(id = "comments")
+    private WebElement comments;
+    
     public void list() {
         listBtn.click();
     }
@@ -69,9 +79,13 @@ public class StampDetailPage {
         stamp.setName(name.getText());
         stamp.setImage(image.getText());
         stamp.setPrice(Long.parseLong(price.getText()));
-        //Test
+        //Automatic Test
         stamp.setDescription(description.getText());
         stamp.setArtistComment(artistComment.getText());
+        stamp.setAvailableForSale(Boolean.parseBoolean(availableForSale.getText()));
+        stamp.setQualification(Short.parseShort(qualification.getText()));
+        stamp.setPopularity(Long.parseLong(popularity.getText()));
+        stamp.setComments(comments.getText());
         return stamp;
     }
 }

@@ -80,23 +80,20 @@ SOFTWARE.
             $scope.CreateComment = function() {  
                 var commentariesUsers = $scope.currentRecord.comments;
                 var StampCommentary = document.getElementById('commentaries').value;
-                var commentariesUsers = $scope.currentRecord.comments;
-                //if (commentariesUsers == "0"){
-                  //  commentariesUsers = "";
-                //}
+                if (commentariesUsers == "0"){
+                    commentariesUsers = "";
+                }
                 if (StampCommentary != ""){
                     var username = $scope.CurrentUser.userName;                    
                     var commentaryUser = username + ':  "' + StampCommentary;
-                    var StampCommentaries = commentaryUser + '";  ' + commentariesUsers;
+                    var StampCommentaries = commentaryUser + '";\n  ' + commentariesUsers;
                     $scope.currentRecord.comments = StampCommentaries;
                     $scope.currentRecord.put().then(function (rc) {
                         $state.go('stampDetail', {stampId: rc.id}, {reload: true});
                     });
                 }
-                else {
-                    document.getElementById('commentaries').value = "Escribe aqui tu comentario";
-                    document.getElementById('Botones').style.display = 'none';
-                }
+                document.getElementById('commentaries').value = "Escribe aqui tu comentario";
+                document.getElementById('Botones').style.display = 'none';
                 
                 //alert(StampId);
                 //$scope.commentaries = currentRecord.comments;

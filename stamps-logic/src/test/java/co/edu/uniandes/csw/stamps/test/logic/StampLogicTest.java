@@ -189,9 +189,13 @@ public class StampLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
-        //Test
+        //Automatic Test
+        Assert.assertEquals(newEntity.isAvailableForSale(), entity.isAvailableForSale());
         Assert.assertEquals(newEntity.getDescription(), entity.getDescription());
         Assert.assertEquals(newEntity.getArtistComment(), entity.getArtistComment());
+        Assert.assertEquals(newEntity.getQualification(), entity.getQualification());
+        Assert.assertEquals(newEntity.getPopularity(), entity.getPopularity());
+        Assert.assertEquals(newEntity.getComments(), entity.getComments());
     }
 
     /**
@@ -251,6 +255,12 @@ public class StampLogicTest {
         Assert.assertEquals(entity.getPrice(), resultEntity.getPrice());
         Assert.assertEquals(entity.getDescription(), resultEntity.getDescription());
         Assert.assertEquals(entity.getArtistComment(), resultEntity.getArtistComment());
+        //Automatic Test
+        Assert.assertEquals(entity.isAvailableForSale(), resultEntity.isAvailableForSale());
+        Assert.assertEquals(entity.getQualification(), resultEntity.getQualification());
+        Assert.assertEquals(entity.getPopularity(), resultEntity.getPopularity());
+        Assert.assertEquals(entity.getComments(), resultEntity.getComments());
+        
     }
 
     /**
@@ -288,6 +298,11 @@ public class StampLogicTest {
         Assert.assertEquals(pojoEntity.getPrice(), resp.getPrice());
         Assert.assertEquals(pojoEntity.getDescription(), resp.getDescription());
         Assert.assertEquals(pojoEntity.getArtistComment(), resp.getArtistComment());
+        //Automatic Test
+        Assert.assertEquals(pojoEntity.isAvailableForSale(), resp.isAvailableForSale());
+        Assert.assertEquals(pojoEntity.getQualification(), resp.getQualification());
+        Assert.assertEquals(pojoEntity.getPopularity(), resp.getPopularity());
+        Assert.assertEquals(pojoEntity.getComments(), resp.getComments());
     }
 
     /**

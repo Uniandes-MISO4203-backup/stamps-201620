@@ -40,7 +40,16 @@ public class StampCreatePage {
     @FindBy(id = "description")
     private WebElement descriptionInput;
     @FindBy(id = "artistComment")
-    private WebElement artistCommentInput;
+    private WebElement artistCommentInput;  
+    //Automatic Test
+    @FindBy(id = "availableForSale")
+    private WebElement availableForSaleInput;
+    @FindBy(id = "qualification")
+    private WebElement qualificationInput;
+    @FindBy(id = "popularity")
+    private WebElement popularityInput;
+    @FindBy(id = "comments")
+    private WebElement commentsInput;
     
     @FindBy(id = "save-stamp")
     private WebElement saveBtn;
@@ -68,6 +77,23 @@ public class StampCreatePage {
          waitGui().until().element(artistCommentInput).is().visible();
          artistCommentInput.clear();
          artistCommentInput.sendKeys(stamp.getArtistComment());         
+                
+        //Automatic Test
+         waitGui().until().element(availableForSaleInput).is().visible();
+         availableForSaleInput.clear();
+         availableForSaleInput.sendKeys(String.valueOf(stamp.isAvailableForSale()));
+                  
+         waitGui().until().element(qualificationInput).is().visible();
+         qualificationInput.clear();
+         qualificationInput.sendKeys(String.valueOf(stamp.getQualification()));
+        
+         waitGui().until().element(popularityInput).is().visible();
+         popularityInput.clear();
+         popularityInput.sendKeys(stamp.getPopularity().toString());
+
+         waitGui().until().element(commentsInput).is().visible();
+         commentsInput.clear();
+         commentsInput.sendKeys(stamp.getComments());
          
         guardAjax(saveBtn).click();
     }
