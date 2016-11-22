@@ -23,10 +23,8 @@ SOFTWARE.
 */
 (function (ng) {
     var mod = ng.module('mainApp');
-
     mod.controller('storeCtrl', ['$scope', 'Restangular', '$rootScope',
         function ($scope,r, $rootScope) {
-            
             $scope.numPerPage = 9;
             $scope.maxSize = 5;
             
@@ -37,49 +35,40 @@ SOFTWARE.
             };
             
             $scope.stamps = [];
-
+            $scope.shirts = [];
             r.all("stamps/all").getList().then(function(resp){
-            
                 r.all("tShirts").getList().then(function(resp2){
                     $scope.stamps = resp;
-                    console.log($scope.stamps)
+                    //console.log($scope.stamps)
                     $scope.shirts = resp2;
-                    
                     $scope.currentPage = 1;
-                    
-
                 });
             });
             
             $scope.$watch("currentPage + numPerPage", function() {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage);
             var end = begin + $scope.numPerPage;
-
             $scope.filteredStamps = $scope.stamps.slice(begin, end);
           });
             
-            console.log($scope.stamps);
+            //console.log($scope.stamps);
             
             $scope.addToWishList = function(stamp, shirt){
-                
-                console.log($rootScope);
+                r.all("clients/"+ $rootScope.clientObject.id + "/wishList").post({stamp:stamp,tShirt:$scope.shirts[shirt], name:"item",qty:1,status:0}).then(function(res){    
+                alert("Item added to wishlist");
+                });
+            }
 
-                r.all("clients/"+ $rootScope.clientObject.id + "/wishList").post({stamp:stamp,tShirt: shirt,name:"item",qty:1,status:0}).then(function(res){
-                    
-                    alert("Item added to wishlist");
-                    
+            $scope.addToCardList = function(stamp, shirt){
+                r.all("clients/"+ $rootScope.clientObject.id + "/wishList").post({stamp:stamp,tShirt:$scope.shirts[shirt],name:"Cart",qty:1,status:1}).then(function(res){    
+                alert("Item added to your cart");
                 });
             }
             
-            $scope.acquire = function(){
-                
-                console.log($rootScope);
-
-                
+            $scope.acquire = function(){                
+                console.log($rootScope);                
                 r.all("clients/"+ $rootScope.clientObject.id + "/wishList/acquirecart").post({}).then(function(res){
-                    
-                    alert("Cart Items acquired");
-                    
+                alert("Cart Items acquired");
                 });
             }
 
