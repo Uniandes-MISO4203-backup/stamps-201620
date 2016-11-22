@@ -86,7 +86,7 @@ SOFTWARE.
                 if (StampCommentary != ""){
                     var username = $scope.CurrentUser.userName;                    
                     var commentaryUser = username + ':  "' + StampCommentary;
-                    var StampCommentaries = commentaryUser + '";\n  ' + commentariesUsers;
+                    var StampCommentaries = commentaryUser + '";\n' + commentariesUsers;
                     $scope.currentRecord.comments = StampCommentaries;
                     $scope.currentRecord.put().then(function (rc) {
                         $state.go('stampDetail', {stampId: rc.id}, {reload: true});
