@@ -207,5 +207,17 @@ public class ItemLogic implements IItemLogic {
         ItemEntity old = getItem(id);
         persistence.delete(old.getId());
     }
+    
+    
+    /**
+     * adquiere los items del carrito
+     *
+     * @param clientId Identificador de cliente.
+     * @generated
+     */
+    @Override
+    public void acquireCart(Long clientId) {
+        persistence.acquireCart(clientId);
+    }
   
 }

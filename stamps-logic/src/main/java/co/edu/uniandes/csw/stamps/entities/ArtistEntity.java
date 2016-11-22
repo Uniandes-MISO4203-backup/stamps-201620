@@ -39,7 +39,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Artist.getHighlighted", query = "select u from ArtistEntity u ORDER BY u.qualification desc")})
+    @NamedQuery(name = "Artist.getHighlighted", query = "select u from ArtistEntity u  where u.qualification is not null ORDER BY u.qualification desc")})
 public class ArtistEntity extends BaseEntity implements Serializable {
     private String address;
     private Long telephone;

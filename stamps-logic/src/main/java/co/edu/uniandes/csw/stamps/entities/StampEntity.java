@@ -39,7 +39,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Stamp.getHighlighted", query = "select u from StampEntity u ORDER BY u.qualification desc"),
+    @NamedQuery(name = "Stamp.getHighlighted", query = "select u from StampEntity u where u.qualification is not null ORDER BY u.qualification desc"),
     @NamedQuery(name="Stamp.getLatest", query = "select u from StampEntity u ORDER BY u.id desc")
 })    
 public class StampEntity extends BaseEntity implements Serializable {
