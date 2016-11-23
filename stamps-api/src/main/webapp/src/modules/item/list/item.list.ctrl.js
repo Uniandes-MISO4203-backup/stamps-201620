@@ -116,5 +116,13 @@ SOFTWARE.
                     }
                 }
             };
-        }]);
+            $scope.acquire = function(){                
+            r.all("clients/"+ $rootScope.clientObject.id + "/wishList/acquirecart").post({}).then(function(res){
+            alert("Cart Items acquired");
+                });
+            }
+            
+        }
+    
+    ]);
 })(window.angular);
