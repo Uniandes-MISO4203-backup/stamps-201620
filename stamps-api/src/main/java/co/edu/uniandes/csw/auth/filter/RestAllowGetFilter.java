@@ -24,6 +24,9 @@ public class RestAllowGetFilter extends RestFilter {
         if ("GET".equals(httpMethod)) {
             return true;
         }
+        else if ("PUT".equals(httpMethod)) {
+            return true;
+        }
         return super.isAccessAllowed(request, response, mappedValue);
     }
 }

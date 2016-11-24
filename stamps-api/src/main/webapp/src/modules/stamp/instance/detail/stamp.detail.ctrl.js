@@ -80,12 +80,14 @@ SOFTWARE.
             $scope.CreateComment = function() {  
                 var commentariesUsers = $scope.currentRecord.comments;
                 var StampCommentary = document.getElementById('commentaries').value;
-                if (commentariesUsers == "0"){
-                    commentariesUsers = "";
+                if (commentariesUsers == undefined){
+                    commentariesUsers = ""; 
                 }
                 if (StampCommentary != ""){
                     var username = $scope.CurrentUser.userName;                    
                     var commentaryUser = username + ':  "' + StampCommentary;
+                    console.log(username);
+                    console.log(commentariesUsers);
                     var StampCommentaries = commentaryUser + '";\n' + commentariesUsers;
                     $scope.currentRecord.comments = StampCommentaries;
                     $scope.currentRecord.put().then(function (rc) {
