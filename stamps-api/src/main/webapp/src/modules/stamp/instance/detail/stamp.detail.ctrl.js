@@ -96,15 +96,6 @@ SOFTWARE.
                 }
                 document.getElementById('commentaries').value = "Escribe aqui tu comentario";
                 document.getElementById('Botones').style.display = 'none';
-                
-                //alert(StampId);
-                //$scope.commentaries = currentRecord.comments;
-                ///$scope.commentaries.put().then(function (rc) {
-                                
-                            //});
-                //alert('Controler1');
-                
-
             };  
         }]);
    mod.directive('starRating', function () {
