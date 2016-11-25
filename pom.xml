@@ -5,7 +5,7 @@
     <artifactId>stamps</artifactId>
     <name>Stamps</name>
     <packaging>pom</packaging>
-    <version>0.1.0</version>
+    <version>0.6.0</version>
     <modules>
         <module>stamps-logic</module>
         <module>stamps-api</module>
