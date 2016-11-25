@@ -25,8 +25,12 @@ SOFTWARE.
 
     var mod = ng.module("itemModule");
 
-    mod.controller("itemListCtrl", ["$scope", '$state', 'items', '$stateParams',
-        function ($scope, $state, items, $params) {
+    mod.controller("itemListCtrl", ["$scope", '$state', 'items','buy', 'Restangular', '$rootScope', '$stateParams',
+        function ($scope, $state, items, buy, r, $rootScope, $params) {
+            //console.log(window.location);
+            //$scope.buttonAc = window.location.hash.endsWith("listCart");
+            $scope.buttonAc = buy;
+            console.log($scope.buttonAc);
             $scope.records = items;
 
             //Paginación
@@ -121,6 +125,7 @@ SOFTWARE.
             alert("Cart Items acquired");
                 });
             }
+
             
         }
     

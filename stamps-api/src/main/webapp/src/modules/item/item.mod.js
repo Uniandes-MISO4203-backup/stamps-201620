@@ -97,6 +97,9 @@ SOFTWARE.
                 resolve: {
                     items: ['client', '$stateParams', 'model', function (client, $params, model) {
                             return client.getList(model.url, $params);
+                        }],
+                    buy: [function(){
+                            return false;
                         }]                }
             });
             $sp.state('itemListCart', {
@@ -113,7 +116,10 @@ SOFTWARE.
                 resolve: {
                     items: ['client', '$stateParams', 'model', function (client, $params, model) {
                             return client.getList('cartList/cart', $params);
-                        }]                }
+                        }],
+                    buy: [function(){
+                            return true;
+                        }]                     }
             });
             $sp.state('itemListAcquired', {
                 url: '/listAcquired',
@@ -129,7 +135,11 @@ SOFTWARE.
                 resolve: {
                     items: ['client', '$stateParams', 'model', function (client, $params, model) {
                             return client.getList('acquiredList/acquired', $params);
-                        }]                }
+                        }],
+                    buy: [function(){
+                            return false;
+                        }]     
+                }
             });
             $sp.state('itemNew', {
                 url: '/new',
