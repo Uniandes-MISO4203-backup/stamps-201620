@@ -5,7 +5,7 @@
     <artifactId>stamps</artifactId>
     <name>Stamps</name>
     <packaging>pom</packaging>
-    <version>0.1.0</version>
+    <version>0.6.0</version>
     <modules>
         <module>stamps-logic</module>
         <module>stamps-api</module>
@@ -17,7 +17,7 @@
             <url>http://157.253.238.75:8081/content/repositories/releases/</url>
         </repository>
     </repositories>
-    <properties>cd 
+    <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
